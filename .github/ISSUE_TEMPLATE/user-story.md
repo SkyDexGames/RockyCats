@@ -8,9 +8,6 @@ assignees: ''
 ---
 
 <<--!
-As a: Role of the user (e.g., player, admin)
+Acceptance Criteria:
 
-I want: What the user wants to do
-
-So that: Why the user wants it / benefit
 --!>>
