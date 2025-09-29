@@ -1,283 +1,271 @@
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
-,{ "pid":12345, "tid":0, "ts":1759170743283214, "dur":32384, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743315615, "dur":181, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743315846, "dur":514, "ph":"X", "name": "BuildQueueInit",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743318357, "dur":535, "ph":"X", "name": "EmitFirstTimeEnqueue",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":0, "ts":1759170743316382, "dur":3754, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743320138, "dur":131786, "ph":"X", "name": "WaitForBuildFinished", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743451928, "dur":194, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743452123, "dur":52, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743452285, "dur":1319, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
-,{ "pid":12345, "tid":1, "ts":1759170743316687, "dur":3457, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1759170743320147, "dur":3820, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1759170743325478, "dur":145, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1759170743324778, "dur":871, "ph":"X", "name": "WriteText",  "args": { "detail":"Library/Bee/artifacts/csharpactions/boot.config_tyr4.info" }}
-,{ "pid":12345, "tid":1, "ts":1759170743325653, "dur":88, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1759170743325749, "dur":20300, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":1, "ts":1759170743325652, "dur":20873, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"AddBootConfigGUID Library/Bee/artifacts/WinPlayerBuildProgram/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1759170743346745, "dur":53, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1759170743347394, "dur":99764, "ph":"X", "name": "AddBootConfigGUID",  "args": { "detail":"Library/Bee/artifacts/WinPlayerBuildProgram/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1759170743449759, "dur":1465, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\Bee\\artifacts\\WinPlayerBuildProgram\\boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1759170743449758, "dur":1467, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/boot.config" }}
-,{ "pid":12345, "tid":1, "ts":1759170743451241, "dur":647, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/boot.config" }}
-,{ "pid":12345, "tid":2, "ts":1759170743316726, "dur":3431, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743320159, "dur":780, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743320939, "dur":3040, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743323983, "dur":231, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":2, "ts":1759170743324215, "dur":620, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743324858, "dur":67, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\2.0\\web.config" }}
-,{ "pid":12345, "tid":2, "ts":1759170743324844, "dur":82, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":2, "ts":1759170743324926, "dur":408, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743325334, "dur":168, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":2, "ts":1759170743325504, "dur":127, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":2, "ts":1759170743325632, "dur":259, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743325902, "dur":402, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743326316, "dur":479, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743326804, "dur":415, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":2, "ts":1759170743326802, "dur":418, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":2, "ts":1759170743327221, "dur":158, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743327390, "dur":537, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743327938, "dur":331, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743328292, "dur":210, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743328535, "dur":302, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743328845, "dur":303, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743329159, "dur":247, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1759170743329425, "dur":6719, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":2, "ts":1759170743336652, "dur":115268, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743316710, "dur":3440, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743320153, "dur":785, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743320938, "dur":3040, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743323997, "dur":220, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\mconfig\\config.xml" }}
-,{ "pid":12345, "tid":3, "ts":1759170743323980, "dur":238, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":3, "ts":1759170743324219, "dur":560, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743324785, "dur":80, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":3, "ts":1759170743324866, "dur":410, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743325288, "dur":99, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\EmbedRuntime\\MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":3, "ts":1759170743325286, "dur":101, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":3, "ts":1759170743325388, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743325459, "dur":128, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":3, "ts":1759170743325597, "dur":721, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743326337, "dur":452, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743326800, "dur":187, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743326995, "dur":333, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.VisualScripting.Flow.dll" }}
-,{ "pid":12345, "tid":3, "ts":1759170743326993, "dur":336, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Unity.VisualScripting.Flow.dll" }}
-,{ "pid":12345, "tid":3, "ts":1759170743327330, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743327444, "dur":475, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743327930, "dur":376, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743328317, "dur":179, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743328531, "dur":283, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743328828, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743328904, "dur":248, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743329162, "dur":304, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743329474, "dur":97, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":3, "ts":1759170743329474, "dur":98, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":3, "ts":1759170743329572, "dur":278, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1759170743329867, "dur":8118, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/level1.resS" }}
-,{ "pid":12345, "tid":3, "ts":1759170743338048, "dur":113887, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743316754, "dur":3410, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743320167, "dur":840, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743321007, "dur":2982, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743323991, "dur":340, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":4, "ts":1759170743324332, "dur":984, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743325316, "dur":180, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":4, "ts":1759170743325513, "dur":92, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Temp\\StagingArea\\WindowsPlayer.exe" }}
-,{ "pid":12345, "tid":4, "ts":1759170743325497, "dur":110, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame.exe" }}
-,{ "pid":12345, "tid":4, "ts":1759170743325666, "dur":645, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743326333, "dur":449, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743326819, "dur":177, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonUnityNetworking.dll" }}
-,{ "pid":12345, "tid":4, "ts":1759170743326817, "dur":181, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/PhotonUnityNetworking.dll" }}
-,{ "pid":12345, "tid":4, "ts":1759170743326998, "dur":202, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743327212, "dur":163, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743327383, "dur":540, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743327938, "dur":465, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743328414, "dur":431, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743328858, "dur":280, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743329151, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743329237, "dur":750, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1759170743330005, "dur":3040, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/level1" }}
-,{ "pid":12345, "tid":4, "ts":1759170743333202, "dur":3268, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/level0" }}
-,{ "pid":12345, "tid":4, "ts":1759170743336521, "dur":115404, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743316786, "dur":3384, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743320172, "dur":840, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743321013, "dur":3128, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743324153, "dur":113, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.0\\web.config" }}
-,{ "pid":12345, "tid":5, "ts":1759170743324143, "dur":124, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":5, "ts":1759170743324268, "dur":1007, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743325281, "dur":132, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":5, "ts":1759170743325414, "dur":61, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743325475, "dur":128, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":5, "ts":1759170743325613, "dur":697, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743326339, "dur":456, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743326802, "dur":164, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.VisualScripting.State.dll" }}
-,{ "pid":12345, "tid":5, "ts":1759170743326801, "dur":166, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Unity.VisualScripting.State.dll" }}
-,{ "pid":12345, "tid":5, "ts":1759170743326968, "dur":239, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743327221, "dur":174, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743327403, "dur":727, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743328140, "dur":200, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743328350, "dur":175, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743328536, "dur":294, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743328837, "dur":303, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743329151, "dur":236, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743329392, "dur":94, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\UnityPlayer.dll" }}
-,{ "pid":12345, "tid":5, "ts":1759170743329391, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":5, "ts":1759170743329487, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1759170743329562, "dur":6766, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/resources.assets" }}
-,{ "pid":12345, "tid":5, "ts":1759170743336436, "dur":2039, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":5, "ts":1759170743338523, "dur":113425, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743316816, "dur":3361, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743320180, "dur":838, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743321018, "dur":3071, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743324092, "dur":266, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":6, "ts":1759170743324358, "dur":1031, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743325390, "dur":124, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":6, "ts":1759170743325531, "dur":1287, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743326825, "dur":371, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":6, "ts":1759170743326824, "dur":373, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":6, "ts":1759170743327198, "dur":81, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743327287, "dur":846, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743328145, "dur":208, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743328363, "dur":178, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743328550, "dur":306, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743328863, "dur":276, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743329154, "dur":214, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743329376, "dur":726, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1759170743330205, "dur":2975, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/level0.resS" }}
-,{ "pid":12345, "tid":6, "ts":1759170743333604, "dur":5556, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/globalgamemanagers.assets.resS" }}
-,{ "pid":12345, "tid":6, "ts":1759170743339193, "dur":112735, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743316842, "dur":3342, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743320187, "dur":813, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743321000, "dur":2985, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743323998, "dur":333, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.5\\web.config" }}
-,{ "pid":12345, "tid":7, "ts":1759170743323986, "dur":347, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":7, "ts":1759170743324334, "dur":1116, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743325451, "dur":78, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":7, "ts":1759170743325538, "dur":1069, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743326627, "dur":302, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743326937, "dur":116, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonChat.dll" }}
-,{ "pid":12345, "tid":7, "ts":1759170743326935, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/PhotonChat.dll" }}
-,{ "pid":12345, "tid":7, "ts":1759170743327054, "dur":183, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743327249, "dur":122, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743327382, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743327450, "dur":684, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743328149, "dur":211, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743328371, "dur":278, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743328662, "dur":180, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743328853, "dur":284, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743329147, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743329223, "dur":320, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1759170743329569, "dur":6807, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":7, "ts":1759170743336586, "dur":115343, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743316867, "dur":3324, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743320198, "dur":786, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743320984, "dur":2998, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743323985, "dur":231, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":8, "ts":1759170743324217, "dur":591, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743324813, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1759170743324910, "dur":391, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743325318, "dur":85, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\EmbedRuntime\\mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":8, "ts":1759170743325307, "dur":97, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":8, "ts":1759170743325405, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743325469, "dur":128, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":8, "ts":1759170743325602, "dur":770, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743326380, "dur":413, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743326804, "dur":381, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743327193, "dur":440, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.VisualScripting.Core.dll" }}
-,{ "pid":12345, "tid":8, "ts":1759170743327192, "dur":442, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Unity.VisualScripting.Core.dll" }}
-,{ "pid":12345, "tid":8, "ts":1759170743327634, "dur":704, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743328349, "dur":155, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743328542, "dur":274, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743328829, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743328902, "dur":249, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743329162, "dur":303, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743336101, "dur":696, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1759170743329513, "dur":7298, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":8, "ts":1759170743337288, "dur":114651, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743316899, "dur":3304, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743320206, "dur":606, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743320812, "dur":3237, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743324061, "dur":276, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.5\\machine.config" }}
-,{ "pid":12345, "tid":9, "ts":1759170743324051, "dur":287, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":9, "ts":1759170743324338, "dur":1006, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743325344, "dur":163, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":9, "ts":1759170743325517, "dur":788, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743326318, "dur":468, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743326813, "dur":222, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonUnityNetworking.Demos.dll" }}
-,{ "pid":12345, "tid":9, "ts":1759170743326811, "dur":225, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/PhotonUnityNetworking.Demos.dll" }}
-,{ "pid":12345, "tid":9, "ts":1759170743327037, "dur":160, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743327216, "dur":171, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743327400, "dur":735, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743328151, "dur":231, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743328396, "dur":240, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743328647, "dur":241, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743328896, "dur":292, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743329194, "dur":170, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743329375, "dur":162, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":9, "ts":1759170743329605, "dur":6984, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":9, "ts":1759170743336644, "dur":115278, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743316952, "dur":3259, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743320212, "dur":3762, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743324051, "dur":660, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743324727, "dur":86, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.0\\machine.config" }}
-,{ "pid":12345, "tid":10, "ts":1759170743324718, "dur":95, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":10, "ts":1759170743324814, "dur":456, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743325275, "dur":194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":10, "ts":1759170743325471, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743325557, "dur":750, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743326334, "dur":441, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743326796, "dur":295, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743327098, "dur":488, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":10, "ts":1759170743327097, "dur":490, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":10, "ts":1759170743327588, "dur":548, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743328150, "dur":324, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743328519, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":10, "ts":1759170743328572, "dur":357, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743328937, "dur":225, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743329171, "dur":220, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":10, "ts":1759170743329416, "dur":7324, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/sharedassets1.assets" }}
-,{ "pid":12345, "tid":10, "ts":1759170743336795, "dur":115148, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743316967, "dur":3260, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743320228, "dur":3747, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743323996, "dur":192, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":11, "ts":1759170743323979, "dur":211, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":11, "ts":1759170743324190, "dur":338, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743324538, "dur":91, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":11, "ts":1759170743324630, "dur":638, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743325276, "dur":107, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\2.0\\machine.config" }}
-,{ "pid":12345, "tid":11, "ts":1759170743325273, "dur":111, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":11, "ts":1759170743325385, "dur":59, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743325444, "dur":77, "ph":"X", "name": "EmitNodeUpToDate",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":11, "ts":1759170743325529, "dur":1071, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743326625, "dur":312, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743326948, "dur":167, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonRealtime.dll" }}
-,{ "pid":12345, "tid":11, "ts":1759170743326947, "dur":170, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/PhotonRealtime.dll" }}
-,{ "pid":12345, "tid":11, "ts":1759170743327117, "dur":242, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743327367, "dur":553, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743327940, "dur":327, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743328291, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743328422, "dur":289, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743328719, "dur":237, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743328965, "dur":206, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743329179, "dur":198, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743329386, "dur":93, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743329484, "dur":16578, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":11, "ts":1759170743329483, "dur":16584, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":11, "ts":1759170743346073, "dur":181, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":11, "ts":1759170743346268, "dur":105663, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743316987, "dur":3253, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743320241, "dur":3813, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743324055, "dur":277, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":12, "ts":1759170743324333, "dur":842, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743325183, "dur":364, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":12, "ts":1759170743325548, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743325632, "dur":676, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743326332, "dur":465, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743326810, "dur":165, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonUnityNetworking.Utilities.dll" }}
-,{ "pid":12345, "tid":12, "ts":1759170743326807, "dur":169, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/PhotonUnityNetworking.Utilities.dll" }}
-,{ "pid":12345, "tid":12, "ts":1759170743326977, "dur":210, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":12, "ts":1759170743327204, "dur":93, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\rakuwun\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":12, "ts":1759170743327203, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":12, "ts":1759170743328243, "dur":4828, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/Managed/Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":12, "ts":1759170743333646, "dur":3842, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/rakuwun/Desktop/Builds/RockyCatsGame_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":12, "ts":1759170743337548, "dur":114403, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1759170743456757, "dur":860, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid":12345, "tid":0, "ts":1759179966450966, "dur":26508, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966477483, "dur":52, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966477558, "dur":274, "ph":"X", "name": "BuildQueueInit",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966478243, "dur":53, "ph":"X", "name": "EmitFirstTimeEnqueue",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":0, "ts":1759179966477849, "dur":2234, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966480084, "dur":186544, "ph":"X", "name": "WaitForBuildFinished", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966666636, "dur":143, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966666779, "dur":119, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966667035, "dur":1598, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1759179966478231, "dur":1859, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1759179966480092, "dur":8667, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1759179966498945, "dur":793, "ph":"X", "name": "WriteText",  "args": { "detail":"Library/Bee/artifacts/csharpactions/boot.config_tyr4.info" }}
+,{ "pid":12345, "tid":1, "ts":1759179966499742, "dur":180, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1759179966499932, "dur":6679, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":1, "ts":1759179966506613, "dur":152, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\PlayerDataCache\\Win64\\Data\\ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":1, "ts":1759179966507024, "dur":193, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966507219, "dur":438, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966507658, "dur":250, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966507909, "dur":263, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966508173, "dur":136, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonChat.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966508311, "dur":146, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonRealtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966508458, "dur":196, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966508656, "dur":237, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonUnityNetworking.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966508895, "dur":255, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonUnityNetworking.Demos.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966509152, "dur":188, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\PhotonUnityNetworking.Utilities.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966509341, "dur":460, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966509803, "dur":180, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\Bee\\PlayerScriptAssemblies\\Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966509984, "dur":375, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Assets\\Photon\\PhotonLibs\\WebSocket\\websocket-sharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966510362, "dur":286, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966510650, "dur":388, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Users\\Denzel\\Desktop\\RockyCats\\.github\\RockyCatsGame\\Assets\\Photon\\PhotonLibs\\netstandard2.0\\Photon3Unity3D.dll" }}
+,{ "pid":12345, "tid":1, "ts":1759179966511134, "dur":209, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\Bee\\Player4e317ce3-inputdata.json" }}
+,{ "pid":12345, "tid":1, "ts":1759179966499740, "dur":11838, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"AddBootConfigGUID Library/Bee/artifacts/WinPlayerBuildProgram/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1759179966511844, "dur":72, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1759179966512610, "dur":141955, "ph":"X", "name": "AddBootConfigGUID",  "args": { "detail":"Library/Bee/artifacts/WinPlayerBuildProgram/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1759179966665116, "dur":178, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Library\\Bee\\artifacts\\WinPlayerBuildProgram\\boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1759179966665115, "dur":180, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/boot.config" }}
+,{ "pid":12345, "tid":1, "ts":1759179966665310, "dur":1195, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966478271, "dur":1825, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1759179966480099, "dur":3025, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1759179966483125, "dur":5670, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1759179966488806, "dur":773, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.5\\web.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966488799, "dur":781, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966491314, "dur":4403, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966495877, "dur":141, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.0\\machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966495875, "dur":145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966496033, "dur":1626, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":2, "ts":1759179966497743, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1759179966497851, "dur":2547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1759179966500519, "dur":188, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1759179966502722, "dur":11120, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":2, "ts":1759179966513974, "dur":14065, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966528245, "dur":7884, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966536284, "dur":5964, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966548782, "dur":94, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1759179966542492, "dur":6411, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966549198, "dur":5618, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966555085, "dur":6553, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966561769, "dur":6486, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966574948, "dur":94, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1759179966568382, "dur":6675, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966575199, "dur":12895, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1759179966588241, "dur":14206, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1759179966602661, "dur":63882, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1759179966478262, "dur":1841, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1759179966480106, "dur":2840, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1759179966482947, "dur":5863, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1759179966488821, "dur":736, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.5\\machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1759179966488813, "dur":745, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1759179966491334, "dur":4555, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":3, "ts":1759179966496070, "dur":278, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1759179966496361, "dur":2129, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1759179966498634, "dur":162, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\EmbedRuntime\\MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966498631, "dur":166, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966498933, "dur":3954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966503424, "dur":8789, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966512457, "dur":12922, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966525771, "dur":7805, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966533775, "dur":8436, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966542531, "dur":7175, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966549980, "dur":5928, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966556045, "dur":7058, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966563258, "dur":6752, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966570337, "dur":7609, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966588692, "dur":60, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1759179966578126, "dur":10636, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1759179966588911, "dur":18440, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/level1.resS" }}
+,{ "pid":12345, "tid":3, "ts":1759179966607710, "dur":58891, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1759179966478306, "dur":1804, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1759179966480113, "dur":1926, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1759179966482039, "dur":6780, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1759179966488821, "dur":745, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":4, "ts":1759179966491325, "dur":4878, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":4, "ts":1759179966496336, "dur":168, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1759179966496657, "dur":2949, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":4, "ts":1759179966499727, "dur":156, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\EmbedRuntime\\mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966499725, "dur":159, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966499895, "dur":24919, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966524983, "dur":6887, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966531996, "dur":6397, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/PhotonRealtime.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966538522, "dur":5774, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966544433, "dur":5623, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966550343, "dur":6449, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966556997, "dur":6879, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966564054, "dur":6139, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966570365, "dur":7832, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966588703, "dur":87, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1759179966578334, "dur":10469, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1759179966588962, "dur":18369, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/level1" }}
+,{ "pid":12345, "tid":4, "ts":1759179966607699, "dur":58889, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1759179966478336, "dur":1781, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1759179966480120, "dur":2959, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1759179966483080, "dur":5722, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1759179966488806, "dur":721, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1759179966491332, "dur":4787, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1759179966496252, "dur":137, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\2.0\\web.config" }}
+,{ "pid":12345, "tid":5, "ts":1759179966496251, "dur":139, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1759179966496534, "dur":3315, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1759179966500006, "dur":114, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"Temp\\StagingArea\\WindowsPlayer.exe" }}
+,{ "pid":12345, "tid":5, "ts":1759179966500006, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/RockyCatsGame.exe" }}
+,{ "pid":12345, "tid":5, "ts":1759179966500131, "dur":1701, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame.exe" }}
+,{ "pid":12345, "tid":5, "ts":1759179966512096, "dur":66, "ph":"X", "name": "EmitNodeFinish",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1759179966502838, "dur":9349, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966512316, "dur":12352, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966525053, "dur":6219, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966531404, "dur":6293, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/PhotonUnityNetworking.Demos.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966538025, "dur":6547, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966544735, "dur":6287, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966551307, "dur":7314, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966558772, "dur":6501, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966565420, "dur":6301, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966571874, "dur":7080, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ContentLoadModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1759179966579245, "dur":9698, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":5, "ts":1759179966589115, "dur":18500, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/level0.resS" }}
+,{ "pid":12345, "tid":5, "ts":1759179966607753, "dur":58822, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1759179966478365, "dur":1758, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1759179966480126, "dur":3448, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1759179966483574, "dur":5215, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1759179966488792, "dur":221, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":6, "ts":1759179966498904, "dur":3970, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":6, "ts":1759179966503265, "dur":9025, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966512426, "dur":12245, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966525262, "dur":6061, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966531462, "dur":6021, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/PhotonUnityNetworking.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966537953, "dur":6967, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966545203, "dur":6866, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966552209, "dur":6417, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966558771, "dur":6692, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966565600, "dur":6795, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966572745, "dur":6723, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1759179966579788, "dur":10195, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":6, "ts":1759179966590876, "dur":16917, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":6, "ts":1759179966607912, "dur":58703, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1759179966478393, "dur":1737, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1759179966480133, "dur":3485, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1759179966483618, "dur":5165, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1759179966488786, "dur":238, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":7, "ts":1759179966507418, "dur":5697, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":7, "ts":1759179966513258, "dur":12111, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966525755, "dur":5951, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Photon3Unity3D.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966531829, "dur":5769, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966537854, "dur":6083, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966544106, "dur":5965, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966550397, "dur":7286, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966557833, "dur":6805, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966564780, "dur":7137, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966572043, "dur":6794, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966579023, "dur":133, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\UnityPlayer.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966579021, "dur":135, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966579167, "dur":58899, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":7, "ts":1759179966638160, "dur":28419, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1759179966478412, "dur":1725, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1759179966480140, "dur":3705, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1759179966483846, "dur":4929, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1759179966488788, "dur":232, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\mconfig\\config.xml" }}
+,{ "pid":12345, "tid":8, "ts":1759179966488777, "dur":244, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":8, "ts":1759179966506620, "dur":6118, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":8, "ts":1759179966512930, "dur":12072, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966525734, "dur":6712, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966532620, "dur":7618, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966540367, "dur":9096, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966549582, "dur":8390, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966558246, "dur":6826, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.PropertiesModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966565241, "dur":7025, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966572514, "dur":6364, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1759179966579171, "dur":8892, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/sharedassets1.assets" }}
+,{ "pid":12345, "tid":8, "ts":1759179966588912, "dur":1823, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":8, "ts":1759179966590837, "dur":17359, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/globalgamemanagers.assets.resS" }}
+,{ "pid":12345, "tid":8, "ts":1759179966608306, "dur":58254, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1759179966478441, "dur":1702, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1759179966480146, "dur":1614, "ph":"X", "name": "EarlyStatNonGeneratedFile",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1759179966481760, "dur":7109, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1759179966488880, "dur":229, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\4.0\\web.config" }}
+,{ "pid":12345, "tid":9, "ts":1759179966488869, "dur":241, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":9, "ts":1759179966516863, "dur":3069, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":9, "ts":1759179966520088, "dur":9258, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966530702, "dur":6942, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966537945, "dur":6063, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966544167, "dur":5891, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966550448, "dur":5585, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966556181, "dur":7203, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966563520, "dur":7398, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966571068, "dur":7055, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966578324, "dur":11114, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":9, "ts":1759179966589563, "dur":17740, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/level0" }}
+,{ "pid":12345, "tid":9, "ts":1759179966607658, "dur":58887, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1759179966478463, "dur":1688, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1759179966480151, "dur":8618, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1759179966488786, "dur":167, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":10, "ts":1759179966488774, "dur":180, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":10, "ts":1759179966490368, "dur":6258, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":10, "ts":1759179966496742, "dur":159, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\win64_player_nondevelopment_mono\\MonoBleedingEdge\\etc\\mono\\2.0\\machine.config" }}
+,{ "pid":12345, "tid":10, "ts":1759179966496740, "dur":161, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":10, "ts":1759179966496917, "dur":3327, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":10, "ts":1759179966502742, "dur":9373, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966512288, "dur":12452, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966525587, "dur":6794, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966532553, "dur":7090, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/PhotonChat.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966539943, "dur":82, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f1\\Editor\\Data\\PlaybackEngines\\WindowsStandaloneSupport\\Variations\\mono\\Managed\\UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966539941, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966540039, "dur":5479, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966545781, "dur":57, "ph":"X", "name": "EmitNodeStart",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1759179966545863, "dur":7648, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966553725, "dur":6457, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966560375, "dur":6562, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966567084, "dur":5634, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966573019, "dur":6359, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":10, "ts":1759179966579529, "dur":10569, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":10, "ts":1759179966590892, "dur":16866, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":10, "ts":1759179966607884, "dur":58679, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1759179966478483, "dur":1677, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1759179966480161, "dur":8703, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1759179966488866, "dur":155, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":11, "ts":1759179966507068, "dur":6309, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":11, "ts":1759179966513656, "dur":11898, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966525837, "dur":170, "ph":"X", "name": "EmitNodeStart",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":11, "ts":1759179966526010, "dur":6783, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/websocket-sharp.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966532993, "dur":7067, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966540292, "dur":7283, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966547713, "dur":6394, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966554283, "dur":6796, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966561227, "dur":6705, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966568120, "dur":5169, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966573448, "dur":6412, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":11, "ts":1759179966580007, "dur":15975, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":11, "ts":1759179966596416, "dur":70191, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1759179966478509, "dur":1661, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1759179966480170, "dur":8596, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1759179966488782, "dur":174, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":12, "ts":1759179966490871, "dur":2193, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/app.info" }}
+,{ "pid":12345, "tid":12, "ts":1759179966493066, "dur":116, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":12, "ts":1759179966493290, "dur":2644, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":12, "ts":1759179966496074, "dur":131, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":12, "ts":1759179966496354, "dur":1548, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":12, "ts":1759179966498009, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":12, "ts":1759179966498485, "dur":2352, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":12, "ts":1759179966502457, "dur":9079, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966511698, "dur":10658, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966522501, "dur":6849, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966530705, "dur":5418, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/PhotonUnityNetworking.Utilities.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966536346, "dur":6542, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966543025, "dur":6110, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966549395, "dur":6618, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966556176, "dur":6688, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966563077, "dur":6889, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966570135, "dur":6544, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966576817, "dur":11513, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":12, "ts":1759179966588524, "dur":18776, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/Denzel/Desktop/buildtest/RockyCatsGame_Data/resources.assets" }}
+,{ "pid":12345, "tid":12, "ts":1759179966607638, "dur":58980, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1759179966671247, "dur":1226, "ph":"X", "name": "ProfilerWriteOutput" }
 ,
