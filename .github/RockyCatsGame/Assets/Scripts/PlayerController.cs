@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     */
     /*OTHER NOTES
     ------------------------------------
+    ORIENTACION DEL MODELO
+
     si hay problemas de orientacion con los fbx del player, revisar linea
     targetRotation *= Quaternion.Euler(0, 180, 0);
     en HandleRotation
@@ -21,7 +24,21 @@ public class PlayerController : MonoBehaviour
     puse un offset de 180 porque las orientaciones del modelo se estaban comportando raro y a pesar de intentar
     con diferentes orientaciones tanto en el unity como desde el blender, el modelo seguia mirando para atras o tenia offsets
     que la vdd no tengo ni idea de donde vienen
+
     ------------------------------------
+    CHARACTER CONTROLLER OVER RIGIDBODY
+
+    Estamos usando character controller en vez de rigidbody para el movimiento porque es 
+    simplemente mejor en muchos sentidos, da mas modularidad, es mejor para multiplayer y se siente mas crisp, clean, y responsivo.
+    
+    El rigidbody es mas floaty y se siente muy raro para platformers.
+    
+    Nomas fue cuestion de agregar las funciones de gravedad, etc.
+    ------------------------------------
+    SEPARACION DE CONTROLLER Y FBX
+
+    En teoria podriamos juntar el controller en un solo prefab, pero lo dejaremos separado, pues al menos este FBX no es la version final,
+    y prefiero encapsular reponsabilidades (logica y animaciones)
     
     */
 
@@ -32,32 +49,38 @@ public class PlayerController : MonoBehaviour
     //jump settings
     [SerializeField] private float jumpForce = 5f;
 
+    //ground check
+    [SerializeField] private bool useBoxGroundCheck = true;
+    [SerializeField] private float groundCheckDistance = 0.2f;
+    [SerializeField] private LayerMask groundMask = ~0;
 
     //components
     private CharacterController controller;
-    private Animator animator;
+    [SerializeField] Animator animator;
     
     //states
-    private bool isGrounded = false;
+    private bool isGrounded;
     private float verticalVelocity;
     private Vector3 moveDirection;
 
-
+    PhotonView PV;
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
+        PV = GetComponent<PhotonView>();
     }
 
     void Update()
     {
+        if(!PV.IsMine) return; //para solo controlar a NUESTRA instance del player
         HandleMovementInput();
         HandleJumpInput();
         ApplyGravity();
         ApplyMovement();
         HandleRotation();
         UpdateAnimations();
+        Debug.Log("IsGrounded: " + isGrounded);
     }
 
     void HandleMovementInput()
@@ -76,7 +99,23 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(move);
 
-        isGrounded = controller.isGrounded;
+        if(useBoxGroundCheck)
+        {
+            CheckGroundedBox();
+        }
+        else
+        {
+            isGrounded = controller.isGrounded;
+        }
+    }
+
+    void CheckGroundedBox()
+    {
+        // Box check covers the entire bottom of the character
+        Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
+        Vector3 boxHalfExtents = new Vector3(controller.radius * 0.9f, groundCheckDistance / 2, controller.radius * 0.9f);
+        
+        isGrounded = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, groundMask);
     }
 
     void HandleRotation()
@@ -106,17 +145,20 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        
         verticalVelocity = jumpForce;
         isGrounded = false;
+        
     }
     
     void ApplyGravity()
     {
-        if(isGrounded && verticalVelocity < 0)
+        if (isGrounded && verticalVelocity <= 0)
         {
-            verticalVelocity = -0.5f;
+            verticalVelocity = -0.5f; // Small downward force to keep grounded
         }
-        else
+        
+        if (!isGrounded || verticalVelocity > 0)
         {
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
@@ -150,4 +192,16 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded => isGrounded;
     public Vector3 GetMoveDirection => moveDirection;
     public float GetMoveSpeed => moveSpeed;
+
+
+    void OnDrawGizmos()
+    {
+        if (!Application.isPlaying || controller == null || !useBoxGroundCheck) return;
+        
+        Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
+        Vector3 boxSize = new Vector3(controller.radius * 1.8f, groundCheckDistance, controller.radius * 1.8f);
+        
+        Gizmos.color = isGrounded ? Color.green : Color.red;
+        Gizmos.DrawWireCube(boxCenter, boxSize);
+    }
 }
