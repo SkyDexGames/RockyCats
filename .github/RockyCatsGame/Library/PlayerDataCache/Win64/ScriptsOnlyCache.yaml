@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - PlayerController
     - PlayerListItem
     - RoomListItem
+    - RoomManager
     PhotonUnityNetworking:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -23,7 +24,10 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
+    - Photon.Pun.PhotonView
     - Photon.Pun.ServerSettings
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -177,11 +181,15 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1618}
+      Script: {instanceID: 1566}
     - Class: 114
-      Script: {instanceID: 1664}
+      Script: {instanceID: 1568}
     - Class: 114
-      Script: {instanceID: 1750}
+      Script: {instanceID: 1570}
+    - Class: 114
+      Script: {instanceID: 1620}
+    - Class: 114
+      Script: {instanceID: 1666}
     - Class: 114
       Script: {instanceID: 1826}
     - Class: 114
@@ -197,59 +205,57 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3246}
     - Class: 114
-      Script: {instanceID: 3282}
+      Script: {instanceID: 3394}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 4038}
     - Class: 114
-      Script: {instanceID: 4040}
+      Script: {instanceID: 4044}
     - Class: 114
-      Script: {instanceID: 4046}
+      Script: {instanceID: 4212}
     - Class: 114
-      Script: {instanceID: 4214}
+      Script: {instanceID: 4336}
     - Class: 114
-      Script: {instanceID: 4338}
+      Script: {instanceID: 4352}
     - Class: 114
-      Script: {instanceID: 4354}
+      Script: {instanceID: 4626}
     - Class: 114
-      Script: {instanceID: 4628}
+      Script: {instanceID: 5198}
     - Class: 114
-      Script: {instanceID: 5200}
+      Script: {instanceID: 5324}
     - Class: 114
-      Script: {instanceID: 5326}
+      Script: {instanceID: 5340}
     - Class: 114
-      Script: {instanceID: 5344}
+      Script: {instanceID: 5398}
     - Class: 114
-      Script: {instanceID: 5402}
+      Script: {instanceID: 5758}
     - Class: 114
-      Script: {instanceID: 5676}
+      Script: {instanceID: 5800}
     - Class: 114
-      Script: {instanceID: 5764}
+      Script: {instanceID: 6004}
     - Class: 114
-      Script: {instanceID: 5806}
+      Script: {instanceID: 6166}
     - Class: 114
-      Script: {instanceID: 6010}
+      Script: {instanceID: 6504}
     - Class: 114
-      Script: {instanceID: 6172}
+      Script: {instanceID: 6512}
     - Class: 114
-      Script: {instanceID: 6510}
+      Script: {instanceID: 6954}
     - Class: 114
-      Script: {instanceID: 6518}
+      Script: {instanceID: 7134}
     - Class: 114
-      Script: {instanceID: 6960}
+      Script: {instanceID: 7276}
     - Class: 114
-      Script: {instanceID: 7140}
+      Script: {instanceID: 7464}
     - Class: 114
-      Script: {instanceID: 7282}
+      Script: {instanceID: 7676}
     - Class: 114
-      Script: {instanceID: 7470}
+      Script: {instanceID: 8058}
     - Class: 114
-      Script: {instanceID: 7680}
+      Script: {instanceID: 8188}
     - Class: 114
-      Script: {instanceID: 8062}
+      Script: {instanceID: 8494}
     - Class: 114
-      Script: {instanceID: 8192}
-    - Class: 114
-      Script: {instanceID: 8498}
+      Script: {instanceID: 24952}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -316,19 +322,19 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 6642}
+      Script: {instanceID: 6636}
     - Class: 114
-      Script: {instanceID: 34074}
+      Script: {instanceID: 27858}
     - Class: 114
-      Script: {instanceID: 34076}
+      Script: {instanceID: 27860}
     - Class: 114
-      Script: {instanceID: 34078}
+      Script: {instanceID: 27862}
     - Class: 114
-      Script: {instanceID: 34080}
+      Script: {instanceID: 27864}
     - Class: 114
-      Script: {instanceID: 34082}
+      Script: {instanceID: 27866}
     - Class: 114
-      Script: {instanceID: 34084}
+      Script: {instanceID: 27868}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 137
@@ -342,10 +348,28 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 46734dde0a5a2061455766be7c7d214e
-    assemblyName: PhotonUnityNetworking.Utilities
-    namespaceName: Photon.Pun.UtilityScripts
-    className: OnJoinedInstantiate
+      Hash: b5007673bbbdb9d12597a1d8201370f5
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: 915204dac8acad99f076d6e72ada0a0f
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
+      Hash: 8dff8e9853297d341afa0c11f9091b59
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: LayoutElement
+  - hash:
+      serializedVersion: 2
+      Hash: 33f160a5c07e580c29aba2bd1e4db811
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
       Hash: e5ced545fd8a42a1f50e04211216ab80
@@ -394,12 +418,6 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos
     namespaceName: Photon.Pun.Demo.SlotRacer.Utils
     className: BezierSpline
-  - hash:
-      serializedVersion: 2
-      Hash: 8dff8e9853297d341afa0c11f9091b59
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: LayoutElement
   - hash:
       serializedVersion: 2
       Hash: 02a2a398b2e7fa043385bcf4c99f8f26
@@ -766,12 +784,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: ToggleGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 915204dac8acad99f076d6e72ada0a0f
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: d90629714fa6b0145fcaffc87f5c6559
@@ -1302,12 +1314,6 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: 33f160a5c07e580c29aba2bd1e4db811
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: HorizontalLayoutGroup
-  - hash:
-      serializedVersion: 2
       Hash: c4c0913c42060afea7fbde17265756b3
     assemblyName: PhotonUnityNetworking.Demos
     namespaceName: Photon.Pun.Demo.Asteroids
@@ -1384,12 +1390,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnDeselectMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: b5007673bbbdb9d12597a1d8201370f5
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Text
   - hash:
       serializedVersion: 2
       Hash: 712c1c7191da97ad34b3c804dceb636e
@@ -1854,6 +1854,12 @@ ScriptsOnlyBuild:
     className: CurrentRoomExpectedUsersProperty
   - hash:
       serializedVersion: 2
+      Hash: 46734dde0a5a2061455766be7c7d214e
+    assemblyName: PhotonUnityNetworking.Utilities
+    namespaceName: Photon.Pun.UtilityScripts
+    className: OnJoinedInstantiate
+  - hash:
+      serializedVersion: 2
       Hash: d0392b7f3f52d5af537ade186b4f51f1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -2080,6 +2086,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 08e333336845f3d850a16e0f9ac80f42
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: RoomManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/PreGame.unity

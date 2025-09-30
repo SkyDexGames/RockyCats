@@ -336,6 +336,7 @@
 "Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/PlayerListItem.cs"
 "Assets/Scripts/RoomListItem.cs"
+"Assets/Scripts/RoomManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
