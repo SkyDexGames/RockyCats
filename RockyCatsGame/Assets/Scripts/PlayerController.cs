@@ -58,29 +58,37 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     [SerializeField] Animator animator;
     
-    //states
+    //states for physics and anims
     private bool isGrounded;
     private float verticalVelocity;
     private Vector3 moveDirection;
 
     PhotonView PV;
+    private PhaseManager phaseManager; //eta vaina va a manejar las fases Y las va a comunicar con photon
+    
+    //walls
+    private bool isTouchingWall;
+    [SerializeField] private float wallCheckDistance = 0.6f;
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
         PV = GetComponent<PhotonView>();
+        phaseManager = GetComponent<PhaseManager>();
     }
 
     void Update()
     {
         if(!PV.IsMine) return; //para solo controlar a NUESTRA instance del player
+
         HandleMovementInput();
         HandleJumpInput();
         ApplyGravity();
         ApplyMovement();
         HandleRotation();
         UpdateAnimations();
-        Debug.Log("IsGrounded: " + isGrounded);
+        
+        CheckWalls();
     }
 
     void HandleMovementInput()
@@ -128,6 +136,34 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, groundMask);
     }
 
+    //revisar esta implementacion, maybe hay mejores
+    void CheckWalls()
+    {
+        Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
+        isTouchingWall = false;
+        float wallCheckDistance = 0.6f;
+        LayerMask wallMask = groundMask;
+
+        foreach(Vector3 dir in directions)
+        {
+            if(Physics.Raycast(transform.position, dir, wallCheckDistance, wallMask))
+            {
+                isTouchingWall = true;
+                break;
+            }
+        }
+
+        // Notificar al PhaseManager actual sobre el wall slide
+        if (phaseManager != null)
+        {
+            var currentPhase = phaseManager.GetCurrentPhase();
+            if (currentPhase != null)
+            {
+                currentPhase.HandleWallSlide(isTouchingWall);
+            }
+        }
+    }
+
     void HandleRotation()
     {
         // Only rotate if there's input THIS frame
@@ -169,6 +205,17 @@ public class PlayerController : MonoBehaviour
         
         if (!isGrounded || verticalVelocity > 0)
         {
+            //revisar lo del wall slide
+            if (phaseManager != null && phaseManager.CanCurrentPhaseWallSlide() && isTouchingWall && verticalVelocity < 0)
+            {
+                var magmaPhase = phaseManager.GetCurrentPhase() as MagmaPhase;
+                if (magmaPhase != null && magmaPhase.IsWallSliding)
+                {
+                    verticalVelocity += Physics.gravity.y * magmaPhase.wallSlideGravityMultiplier * Time.deltaTime;
+                    return;
+                }
+            }
+            //gravedad normal o caso base
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
     }
@@ -198,19 +245,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //getters
     public bool IsGrounded => isGrounded;
+    public bool IsTouchingWall => isTouchingWall;
     public Vector3 GetMoveDirection => moveDirection;
     public float GetMoveSpeed => moveSpeed;
+    public float GetVerticalVelocity() => verticalVelocity;
+    public CharacterController GetController() => controller;
 
 
+    //setters para cambiar el feel de las fases desde las propias fases
+    public void SetMoveSpeed(float speed) => moveSpeed = speed;
+    public void SetJumpForce(float force) => jumpForce = force;
+    public void SetRotationSpeed(float speed) => rotationSpeed = speed;
+
+    //pal debugging y asi
     void OnDrawGizmos()
     {
-        if (!Application.isPlaying || controller == null || !useBoxGroundCheck) return;
+        if (!Application.isPlaying || controller == null) return;
         
-        Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
-        Vector3 boxSize = new Vector3(controller.radius * 1.8f, groundCheckDistance, controller.radius * 1.8f);
+        // Ground check
+        if (useBoxGroundCheck)
+        {
+            Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
+            Vector3 boxSize = new Vector3(controller.radius * 1.8f, groundCheckDistance, controller.radius * 1.8f);
+            
+            Gizmos.color = isGrounded ? Color.green : Color.red;
+            Gizmos.DrawWireCube(boxCenter, boxSize);
+        }
         
-        Gizmos.color = isGrounded ? Color.green : Color.red;
-        Gizmos.DrawWireCube(boxCenter, boxSize);
+        // Wall check rays
+        Gizmos.color = isTouchingWall ? Color.yellow : Color.blue;
+        Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
+        foreach (Vector3 dir in directions)
+        {
+            Gizmos.DrawRay(transform.position, dir * wallCheckDistance);
+        }
     }
 }
