@@ -65,7 +65,8 @@ public class PlayerController : MonoBehaviour
 
     PhotonView PV;
     private PhaseManager phaseManager; //eta vaina va a manejar las fases Y las va a comunicar con photon
-    
+    private bool isUsingAbility = false;
+
     //walls
     private bool isTouchingWall;
     [SerializeField] private float wallCheckDistance = 0.6f;
@@ -93,6 +94,12 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovementInput()
     {
+        //bloquear inputs si estas usando una habilidad
+        if (isUsingAbility)
+        {
+            moveDirection = Vector3.zero;
+            return;
+        }
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -258,6 +265,10 @@ public class PlayerController : MonoBehaviour
     public void SetMoveSpeed(float speed) => moveSpeed = speed;
     public void SetJumpForce(float force) => jumpForce = force;
     public void SetRotationSpeed(float speed) => rotationSpeed = speed;
+    public void SetUsingAbility(bool usingAbility)
+    {
+        isUsingAbility = usingAbility;
+    }
 
     //pal debugging y asi
     void OnDrawGizmos()

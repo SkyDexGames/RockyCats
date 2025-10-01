@@ -34,6 +34,16 @@ public abstract class PlayerPhase : MonoBehaviour
         if (rotationSpeedOverride >= 0)
             playerController.SetRotationSpeed(rotationSpeedOverride);
     }
+
+    public virtual bool IsUsingAbility()
+    {
+        return false;
+    }
+
+    public virtual void HandleMovement(ref Vector3 moveDirection, ref float moveSpeed)
+    {
+        // Default implementation - does nothing
+    }
     
     // Métodos que pueden ser override por fases específicas
     public virtual void HandleAbility() { }
