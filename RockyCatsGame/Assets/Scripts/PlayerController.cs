@@ -40,11 +40,20 @@ public class PlayerController : MonoBehaviour
     En teoria podriamos juntar el controller en un solo prefab, pero lo dejaremos separado, pues al menos este FBX no es la version final,
     y prefiero encapsular reponsabilidades (logica y animaciones)
     
-    */
 
+    --------------
+    REFACTOR DEL MOVIMIENTO
+
+    ANTES el input era indicacion directa de movimiento y eso daba problemas al aplicar fuerzas externas, como lo son el caso del wall jump
+
+    AHORA el input solo indica direccion y la velocidad se maneja aparte, esto nos da chance de aplicar efectos al movimiento sin que el input este sobreescribiendo todo cada frame.
+    */
     //movement settings
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 1000; //rotate almost instantly, we can tweak this in the future if we need it
+    [SerializeField] private float groundAcceleration = 50f; //que tan rapido aceleras
+    [SerializeField] private float groundDeceleration = 30f; //que tan rapido desaceleras
+    [SerializeField] private float airAcceleration = 20f; //control en el aire
 
     //jump settings
     [SerializeField] private float jumpForce = 5f;
@@ -52,24 +61,35 @@ public class PlayerController : MonoBehaviour
     //ground check
     [SerializeField] private bool useBoxGroundCheck = true;
     [SerializeField] private float groundCheckDistance = 0.2f;
-    [SerializeField] private LayerMask groundMask = ~0;
+    [SerializeField] private LayerMask groundMask = ~0; //por si queremos manejar con layers
+
+    //wall jump
+    [SerializeField] private float wallJumpUpForce = 8f;
+    [SerializeField] private float wallJumpSideForce = 10f;
+    [SerializeField] private float wallJumpDuration = 0.3f;
+    [SerializeField] private float wallJumpControlReduction = 0.2f;
 
     //components
     private CharacterController controller;
     [SerializeField] Animator animator;
-    
+
+    //weas de movimiento, separamos el input de la velocidad para aplicar los efectos de manera no tosca
+    private Vector3 inputDirection;
+    private Vector3 horizontalVelocity;
+    private float verticalVelocity;
+
     //states for physics and anims
     private bool isGrounded;
-    private float verticalVelocity;
-    private Vector3 moveDirection;
+    private bool isTouchingWall;
 
+    //weas externas que afectan el movimiento
+    private Vector3 externalVelocity;
+    private float externalVelocityTimer;
+
+    //photon y otros sistemas
     PhotonView PV;
     private PhaseManager phaseManager; //eta vaina va a manejar las fases Y las va a comunicar con photon
     private bool isUsingAbility = false;
-
-    //walls
-    private bool isTouchingWall;
-    [SerializeField] private float wallCheckDistance = 0.6f;
 
     void Awake()
     {
@@ -82,47 +102,88 @@ public class PlayerController : MonoBehaviour
     {
         if(!PV.IsMine) return; //para solo controlar a NUESTRA instance del player
 
-        HandleMovementInput();
+        CaptureInput();
         HandleJumpInput();
+        UpdateVelocity();
         ApplyGravity();
         ApplyMovement();
         HandleRotation();
         UpdateAnimations();
-        
-        CheckWalls();
+
+        //vamos matando poco a poco la velocidad externa
+        if(externalVelocityTimer > 0)
+        {
+            externalVelocityTimer -= Time.deltaTime;
+            if(externalVelocityTimer <= 0)
+            {
+                externalVelocity = Vector3.zero;
+            }
+        }
     }
 
-    void HandleMovementInput()
+    //SOLO CAPTURAMOS INPUT, nada mas
+    void CaptureInput()
     {
-        //bloquear inputs si estas usando una habilidad
         if (isUsingAbility)
         {
-            moveDirection = Vector3.zero;
+            inputDirection = Vector3.zero;
             return;
         }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
-        // Store the raw input separately
-        Vector3 inputDirection = new Vector3(horizontal, 0f, vertical);
         
-        // Only update moveDirection if there's actual input
+        Vector3 rawInput = new Vector3(horizontal, 0f, vertical);
+        inputDirection = rawInput.magnitude > 0.01f ? rawInput.normalized : Vector3.zero;
+    }
+
+    void UpdateVelocity()
+    {
+        //cuanto control tiene el jugador
+        float controlMultiplier = 1f;
+        
+        //reducimos control durante el wall jump para que SI se apliquen bien las fuerzas
+        if(externalVelocityTimer > 0)
+        {
+            controlMultiplier = wallJumpControlReduction;
+        }
+
+        //target velocity basado en input
+        Vector3 targetVelocity = inputDirection * moveSpeed * controlMultiplier;
+        
+        //acelerar hacia targetVelocity
+        float acceleration = isGrounded ? groundAcceleration : airAcceleration;
+        
         if(inputDirection.magnitude > 0.01f)
         {
-            moveDirection = inputDirection.normalized;
+            //acelerando hacia targetVelocity
+            horizontalVelocity = Vector3.MoveTowards(
+                horizontalVelocity, 
+                targetVelocity, 
+                acceleration * Time.deltaTime
+            );
         }
         else
         {
-            moveDirection = Vector3.zero; // Immediately zero out
+            //decelerating a 0
+            float deceleration = isGrounded ? groundDeceleration : airAcceleration * 0.5f;
+            horizontalVelocity = Vector3.MoveTowards(
+                horizontalVelocity, 
+                Vector3.zero, 
+                deceleration * Time.deltaTime
+            );
         }
     }
 
     void ApplyMovement()
     {
-        Vector3 move = moveDirection * moveSpeed * Time.deltaTime;
-        move.y = verticalVelocity * Time.deltaTime;
+        //mezclar todas las velocidades
+        Vector3 totalHorizontalVelocity = horizontalVelocity + externalVelocity;
+        
+        Vector3 movement = totalHorizontalVelocity * Time.deltaTime;
+        movement.y = verticalVelocity * Time.deltaTime;
 
-        controller.Move(move);
+        controller.Move(movement);
 
         if(useBoxGroundCheck)
         {
@@ -136,31 +197,29 @@ public class PlayerController : MonoBehaviour
 
     void CheckGroundedBox()
     {
-        // Box check covers the entire bottom of the character
         Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
-        Vector3 boxHalfExtents = new Vector3(controller.radius * 0.9f, groundCheckDistance / 2, controller.radius * 0.9f);
+        Vector3 boxHalfExtents = new Vector3(
+            controller.radius * 0.9f, 
+            groundCheckDistance / 2, 
+            controller.radius * 0.9f
+        );
         
         isGrounded = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, groundMask);
     }
 
-    //revisar esta implementacion, maybe hay mejores
-    void CheckWalls()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
-        isTouchingWall = false;
-        float wallCheckDistance = 0.6f;
-        LayerMask wallMask = groundMask;
-
-        foreach(Vector3 dir in directions)
+        if(!isGrounded && hit.normal.y < 0.1f)
         {
-            if(Physics.Raycast(transform.position, dir, wallCheckDistance, wallMask))
+            isTouchingWall = true;
+            
+            if(Input.GetButtonDown("Jump"))
             {
-                isTouchingWall = true;
-                break;
+                PerformWallJump(hit.normal);
             }
         }
 
-        // Notificar al PhaseManager actual sobre el wall slide
+        //phase manager wall slide notification
         if (phaseManager != null)
         {
             var currentPhase = phaseManager.GetCurrentPhase();
@@ -171,14 +230,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void PerformWallJump(Vector3 wallNormal)
+    {
+        verticalVelocity = wallJumpUpForce;
+        
+        //aqui le hacemos para que rebote en la dir contraria a la pared
+        Vector3 jumpDirection = new Vector3(wallNormal.x, 0, wallNormal.z).normalized;
+        externalVelocity = jumpDirection * wallJumpSideForce;
+        externalVelocityTimer = wallJumpDuration;
+    
+        //horizontalVelocity = Vector3.zero;
+        
+        Debug.Log($"Wall Jump! Direction: {jumpDirection}, Force: {wallJumpSideForce}");
+    }
+
     void HandleRotation()
     {
-        // Only rotate if there's input THIS frame
-        if(moveDirection.magnitude > 0.01f)
+        //Rotar hacia donde nos estamos moviendo
+        Vector3 movementDirection = horizontalVelocity + externalVelocity;
+        
+        if(movementDirection.magnitude > 0.01f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            targetRotation *= Quaternion.Euler(0, 0, 0);
-            
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation, 
                 targetRotation, 
@@ -197,32 +270,19 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        
         verticalVelocity = jumpForce;
         isGrounded = false;
-        
     }
     
     void ApplyGravity()
     {
         if (isGrounded && verticalVelocity <= 0)
         {
-            verticalVelocity = -0.5f; // Small downward force to keep grounded
+            verticalVelocity = -0.5f;
         }
         
         if (!isGrounded || verticalVelocity > 0)
         {
-            //revisar lo del wall slide
-            if (phaseManager != null && phaseManager.CanCurrentPhaseWallSlide() && isTouchingWall && verticalVelocity < 0)
-            {
-                var magmaPhase = phaseManager.GetCurrentPhase() as MagmaPhase;
-                if (magmaPhase != null && magmaPhase.IsWallSliding)
-                {
-                    verticalVelocity += Physics.gravity.y * magmaPhase.wallSlideGravityMultiplier * Time.deltaTime;
-                    return;
-                }
-            }
-            //gravedad normal o caso base
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
     }
@@ -235,62 +295,59 @@ public class PlayerController : MonoBehaviour
         animator.SetInteger("State", animationState);
     }
 
-    //cuando incluyamos los otros estados maybe le podemos meter un override o expandir esta funcion para darle la responsabilidad de las animaciones a una sola funcion, idk
     int DetermineAnimationState()
     {
         if(!isGrounded)
         {
-            return 1; //jump
+            return 1; // jump
         }
-        else if(moveDirection.magnitude > 0.01f)
+        else if(horizontalVelocity.magnitude > 0.5f)
         {
-            return 2; //moving
+            return 2; // moving
         }
         else
         {
-            return 0; //idle
+            return 0; // idle
         }
     }
 
     //getters
     public bool IsGrounded => isGrounded;
     public bool IsTouchingWall => isTouchingWall;
-    public Vector3 GetMoveDirection => moveDirection;
+    public Vector3 GetInputDirection => inputDirection;
+    public Vector3 GetHorizontalVelocity => horizontalVelocity;
     public float GetMoveSpeed => moveSpeed;
     public float GetVerticalVelocity() => verticalVelocity;
     public CharacterController GetController() => controller;
 
-
-    //setters para cambiar el feel de las fases desde las propias fases
+    //setters
     public void SetMoveSpeed(float speed) => moveSpeed = speed;
     public void SetJumpForce(float force) => jumpForce = force;
     public void SetRotationSpeed(float speed) => rotationSpeed = speed;
-    public void SetUsingAbility(bool usingAbility)
+    public void SetUsingAbility(bool usingAbility) => isUsingAbility = usingAbility;
+    public void SetVerticalVelocity(float velocity) => verticalVelocity = velocity;
+    
+    public void AddExternalVelocity(Vector3 velocity, float duration)
     {
-        isUsingAbility = usingAbility;
+        externalVelocity = velocity;
+        externalVelocityTimer = duration;
     }
 
-    //pal debugging y asi
     void OnDrawGizmos()
     {
         if (!Application.isPlaying || controller == null) return;
         
-        // Ground check
         if (useBoxGroundCheck)
         {
             Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
-            Vector3 boxSize = new Vector3(controller.radius * 1.8f, groundCheckDistance, controller.radius * 1.8f);
+            Vector3 boxSize = new Vector3(
+                controller.radius * 1.8f, 
+                groundCheckDistance, 
+                controller.radius * 1.8f
+            );
             
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireCube(boxCenter, boxSize);
-        }
-        
-        // Wall check rays
-        Gizmos.color = isTouchingWall ? Color.yellow : Color.blue;
-        Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
-        foreach (Vector3 dir in directions)
-        {
-            Gizmos.DrawRay(transform.position, dir * wallCheckDistance);
         }
     }
 }
