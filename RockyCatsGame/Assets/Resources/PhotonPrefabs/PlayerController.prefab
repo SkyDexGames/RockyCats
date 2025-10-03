@@ -86,8 +86,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  wallJumpUpForce: 10
-  wallJumpSideForce: 10
+  wallJumpUpForce: 5
+  wallJumpSideForce: 7
   wallJumpDuration: 0.3
   wallJumpControlReduction: 0.2
   animator: {fileID: 2211283112653848006}
@@ -164,7 +164,7 @@ MonoBehaviour:
   moveSpeedOverride: 5
   jumpForceOverride: 5
   rotationSpeedOverride: 1000
-  wallSlideMaxFallSpeed: -2
+  wallSlideMaxFallSpeed: -0.5
 --- !u!114 &2192902233016760903
 MonoBehaviour:
   m_ObjectHideFlags: 0

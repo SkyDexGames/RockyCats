@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagmaPhase : PlayerPhase
 {
-    public float wallSlideMaxFallSpeed = -0.3f;
+    public float wallSlideMaxFallSpeed = -0.1f;
     public bool IsWallSliding {get; private set;}
 
     public override void HandleAbility()
