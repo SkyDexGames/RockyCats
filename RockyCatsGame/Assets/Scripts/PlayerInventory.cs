@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddResource(Pickup.PickupType type, int amount)
     {
+        Debug.Log($"Adding {amount} of {type} to inventory.");
         switch (type)
         {
             case Pickup.PickupType.Water:

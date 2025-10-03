@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8410858075748684073}
   - component: {fileID: 2192902233016760903}
   - component: {fileID: -8568759940291855160}
+  - component: {fileID: 7258260939311848743}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -198,6 +199,22 @@ MonoBehaviour:
   moveSpeedOverride: 10
   jumpForceOverride: 5
   rotationSpeedOverride: 1000
+--- !u!114 &7258260939311848743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822953092373678682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797c3c4efc02d2342a66d285fc658144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water: 0
+  temperature: 0
+  pressure: 0
+  time: 0
 --- !u!1001 &6075147985724790494
 PrefabInstance:
   m_ObjectHideFlags: 0

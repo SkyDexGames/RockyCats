@@ -8,7 +8,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] private PickupType type;
     [SerializeField] private int value;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         PlayerInventory player = other.gameObject.GetComponent<PlayerInventory>();
         if (player != null)
