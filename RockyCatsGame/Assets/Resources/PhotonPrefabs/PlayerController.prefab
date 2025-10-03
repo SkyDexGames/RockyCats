@@ -77,14 +77,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10.45
   rotationSpeed: 1000
+  groundAcceleration: 50
+  groundDeceleration: 30
+  airAcceleration: 20
   jumpForce: 5
   useBoxGroundCheck: 1
   groundCheckDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  wallJumpUpForce: 5
+  wallJumpSideForce: 7
+  wallJumpDuration: 0.3
+  wallJumpControlReduction: 0.2
   animator: {fileID: 2211283112653848006}
-  wallCheckDistance: 0.6
 --- !u!143 &3369546892682586659
 CharacterController:
   m_ObjectHideFlags: 0
@@ -158,7 +164,7 @@ MonoBehaviour:
   moveSpeedOverride: 5
   jumpForceOverride: 5
   rotationSpeedOverride: 1000
-  wallSlideGravityMultiplier: 0.1
+  wallSlideMaxFallSpeed: -0.5
 --- !u!114 &2192902233016760903
 MonoBehaviour:
   m_ObjectHideFlags: 0
