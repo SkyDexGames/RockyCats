@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ExampleMeltableObject : Heatable, IPunObservable
+public class ExampleMeltableObject : Heatable
 {
     [SerializeField] private Color coldColor = Color.white;
     [SerializeField] private Color hotColor = Color.red;
@@ -25,10 +25,10 @@ public class ExampleMeltableObject : Heatable, IPunObservable
     {
         Debug.Log("Current Heat: " + currentHeat);
         base.Update();
-        UpdateColor(); //actualizamos el color dependiendo de que tan caliente este
+        UpdateVisuals(); //actualizamos el color dependiendo de que tan caliente este
     }
 
-    void UpdateColor()
+    void UpdateVisuals()
     {
         if(objectMaterial == null) return;
 
@@ -36,9 +36,29 @@ public class ExampleMeltableObject : Heatable, IPunObservable
         objectMaterial.color = Color.Lerp(coldColor, hotColor, heatPercent);
     }
 
+    //esta wea la cambiamos segun lo que queramos que haga el objeto cuando este caliente a full ( ͡° ͜ʖ ͡°) 
     protected override void OnFullyHeated()
     {
-        PhotonNetwork.Destroy(gameObject);   
+        // This runs on ALL clients when the object becomes fully heated
+        photonView.RPC("RPC_DestroyObject", RpcTarget.All);
+    }
+
+    [PunRPC]
+    void RPC_DestroyObject()
+    {
+        // Disable the object visually and physically
+        if (objectRenderer != null)
+            objectRenderer.enabled = false;
+            
+        Collider collider = GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = false;
+            
+        // Only the master client actually destroys the networked object
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
 }

@@ -7,61 +7,113 @@ public class MagmaPhase : PlayerPhase
 {
     public float wallSlideMaxFallSpeed = -0.1f;
     public bool IsWallSliding {get; private set;}
-    private float heatTransferRate = 5f; //heat per second
 
-    private bool isHeating;
+    //heat charge
+    [SerializeField] private float maxCharge = 100f;
+    [SerializeField] private float chargeRate = 10f; //charge per second
+    //[SerializeField] private float releaseHeatTransfer = 50f;
+
+    private float currentCharge = 0f;
+    private bool isCharging = false;
+    private bool canRelease = false;
+    private PhotonView photonView;
+
+    void Awake()
+    {
+        photonView = GetComponent<PhotonView>();
+    }
 
     public override void HandleAbility()
     {
-        Debug.Log("Magma E ability activated");
-        isHeating = true;
+        if (!photonView.IsMine) return;
+        
+        Debug.Log("Magma E ability - Start Charging");
+        isCharging = true;
+        canRelease = false;
         playerController.SetUsingAbility(true);
     }
 
-    public override void UpdatePhase() //es como el update pero aplicado para nuestras fases
+    public override void UpdatePhase()
     {
         base.UpdatePhase();
 
-        if(isHeating)
-        {
-            //hacemos magia con physics porque detectar colisiones no jala cuando no estamos trabajando directamente en el PlayerController
-            Collider[] nearby = Physics.OverlapSphere(
-                playerController.transform.position, 
-                0.2f
-            );
+        if (!photonView.IsMine) return;
 
-            foreach(Collider col in nearby)
+        HandleCharging();
+        HandleRelease();
+    }
+
+    private void HandleCharging()
+    {
+        if (isCharging && Input.GetKey(KeyCode.E))
+        {
+            //cargar mientras holdeas E
+            currentCharge += chargeRate * Time.deltaTime;
+            currentCharge = Mathf.Clamp(currentCharge, 0f, maxCharge);
+            
+            if (currentCharge >= 10f) //carga minima para darle release
             {
-                Heatable heatable = col.GetComponent<Heatable>();
-                if(heatable != null)
-                {
-                    float heatThisFrame = heatTransferRate * Time.deltaTime;
-                    heatable.ReceiveHeat(heatThisFrame);
-                }
+                canRelease = true;
+            }
+            
+            Debug.Log($"Charging: {currentCharge}/{maxCharge}");
+        }
+    }
+
+    private void HandleRelease()
+    {
+        //soltar carga si tienes mas de lo necesario Y sueltas E
+        if (isCharging && !Input.GetKey(KeyCode.E) && canRelease)
+        {
+            ReleaseHeat();
+        }
+        // cancelar si tienes menos y sueltas E
+        else if (isCharging && !Input.GetKey(KeyCode.E) && !canRelease)
+        {
+            CancelCharge();
+        }
+    }
+
+    private void ReleaseHeat()
+    {
+        // Find nearby heatable objects and apply heat
+        Collider[] nearby = Physics.OverlapSphere(playerController.transform.position, 0.5f);
+        bool hitObject = false;
+
+        foreach(Collider col in nearby)
+        {
+            Heatable heatable = col.GetComponent<Heatable>();
+            if(heatable != null)
+            {
+                
+                heatable.ReceiveHeat(currentCharge);
+                Debug.Log($"Applied {currentCharge} heat to {heatable.gameObject.name}");
+                hitObject = true;
             }
         }
 
-        //keep heating while E is held down
-        if(isHeating && !Input.GetKey(KeyCode.E))
+        if (!hitObject)
         {
-            isHeating = false;
-            playerController.SetUsingAbility(false);
-            Debug.Log("Heating stopped");
+            Debug.Log("Released heat but no heatable objects nearby");
         }
-    }
-    /*
-    void OnCollisionStay(Collision collision)
-    {
-        if(!isHeating) return;
 
-        Heatable heatable = collision.gameObject.GetComponent<Heatable>();
-        
-        if(heatable != null)
-        {
-            float heatThisFrame = heatTransferRate * Time.deltaTime;
-            heatable.ReceiveHeat(heatThisFrame);
-        }
-    }*/
+        // Reset charge state
+        ResetCharge();
+    }
+
+    private void CancelCharge()
+    {
+        Debug.Log("Charge cancelled - not enough heat");
+        ResetCharge();
+    }
+
+    private void ResetCharge()
+    {
+        currentCharge = 0f;
+        isCharging = false;
+        canRelease = false;
+        playerController.SetUsingAbility(false);
+    }
 
     public override void HandleWallSlide(bool isTouchingWall)
     {

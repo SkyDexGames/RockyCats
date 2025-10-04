@@ -4,25 +4,22 @@ using UnityEngine;
 using Photon.Pun;
 
 // Base class for all heatable objects
-public abstract class Heatable : MonoBehaviourPun
+public abstract class Heatable : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] protected float maxHeat = 100f;
-    [SerializeField] protected float cooldownRate = 5f; //heat lost per second
 
     protected float currentHeat = 0f;
     private bool isFullyHeated = false;
 
+
     protected virtual void Update()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
-        /*
-        // Cool down when not being heated
-        if (currentHeat > 0f)
-        {
-            currentHeat -= cooldownRate * Time.deltaTime;
-            currentHeat = Mathf.Max(0f, currentHeat);
-        }*/
-
+        HandleHeatLogic();
+        
+    }
+    
+    private void HandleHeatLogic()
+    {
         // Check if fully heated
         if (currentHeat >= maxHeat && !isFullyHeated)
         {
@@ -30,44 +27,26 @@ public abstract class Heatable : MonoBehaviourPun
             OnFullyHeated();
         }
     }
-    
-    public void ReceiveHeat(float amount)
+
+    public void ReceiveHeat(float heatAmount)
     {
-        if (!PhotonNetwork.IsMasterClient) return;
         if (isFullyHeated) return;
+        
+        // Apply heat locally and sync to all clients
+        photonView.RPC("RPC_ReceiveHeat", RpcTarget.All, heatAmount);
+    }
 
-        currentHeat += amount;
+    [PunRPC]
+    protected void RPC_ReceiveHeat(float heatAmount)
+    {
+        if (isFullyHeated) return;
+        
+        currentHeat += heatAmount;
         currentHeat = Mathf.Clamp(currentHeat, 0f, maxHeat);
-    }
-    /*
-    [PunRPC]
-    protected void RPC_ReceiveHeat(float amount)
-    {
-        if(isHeated) return;
-
-        currentHeat += amount;
-        currentHeat = Mathf.Min(currentHeat, maxHeat);
-
-        photonView.RPC("RPC_SyncHeat", RpcTarget.All, currentHeat);
-        
-        if(currentHeat >= maxHeat)
-        {
-            OnFullyHeated();
-        }
+        Debug.Log($"{gameObject.name} received {heatAmount} heat. Total: {currentHeat}");
     }
 
-    [PunRPC]
-    void RPC_SyncHeat(float newHeat)
-    {
-        currentHeat = newHeat;
-        
-        if(currentHeat >= maxHeat && !isHeated)
-        {
-            isHeated = true;
-        }
-    }*/
-
-    //sincronizamos el valor del heat en los clientes
+    //sync heat
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -83,6 +62,7 @@ public abstract class Heatable : MonoBehaviourPun
             isFullyHeated = (bool)stream.ReceiveNext();
         }
     }
+    
     
     //se le tiene que hacer override a este metodo si o si
     protected abstract void OnFullyHeated();

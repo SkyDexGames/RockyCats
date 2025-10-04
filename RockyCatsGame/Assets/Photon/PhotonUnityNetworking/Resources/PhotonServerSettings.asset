@@ -41,6 +41,9 @@ MonoBehaviour:
   - RespawnSpaceship
   - RPC_ReceiveHeat
   - RPC_SyncHeat
+  - RPC_DestroyObject
+  - RPC_StartHeating
+  - RPC_StopHeating
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -166,6 +166,8 @@ MonoBehaviour:
   jumpForceOverride: 5
   rotationSpeedOverride: 1000
   wallSlideMaxFallSpeed: -0.5
+  maxCharge: 100
+  chargeRate: 10
 --- !u!114 &2192902233016760903
 MonoBehaviour:
   m_ObjectHideFlags: 0
