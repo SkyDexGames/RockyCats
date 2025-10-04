@@ -32,7 +32,11 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
+        
         Debug.Log("Connected to Master");
+        Debug.Log($"Cloud Region: {PhotonNetwork.CloudRegion}");
+        Debug.Log($"App Version: {PhotonNetwork.AppVersion}");
+        
         PhotonNetwork.JoinLobby();
         PhotonNetwork.AutomaticallySyncScene = true;
     }
@@ -40,7 +44,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         MenuManager.Instance.OpenMenu("Title");
+
         Debug.Log("Joined Lobby");
+        Debug.Log($"In Lobby: {PhotonNetwork.InLobby}");
+
         PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
     }
     public void CreateRoom()
@@ -55,6 +62,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+
+        Debug.Log("=== JOINED ROOM ===");
+        Debug.Log($"Room Name: {PhotonNetwork.CurrentRoom.Name}");
+        Debug.Log($"Player Count: {PhotonNetwork.CurrentRoom.PlayerCount}");
+        Debug.Log($"Is Visible: {PhotonNetwork.CurrentRoom.IsVisible}");
+        Debug.Log($"Is Open: {PhotonNetwork.CurrentRoom.IsOpen}");
+        Debug.Log($"Max Players: {PhotonNetwork.CurrentRoom.MaxPlayers}");
+
         MenuManager.Instance.OpenMenu("Room");
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
@@ -80,6 +95,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
+
+        Debug.LogError($"Return Code: {returnCode}");
+        Debug.LogError($"Message: {message}");
+
         errorText.text = "Room Creation Failed: " + message;
         MenuManager.Instance.OpenMenu("Error");
     }
@@ -109,6 +128,8 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log($"Total rooms in list: {roomList.Count}");
+
         foreach (Transform trans in roomListContent)
         {
             Destroy(trans.gameObject);
