@@ -217,6 +217,7 @@ MonoBehaviour:
   temperature: 0
   pressure: 0
   time: 0
+  ButtonOpen: {fileID: 0}
 --- !u!1001 &6075147985724790494
 PrefabInstance:
   m_ObjectHideFlags: 0
