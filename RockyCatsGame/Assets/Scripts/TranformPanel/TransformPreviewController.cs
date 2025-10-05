@@ -45,9 +45,45 @@ public class TransformPreviewController : MonoBehaviour
     [Header("Botón Aplicar Transformación")]
     public Button transformBtn;
 
+    // ====== Reglas de transformación ======
+    [System.Serializable]
+    public struct RockRecipe
+    {
+        public RockState state;                 // Magma / Ignea / Sedimento
+        [Range(0, 5)] public int water, temp, pressure, time;
+    }
+
+    [Header("Recetas válidas (puedes editarlas en el Inspector)")]
+    public RockRecipe[] recipes;
+
+    [Header("Feedback y cierre")]
+    public TMP_Text feedbackText;     // mensaje de error si no coincide
+    public GameObject overlayToClose; // tu OverlayRoot/StatusPanel para cerrarlo
+
+    // ====== Salida para tu compañero ======
+    [Header("Salida: resultado de la última transformación")]
+    public bool newRockStateReady;
+    public RockState newRockState;
+
+    // ---- Defaults de recetas ----
+    RockRecipe[] DefaultRecipes() => new RockRecipe[] {
+        new RockRecipe { state = RockState.Magma,     water = 0, temp = 5, pressure = 3, time = 1 },
+        new RockRecipe { state = RockState.Ignea,     water = 0, temp = 3, pressure = 5, time = 2 },
+        new RockRecipe { state = RockState.Sedimento, water = 5, temp = 0, pressure = 2, time = 4 },
+    };
+
+    // Se llama al añadir el componente o si haces "Reset" en el Inspector
+    void Reset()
+    {
+        recipes = DefaultRecipes();
+    }
+
     void Awake()
     {
-        // Asegura barras tipo Filled (horizontal) para que fillAmount funcione.
+        if (recipes == null || recipes.Length == 0)
+            recipes = DefaultRecipes();
+
+        // Asegura barras tipo Filled (horizontal)
         SetupFilled(water.bar);
         SetupFilled(temp.bar);
         SetupFilled(pressure.bar);
@@ -68,7 +104,6 @@ public class TransformPreviewController : MonoBehaviour
 
         if (transformBtn) transformBtn.onClick.AddListener(ApplyTransform);
 
-
         RefreshUI();
     }
 
@@ -77,43 +112,33 @@ public class TransformPreviewController : MonoBehaviour
         if (!img) return;
         img.type = Image.Type.Filled;
         img.fillMethod = Image.FillMethod.Horizontal;
-        img.fillOrigin = 0; // izquierda a derecha
+        img.fillOrigin = 0;
     }
 
-    // ------ Reglas de Add/Take ------
-    // ADD: sube el delta. Si delta >= 0 estás aumentando magnitud -> requiere moneda.
-    // Si delta < 0 estás volviendo hacia 0 -> no requiere moneda.
+    // ---- Add/Take con monedas ----
     void TryAdd(ref int delta, int baseStat, int baseCoins)
     {
-        if (baseStat + delta >= 5) return; // no pasar de 5
-
+        if (baseStat + delta >= 5) return;
         if (delta >= 0)
         {
-            // ¿hay moneda para el siguiente paso?
             int coinsAfterThisStep = baseCoins - Mathf.Abs(delta);
             if (coinsAfterThisStep <= 0) return;
         }
-
         delta += 1;
     }
 
-    // TAKE: baja el delta. Si delta <= 0 estás aumentando magnitud negativa -> requiere moneda.
-    // Si delta > 0 estás volviendo hacia 0 -> no requiere moneda.
     void TryTake(ref int delta, int baseStat, int baseCoins)
     {
-        if (baseStat + delta <= 0) return; // no bajar de 0
-
+        if (baseStat + delta <= 0) return;
         if (delta <= 0)
         {
             int coinsAfterThisStep = baseCoins - Mathf.Abs(delta);
             if (coinsAfterThisStep <= 0) return;
         }
-
         delta -= 1;
     }
 
-
-    // ------ UI ------
+    // ---- UI ----
     void RefreshUI()
     {
         UpdateStatUI(water, statWater, dWater);
@@ -121,17 +146,14 @@ public class TransformPreviewController : MonoBehaviour
         UpdateStatUI(pressure, statPressure, dPressure);
         UpdateStatUI(time, statTime, dTime);
 
-        // Inventario mostrado = coins - |delta|  (siempre cuesta avanzar en cualquier dirección)
+        // Inventario mostrado = coins - |delta|
         if (waterCountText) waterCountText.text = Mathf.Max(0, coinsWater - Mathf.Abs(dWater)).ToString();
         if (tempCountText) tempCountText.text = Mathf.Max(0, coinsTemp - Mathf.Abs(dTemp)).ToString();
         if (pressureCountText) pressureCountText.text = Mathf.Max(0, coinsPressure - Mathf.Abs(dPressure)).ToString();
         if (timeCountText) timeCountText.text = Mathf.Max(0, coinsTime - Mathf.Abs(dTime)).ToString();
 
-        // Habilitar/Deshabilitar (prueba futura y monedas)
-        bool CanAdd(int s, int d, int c) =>
-            (s + d < 5) && (d < 0 || (c - Mathf.Abs(d) > 0));     // si d>=0 necesitas moneda
-        bool CanTake(int s, int d, int c) =>
-            (s + d > 0) && (d > 0 || (c - Mathf.Abs(d) > 0));     // si d<=0 necesitas moneda
+        bool CanAdd(int s, int d, int c) => (s + d < 5) && (d < 0 || (c - Mathf.Abs(d) > 0));
+        bool CanTake(int s, int d, int c) => (s + d > 0) && (d > 0 || (c - Mathf.Abs(d) > 0));
 
         if (water.addBtn) water.addBtn.interactable = CanAdd(statWater, dWater, coinsWater);
         if (water.takeBtn) water.takeBtn.interactable = CanTake(statWater, dWater, coinsWater);
@@ -142,7 +164,9 @@ public class TransformPreviewController : MonoBehaviour
         if (time.addBtn) time.addBtn.interactable = CanAdd(statTime, dTime, coinsTime);
         if (time.takeBtn) time.takeBtn.interactable = CanTake(statTime, dTime, coinsTime);
 
-        if (transformBtn) transformBtn.interactable = (dWater != 0 || dTemp != 0 || dPressure != 0 || dTime != 0);
+        if (feedbackText) feedbackText.text = "";
+        if (transformBtn) transformBtn.interactable =
+            (dWater != 0 || dTemp != 0 || dPressure != 0 || dTime != 0);
     }
 
     void UpdateStatUI(StatUI ui, int baseStat, int delta)
@@ -154,19 +178,51 @@ public class TransformPreviewController : MonoBehaviour
         {
             ui.deltaText.text = (delta >= 0 ? "+" : "") + delta.ToString();
             if (delta == 0) ui.deltaText.color = Color.white;
-            else if (delta > 0) ui.deltaText.color = new Color(0.18f, 0.7f, 0.2f);  // verde
-            else ui.deltaText.color = new Color(0.85f, 0.3f, 0.25f); // rojo
+            else if (delta > 0) ui.deltaText.color = new Color(0.18f, 0.7f, 0.2f);
+            else ui.deltaText.color = new Color(0.85f, 0.3f, 0.25f);
         }
     }
 
-    // ------ Aplicar (confirma la transformación) ------
+    // ---- Aplicar ----
     void ApplyTransform()
     {
+        int fw = Mathf.Clamp(statWater + dWater, 0, 5);
+        int ft = Mathf.Clamp(statTemp + dTemp, 0, 5);
+        int fp = Mathf.Clamp(statPressure + dPressure, 0, 5);
+        int fti = Mathf.Clamp(statTime + dTime, 0, 5);
+
+        if (!TryMatchRecipe(fw, ft, fp, fti, out RockState matched))
+        {
+            if (feedbackText) feedbackText.text = "Debes poner los valores exactos de una roca.";
+            return;
+        }
+
         Commit(ref statWater, ref coinsWater, ref dWater);
         Commit(ref statTemp, ref coinsTemp, ref dTemp);
         Commit(ref statPressure, ref coinsPressure, ref dPressure);
         Commit(ref statTime, ref coinsTime, ref dTime);
+
+        newRockStateReady = true;
+        newRockState = matched;
+
+        if (overlayToClose) overlayToClose.SetActive(false);
+
         RefreshUI();
+    }
+
+    bool TryMatchRecipe(int w, int t, int p, int ti, out RockState state)
+    {
+        for (int i = 0; i < recipes.Length; i++)
+        {
+            var r = recipes[i];
+            if (r.water == w && r.temp == t && r.pressure == p && r.time == ti)
+            {
+                state = r.state;
+                return true;
+            }
+        }
+        state = default;
+        return false;
     }
 
     void Commit(ref int stat, ref int coins, ref int delta)
@@ -177,5 +233,4 @@ public class TransformPreviewController : MonoBehaviour
         stat = newStat;
         delta = 0;                                   // resetea a 0
     }
-
 }
