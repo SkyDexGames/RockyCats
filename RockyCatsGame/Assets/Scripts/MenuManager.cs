@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 
     void Awake(){
         Instance = this;
+        Debug.Log("MenuManager Instance set");
     }
     //open menu via name
     public void OpenMenu(string menuName)
