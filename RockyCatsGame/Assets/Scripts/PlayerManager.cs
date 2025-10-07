@@ -29,7 +29,22 @@ public class PlayerManager : MonoBehaviour
 
     void CreateController()
     {
-        //spawn pos will be changed later
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), Vector3.zero, Quaternion.identity);
+        //set spawn pos based on host/non-host
+        Vector3 spawnPosition = GetSpawnPosition();
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPosition, Quaternion.identity);
+    }
+
+    Vector3 GetSpawnPosition()
+    {
+        bool isHost = PhotonNetwork.IsMasterClient;
+        
+        if (isHost)
+        {
+            return new Vector3(-5, 0.5f, 0);
+        }
+        else
+        {
+            return new Vector3(0, 0.5f, 0);
+        }
     }
 }
