@@ -1,86 +1,73 @@
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private int water;
-    [SerializeField] private int temperature;
-    [SerializeField] private int pressure;
-    [SerializeField] private int time;
+    public Dictionary<string, int> coins = new Dictionary<string, int>()
+    {
+        {"water", 0},
+        {"temperature", 0},
+        {"pressure", 0},
+        {"time", 0}
+
+    };
+
+    public StatesStats statesStats= new StatesStats();
+
+    public Dictionary<string, int> playerStats;
 
     private PhotonView photonView;
 
-    private InventoryUI ui;
-
-    public Button ButtonOpen; // Asignar en el Inspector el botón del Canvas que abre el inventario
+    public MenuManager menuManager;
+    public InventoryUI ui;
 
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
-
-        if (photonView.IsMine)
+        menuManager = FindObjectOfType<MenuManager>();
+        playerStats = new Dictionary<string, int>(statesStats.magmaStats);
+        if (menuManager != null)
         {
-            ui = FindObjectOfType<InventoryUI>();
-            ButtonOpen = ui.GetComponentInChildren<Button>();
-            if (ButtonOpen != null)
+            ui = menuManager.GetComponentInChildren<InventoryUI>(true);
+        }
+
+        if (photonView != null && photonView.IsMine)
+        {
+            if (ui != null)
             {
-                ButtonOpen.onClick.AddListener(OpenInventory);
+
+                ui.setPlayerInventory(this);
             }
-            
+
         }
     }
 
-    public void AddResource(Pickup.PickupType type, int amount)
+    public void AddResource(string type, int amount)
     {
         if (photonView.IsMine == false) return;
         Debug.Log($"Adding {amount} of {type} to inventory.");
-        switch (type)
+
+        if (coins.ContainsKey(type.ToString().ToLower()))
         {
-            case Pickup.PickupType.Water:
-                water += amount;
-                break;
-            case Pickup.PickupType.Temperature:
-                temperature += amount;
-                break;
-            case Pickup.PickupType.Pressure:
-                pressure += amount;
-                break;
-            case Pickup.PickupType.Time:
-                time += amount;
-                break;
+            coins[type.ToString().ToLower()] += amount;
         }
+
     }
 
-    public int GetResource(Pickup.PickupType type)
+    public int GetResource(string type)
     {
         if (photonView.IsMine == false) return -1;
 
-        switch (type)
+        if (coins.ContainsKey(type.ToString().ToLower()))
         {
-            case Pickup.PickupType.Water:
-                return water;
-            case Pickup.PickupType.Temperature:
-                return temperature;
-            case Pickup.PickupType.Pressure:
-                return pressure;
-            case Pickup.PickupType.Time:
-                return time;
-            default:
-                return 0;
+            return coins[type.ToString().ToLower()];
         }
-    }
 
-    public void OpenInventory()
-    {
-        if (photonView.IsMine == false) return;
-        if (ui != null)
-        {
-            ui.Open(this);
-        }
+        return 0;
     }
-
 
 }

@@ -20,7 +20,7 @@ public class Pickup : MonoBehaviour
 
     private void ApplyEffect(PlayerInventory player)
     {
-        player.AddResource(type, value);
+        player.AddResource(type.ToString().ToLower(), value);
     }
 }
 

@@ -213,11 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797c3c4efc02d2342a66d285fc658144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  water: 0
-  temperature: 0
-  pressure: 0
-  time: 0
-  ButtonOpen: {fileID: 0}
+  menuManager: {fileID: 0}
+  ui: {fileID: 0}
 --- !u!1001 &6075147985724790494
 PrefabInstance:
   m_ObjectHideFlags: 0

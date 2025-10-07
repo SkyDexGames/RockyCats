@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
-public class InventoryUI : MonoBehaviour
+public partial class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
 
@@ -10,38 +12,87 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] public GameObject PressureItemText;
     [SerializeField] public GameObject TimeItemText;
 
+    public Dictionary<string, int> temporalCoins = new Dictionary<string, int>()
+    {
+        {"water", 0},
+        {"temperature", 0},
+        {"pressure", 0},
+        {"time", 0}
+    };
+
+    public Dictionary<string, int> initialCoins = new Dictionary<string, int>()
+    {
+        {"water", 0},
+        {"temperature", 0},
+        {"pressure", 0},
+        {"time", 0}
+    };
+
+    public Dictionary<string, int> temporalStats = new Dictionary<string, int>()
+    {
+        {"water", 0},
+        {"temperature", 0},
+        {"pressure", 0},
+        {"time", 0}
+    };
+
+    public Dictionary<string, int> initialStats = new Dictionary<string, int>()
+    {
+        {"water", 0},
+        {"temperature", 0},
+        {"pressure", 0},
+        {"time", 0}
+    };
+
+    public Dictionary<string, int> currentStats;
+
+
     private PlayerInventory currentInventory;
 
 
     void Awake()
     {
+        
         panel.SetActive(false);
+
     }
-    public void Open(PlayerInventory inventory)
+    public void setPlayerInventory(PlayerInventory inventory)
     {
         currentInventory = inventory;
         setValues();
     }
 
-    public void Close()
-    {
-        panel.SetActive(false);
-        currentInventory = null;
-    }
 
     public void setValues()
     {
         if (currentInventory == null) return;
 
-        int water = currentInventory.GetResource(Pickup.PickupType.Water);
-        int temp = currentInventory.GetResource(Pickup.PickupType.Temperature);
-        int pressure = currentInventory.GetResource(Pickup.PickupType.Pressure);
-        int time = currentInventory.GetResource(Pickup.PickupType.Time);
+        string[] states = { "water", "temperature", "pressure", "time" };
+        foreach (string state in states)
+        {
+            temporalCoins[state] = currentInventory.GetResource(state);
+            initialCoins[state] = temporalCoins[state];
+            temporalStats[state] = currentInventory.playerStats[state];
+            initialStats[state] = temporalStats[state];
+        }
 
-        WaterItemText.GetComponent<Text>().text = water.ToString();
-        TempItemText.GetComponent<Text>().text = temp.ToString();
-        PressureItemText.GetComponent<Text>().text = pressure.ToString();
-        TimeItemText.GetComponent<Text>().text = time.ToString();
+        UpdateCoinTexts();
+
+    }
+
+    private void UpdateCoinTexts()
+    {
+        WaterItemText.GetComponent<TextMeshProUGUI>().text = temporalCoins["water"].ToString();
+        TempItemText.GetComponent<TextMeshProUGUI>().text = temporalCoins["temperature"].ToString();
+        PressureItemText.GetComponent<TextMeshProUGUI>().text = temporalCoins["pressure"].ToString();
+        TimeItemText.GetComponent<TextMeshProUGUI>().text = temporalCoins["time"].ToString();
+    }
+
+    void OnEnable()
+    {
+
+        setValues();
+        
     }
 
 
