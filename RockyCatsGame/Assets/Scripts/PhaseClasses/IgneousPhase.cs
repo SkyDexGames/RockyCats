@@ -29,6 +29,25 @@ public class IgneousPhase : PlayerPhase
         }
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (isDashing)
+        {
+            CheckIgneousInteractable(hit.gameObject);
+        }
+    }
+
+    private void CheckIgneousInteractable(GameObject obj)
+    {
+        //buscar si el objeto con el que estamos colisionando si tiene interfaz
+        IIgneousInteractable interactable = obj.GetComponent<IIgneousInteractable>();
+        
+        if (interactable != null)
+        {
+            interactable.OnIgneousCollision();
+        }
+    }
+
     public override void HandleAbility()
     {
         if (canDash && !isDashing)
