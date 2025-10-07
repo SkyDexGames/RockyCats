@@ -16,9 +16,14 @@ public class PlayerInventory : MonoBehaviour
 
     };
 
-    public StatesStats statesStats= new StatesStats();
+    public Dictionary<string, int> playerStats= new Dictionary<string, int>()
+    {
+        {"water", 0},
+        {"temperature", 5},
+        {"pressure", 2},
+        {"time", 1}
 
-    public Dictionary<string, int> playerStats;
+    };
 
     private PhotonView photonView;
 
@@ -29,7 +34,6 @@ public class PlayerInventory : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
         menuManager = FindObjectOfType<MenuManager>();
-        playerStats = new Dictionary<string, int>(statesStats.magmaStats);
         if (menuManager != null)
         {
             ui = menuManager.GetComponentInChildren<InventoryUI>(true);
