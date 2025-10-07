@@ -42,10 +42,10 @@ public class TransformPreviewController : MonoBehaviour
     public TMP_Text pressureCountText; // InventoryUI/CoinsPressure/Count(TMP)
     public TMP_Text timeCountText;     // InventoryUI/CoinsTime/Count(TMP)
 
-    [Header("Botón Aplicar Transformación")]
+    [Header("Botï¿½n Aplicar Transformaciï¿½n")]
     public Button transformBtn;
 
-    // ====== Reglas de transformación ======
+    // ====== Reglas de transformaciï¿½n ======
     [System.Serializable]
     public struct RockRecipe
     {
@@ -53,15 +53,15 @@ public class TransformPreviewController : MonoBehaviour
         [Range(0, 5)] public int water, temp, pressure, time;
     }
 
-    [Header("Recetas válidas (puedes editarlas en el Inspector)")]
+    [Header("Recetas vï¿½lidas (puedes editarlas en el Inspector)")]
     public RockRecipe[] recipes;
 
     [Header("Feedback y cierre")]
     public TMP_Text feedbackText;     // mensaje de error si no coincide
     public GameObject overlayToClose; // tu OverlayRoot/StatusPanel para cerrarlo
 
-    // ====== Salida para tu compañero ======
-    [Header("Salida: resultado de la última transformación")]
+    // ====== Salida para tu compaÃ±ero ======
+    [Header("Salida: resultado de la ï¿½ltima transformaciï¿½n")]
     public bool newRockStateReady;
     public RockState newRockState;
 
@@ -72,7 +72,7 @@ public class TransformPreviewController : MonoBehaviour
         new RockRecipe { state = RockState.Sedimento, water = 5, temp = 0, pressure = 2, time = 4 },
     };
 
-    // Se llama al añadir el componente o si haces "Reset" en el Inspector
+    // Se llama al aï¿½adir el componente o si haces "Reset" en el Inspector
     void Reset()
     {
         recipes = DefaultRecipes();
