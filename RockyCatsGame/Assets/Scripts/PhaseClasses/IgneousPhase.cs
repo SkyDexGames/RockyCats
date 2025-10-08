@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.TextCore.Text;
+using ExitGames.Client.Photon.StructWrapping;
 
 public class IgneousPhase : PlayerPhase
 {
@@ -9,6 +12,7 @@ public class IgneousPhase : PlayerPhase
     [SerializeField] private float dashForce = 15f;
     [SerializeField] private float dashDuration = 0.3f;
     [SerializeField] private float dashCoolDown = 2f;
+    private PhotonView photonView;
 
     private bool isDashing = false;
     private bool canDash = true;
@@ -20,6 +24,7 @@ public class IgneousPhase : PlayerPhase
     {
         base.Initialize(controller);
         characterController = controller.GetController();
+        photonView = controller.GetComponent<PhotonView>();
     }
     void OnEnable()
     {
@@ -31,7 +36,7 @@ public class IgneousPhase : PlayerPhase
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (isDashing)
+        if (isDashing&& photonView.IsMine)
         {
             CheckIgneousInteractable(hit.gameObject);
         }
@@ -50,7 +55,7 @@ public class IgneousPhase : PlayerPhase
 
     public override void HandleAbility()
     {
-        if (canDash && !isDashing)
+        if (canDash && !isDashing && photonView.IsMine)
         {
             StartCoroutine(Dash());
         }
@@ -77,7 +82,11 @@ public class IgneousPhase : PlayerPhase
             dashTimer += Time.deltaTime;
 
             Vector3 dashMovement = dashDirection * dashForce * Time.deltaTime;
-            characterController.Move(dashMovement);
+
+            if (photonView.IsMine)
+            {
+                characterController.Move(dashMovement);
+            }
 
             yield return null;
         }
@@ -97,7 +106,7 @@ public class IgneousPhase : PlayerPhase
 
     public override void HandleMovement(ref Vector3 moveDirection, ref float moveSpeed)
     {
-        if (isDashing)
+        if (isDashing && photonView.IsMine)
         {
             moveDirection = Vector3.zero;
         }

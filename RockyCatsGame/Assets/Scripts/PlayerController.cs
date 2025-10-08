@@ -61,7 +61,10 @@ public class PlayerController : MonoBehaviour
     //ground check
     [SerializeField] private bool useBoxGroundCheck = true;
     [SerializeField] private float groundCheckDistance = 0.2f;
-    [SerializeField] private LayerMask groundMask = ~0; //por si queremos manejar con layers
+
+    //layers para colisiones
+    [SerializeField] private LayerMask groundMask; //por si queremos manejar con layers
+    [SerializeField] private LayerMask killZoneMask;
 
     //wall jump
     [SerializeField] private float wallJumpUpForce = 8f;
@@ -91,6 +94,9 @@ public class PlayerController : MonoBehaviour
     private PhaseManager phaseManager; //eta vaina va a manejar las fases Y las va a comunicar con photon
     private bool isUsingAbility = false;
 
+    //respawn pos
+    private Vector3 currentSpawnpoint;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -108,13 +114,14 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         ApplyMovement();
         HandleRotation();
+        CheckKillZone();
         UpdateAnimations();
 
         //vamos matando poco a poco la velocidad externa
-        if(externalVelocityTimer > 0)
+        if (externalVelocityTimer > 0)
         {
             externalVelocityTimer -= Time.deltaTime;
-            if(externalVelocityTimer <= 0)
+            if (externalVelocityTimer <= 0)
             {
                 externalVelocity = Vector3.zero;
             }
@@ -194,6 +201,28 @@ public class PlayerController : MonoBehaviour
             isGrounded = controller.isGrounded;
         }
     }
+
+    //kill zone checker (hay que mejorar lo de la repeticion de codigo pero ahorita quiero que funcione)
+    void CheckKillZone()
+    {
+        Vector3 boxCenter = transform.position + Vector3.up * (controller.height / 2);
+        Vector3 boxHalfExtents = new Vector3(
+            controller.radius * 0.9f, 
+            controller.height / 2, 
+            controller.radius * 0.9f
+        );
+        
+        bool inKillZone = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, killZoneMask);
+
+        if (inKillZone)
+        {
+            Debug.Log("player entered death zoneeee");
+
+            RespawnAtCheckpoint();
+        }
+    }
+
+
 
     void CheckGroundedBox()
     {
@@ -308,6 +337,32 @@ public class PlayerController : MonoBehaviour
         else
         {
             return 0; // idle
+        }
+    }
+
+    //spawns
+    void SetInitialSpawnPoint()
+    {
+        currentSpawnpoint = transform.position;
+    }
+
+    void RespawnAtCheckpoint()
+    {
+        horizontalVelocity = Vector3.zero;
+        verticalVelocity = 0f;
+        externalVelocity = Vector3.zero;
+        externalVelocityTimer = 0f;
+        inputDirection = Vector3.zero;
+        isGrounded = false;
+        isTouchingWall = false;
+        transform.position = currentSpawnpoint;
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        if (PV.IsMine)
+        {
+            currentSpawnpoint = newSpawnPoint;
         }
     }
 
