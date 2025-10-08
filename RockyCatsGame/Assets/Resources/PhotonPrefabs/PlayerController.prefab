@@ -87,7 +87,10 @@ MonoBehaviour:
   groundCheckDistance: 0.2
   groundMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
+  killZoneMask:
+    serializedVersion: 2
+    m_Bits: 64
   wallJumpUpForce: 5
   wallJumpSideForce: 7
   wallJumpDuration: 0.3
