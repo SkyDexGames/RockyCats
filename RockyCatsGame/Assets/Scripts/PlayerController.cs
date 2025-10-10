@@ -58,13 +58,20 @@ public class PlayerController : MonoBehaviour
     //jump settings
     [SerializeField] private float jumpForce = 5f;
 
+    //input keys
+    [SerializeField] private KeyCode moveLeft = KeyCode.A;
+    [SerializeField] private KeyCode moveRight = KeyCode.D;
+    [SerializeField] private KeyCode moveForward = KeyCode.W;
+    [SerializeField] private KeyCode moveBackward = KeyCode.S;
+
     //ground check
     [SerializeField] private bool useBoxGroundCheck = true;
     [SerializeField] private float groundCheckDistance = 0.2f;
 
-    //layers para colisiones
+    //layers para los triggers
     [SerializeField] private LayerMask groundMask; //por si queremos manejar con layers
     [SerializeField] private LayerMask killZoneMask;
+    [SerializeField] private LayerMask cameraTriggerMask;
 
     //wall jump
     [SerializeField] private float wallJumpUpForce = 8f;
@@ -113,8 +120,15 @@ public class PlayerController : MonoBehaviour
         UpdateVelocity();
         ApplyGravity();
         ApplyMovement();
+
         HandleRotation();
-        CheckKillZone();
+
+        //checamos si colisiona con la killzone en vez de llamar a ooootro metodo como andabamos haciendo
+        if (CheckCollisionWithLayer(killZoneMask, controller.height / 2, controller.height / 2))
+        {
+            RespawnAtCheckpoint();
+        }
+
         UpdateAnimations();
 
         //vamos matando poco a poco la velocidad externa
@@ -137,11 +151,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = 0f;
+        float vertical = 0f;
+        
+        //ok maybe si es buena idea usar el nuevo input system XD
+        if (Input.GetKey(moveLeft)) horizontal -= 1f;
+        if (Input.GetKey(moveRight)) horizontal += 1f;
+        if (Input.GetKey(moveBackward)) vertical -= 1f;
+        if (Input.GetKey(moveForward)) vertical += 1f;
         
         Vector3 rawInput = new Vector3(horizontal, 0f, vertical);
-        inputDirection = rawInput.magnitude > 0.01f ? rawInput.normalized : Vector3.zero;
+        inputDirection = TransformInputRelativeToCamera(rawInput);
     }
 
     void UpdateVelocity()
@@ -194,14 +214,14 @@ public class PlayerController : MonoBehaviour
 
         if(useBoxGroundCheck)
         {
-            CheckGroundedBox();
+            isGrounded = CheckCollisionWithLayer(groundMask, groundCheckDistance / 2, groundCheckDistance / 2);
         }
         else
         {
             isGrounded = controller.isGrounded;
         }
     }
-
+    /*
     //kill zone checker (hay que mejorar lo de la repeticion de codigo pero ahorita quiero que funcione)
     void CheckKillZone()
     {
@@ -223,7 +243,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    
     void CheckGroundedBox()
     {
         Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
@@ -234,8 +254,20 @@ public class PlayerController : MonoBehaviour
         );
         
         isGrounded = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, groundMask);
+    }*/
+    //checker de colisiones generico ahora si hehe
+    private bool CheckCollisionWithLayer(LayerMask layerMask, float verticalOffset, float verticalHalfExtent)
+    {
+        Vector3 boxCenter = transform.position + Vector3.up * verticalOffset;
+        Vector3 boxHalfExtents = new Vector3(
+            controller.radius * 0.9f, 
+            verticalHalfExtent, 
+            controller.radius * 0.9f
+        );
+        
+        return Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, layerMask);
     }
-
+    
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(!isGrounded && hit.normal.y < 0.1f)
@@ -270,7 +302,7 @@ public class PlayerController : MonoBehaviour
     
         //horizontalVelocity = Vector3.zero;
         
-        Debug.Log($"Wall Jump! Direction: {jumpDirection}, Force: {wallJumpSideForce}");
+        //Debug.Log($"Wall Jump direction: {jumpDirection}, force: {wallJumpSideForce}");
     }
 
     void HandleRotation()
@@ -386,6 +418,26 @@ public class PlayerController : MonoBehaviour
     {
         externalVelocity = velocity;
         externalVelocityTimer = duration;
+    }
+
+
+    Vector3 TransformInputRelativeToCamera(Vector3 input)
+    {
+        if (input.magnitude < 0.01f) return Vector3.zero;
+        
+        Camera cam = Camera.main;
+        Vector3 camForward = cam.transform.forward;
+        Vector3 camRight = cam.transform.right;
+        
+        camForward.y = 0f;
+        camRight.y = 0f;
+        
+        camForward.Normalize();
+        camRight.Normalize();
+        
+        Vector3 worldInput = camRight * input.x + camForward * input.z;
+        
+        return worldInput.normalized;
     }
 
     void OnDrawGizmos()

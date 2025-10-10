@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PhaseManager : MonoBehaviour
 {
     [SerializeField] private PlayerPhase[] availablePhases;
+
+    [SerializeField] private Material magmaMaterial;
+    [SerializeField] private Material igneousMaterial;
+    [SerializeField] private Material sedimentMaterial;
+    [SerializeField] private Material defaultMaterial;
+
+    private PhotonView photonView;
+
+    [SerializeField] private Renderer playerMeshRenderer;
+
     private PlayerPhase currentPhase;
     private PlayerController playerController;
-
     private int currentPhaseIndex = 0;
 
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        photonView = GetComponent<PhotonView>();
         InitializePhases();
     }
 
@@ -30,6 +41,21 @@ public class PhaseManager : MonoBehaviour
 
     public void SwitchToPhase(int phaseIndex)
     {
+
+        if (photonView.IsMine)
+        {
+            photonView.RPC("RPC_SwitchPhase", RpcTarget.AllBuffered, phaseIndex);
+        }
+    }
+
+    [PunRPC]
+    void RPC_SwitchPhase(int phaseIndex)
+    {
+        SwitchToPhaseLocal(phaseIndex);
+    }
+
+    void SwitchToPhaseLocal(int phaseIndex)
+    {
         if(currentPhase != null)
             currentPhase.gameObject.SetActive(false);
         
@@ -37,7 +63,34 @@ public class PhaseManager : MonoBehaviour
         currentPhase = availablePhases[phaseIndex];
         currentPhase.gameObject.SetActive(true);
 
-        currentPhase.ApplyPhaseStats(); //re aplicar phase stats
+        if (photonView.IsMine)
+        {
+            currentPhase.ApplyPhaseStats();
+        }
+
+        UpdatePlayerMaterial();
+
+    }
+
+    void UpdatePlayerMaterial()
+    {
+        if (playerMeshRenderer == null) return;
+        
+        switch (currentPhaseIndex)
+        {
+            case 0:
+                playerMeshRenderer.material = magmaMaterial;
+                break;
+            case 1:
+                playerMeshRenderer.material = igneousMaterial;
+                break;
+            case 2:
+                playerMeshRenderer.material = sedimentMaterial;
+                break;
+            default:
+                playerMeshRenderer.material = defaultMaterial;
+                break;
+        }
     }
 
     public PlayerPhase GetCurrentPhase() => currentPhase;
@@ -45,6 +98,7 @@ public class PhaseManager : MonoBehaviour
 
     void Update()
     {
+        if (!photonView.IsMine) return;
         // Input para cambiar fases (ejemplo)
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {

@@ -44,6 +44,8 @@ MonoBehaviour:
   - RPC_DestroyObject
   - RPC_StartHeating
   - RPC_StopHeating
+  - RPC_SwitchPhase
+  - RPC_BreakWall
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
