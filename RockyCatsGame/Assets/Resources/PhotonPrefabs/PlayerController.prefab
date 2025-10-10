@@ -39,6 +39,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2341891210912986156}
   - {fileID: 4541680744916798906}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,6 +84,10 @@ MonoBehaviour:
   groundDeceleration: 30
   airAcceleration: 20
   jumpForce: 5
+  moveLeft: 97
+  moveRight: 100
+  moveForward: 119
+  moveBackward: 115
   useBoxGroundCheck: 1
   groundCheckDistance: 0.2
   groundMask:
@@ -91,6 +96,9 @@ MonoBehaviour:
   killZoneMask:
     serializedVersion: 2
     m_Bits: 64
+  cameraTriggerMask:
+    serializedVersion: 2
+    m_Bits: 0
   wallJumpUpForce: 5
   wallJumpSideForce: 7
   wallJumpDuration: 0.3
@@ -154,6 +162,11 @@ MonoBehaviour:
   - {fileID: 8410858075748684073}
   - {fileID: 2192902233016760903}
   - {fileID: -8568759940291855160}
+  magmaMaterial: {fileID: 2100000, guid: 07d5b857beaa69f40a7440aa750b35cc, type: 2}
+  igneousMaterial: {fileID: 2100000, guid: 38013792c16107b42add2c9e8d1322f5, type: 2}
+  sedimentMaterial: {fileID: 2100000, guid: 2a06db56f1f5d6046afcbd2cbfb6e87c, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: e714607f9b604a54e92caa3163c6b5bc, type: 2}
+  playerMeshRenderer: {fileID: 4053653701468286345}
 --- !u!114 &8410858075748684073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +247,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822e8a775528ffe40b1eecbc5b98027e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5012472726996682053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2341891210912986156}
+  - component: {fileID: 4187647990784939395}
+  m_Layer: 9
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2341891210912986156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012472726996682053}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5465822940569133755}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4187647990784939395
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012472726996682053}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24
+  m_Height: 1.43
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.83, z: 0}
 --- !u!1001 &6075147985724790494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,6 +401,11 @@ PrefabInstance:
 --- !u!95 &2211283112653848006 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5404122335001389848, guid: 8a5224603f78cf94e98d6b2cbf3ea255, type: 3}
+  m_PrefabInstance: {fileID: 6075147985724790494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4053653701468286345 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7786225091657382743, guid: 8a5224603f78cf94e98d6b2cbf3ea255, type: 3}
   m_PrefabInstance: {fileID: 6075147985724790494}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4541680744916798906 stripped

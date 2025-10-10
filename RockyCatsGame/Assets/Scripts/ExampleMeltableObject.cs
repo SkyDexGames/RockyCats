@@ -23,7 +23,7 @@ public class ExampleMeltableObject : Heatable
 
     protected override void Update()
     {
-        Debug.Log("Current Heat: " + currentHeat);
+        //Debug.Log("Current Heat: " + currentHeat);
         base.Update();
         UpdateVisuals(); //actualizamos el color dependiendo de que tan caliente este
     }
