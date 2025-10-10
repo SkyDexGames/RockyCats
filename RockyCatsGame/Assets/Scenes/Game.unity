@@ -6473,7 +6473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213e239de7314e649ba16edb27158796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRotation: {x: 25, y: 90, z: 0}
+  targetRotation: {x: 25, y: 0, z: 0}
   transitionSpeed: 5
   triggerOnce: 0
 --- !u!1 &1638984582
