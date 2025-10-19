@@ -8,12 +8,12 @@ public static class AES256
     private static byte[] key;
     private static byte[] iv;
 
-    // Inicializa una clave e IV aleatorios (solo debe hacerlo el MasterClient)
+    
     public static void GenerateNewKey()
     {
         using (Aes aes = Aes.Create())
         {
-            aes.KeySize = 256; // AES-256
+            aes.KeySize = 256; 
             aes.GenerateKey();
             aes.GenerateIV();
 
@@ -22,7 +22,7 @@ public static class AES256
         }
     }
 
-    // Permite configurar una clave e IV recibidas de Photon
+    
     public static void SetKey(string base64Key, string base64IV)
     {
         key = Convert.FromBase64String(base64Key);
