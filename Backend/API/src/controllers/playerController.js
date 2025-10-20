@@ -18,3 +18,15 @@ exports.createPlayer = async (req, res) => {
     res.status(400).json({ message: "Error al crear jugador", error: err.message });
   }
 };
+
+exports.getPlayerByUsername = async (req, res) => {
+  try {
+    const player = await Player.findOne({ username: req.params.username });
+    if (!player) {
+      return res.status(404).json({ message: "Jugador no encontrado" });
+    }
+    res.json(player);
+  } catch (err) {
+    res.status(500).json({ message: "Error al obtener jugador", error: err.message });
+  }
+};
