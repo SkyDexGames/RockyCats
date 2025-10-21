@@ -104,6 +104,13 @@ public class PlayerController : MonoBehaviour
     //respawn pos
     private Vector3 currentSpawnpoint;
 
+
+    //states for diff game modes (this will be refactored later into abstracts probs)
+
+    public enum MovementMode { Normal, Surfing, Halted }
+
+    [SerializeField] private MovementMode currentMovementMode = MovementMode.Normal;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -113,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!PV.IsMine) return; //para solo controlar a NUESTRA instance del player
+        if(!PV.IsMine) return;
 
         CaptureInput();
         HandleJumpInput();
@@ -142,10 +149,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //SOLO CAPTURAMOS INPUT, nada mas
     void CaptureInput()
     {
-        if (isUsingAbility)
+        
+        if (isUsingAbility || currentMovementMode == MovementMode.Halted)
         {
             inputDirection = Vector3.zero;
             return;
@@ -154,12 +161,14 @@ public class PlayerController : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
         
-        //ok maybe si es buena idea usar el nuevo input system XD
         if (Input.GetKey(moveLeft)) horizontal -= 1f;
         if (Input.GetKey(moveRight)) horizontal += 1f;
-        if (Input.GetKey(moveBackward)) vertical -= 1f;
-        if (Input.GetKey(moveForward)) vertical += 1f;
-        
+
+        if(currentMovementMode != MovementMode.Surfing)
+        {
+            if (Input.GetKey(moveBackward)) vertical -= 1f;
+            if (Input.GetKey(moveForward)) vertical += 1f;
+        }
         Vector3 rawInput = new Vector3(horizontal, 0f, vertical);
         inputDirection = TransformInputRelativeToCamera(rawInput);
     }
@@ -221,40 +230,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = controller.isGrounded;
         }
     }
-    /*
-    //kill zone checker (hay que mejorar lo de la repeticion de codigo pero ahorita quiero que funcione)
-    void CheckKillZone()
-    {
-        Vector3 boxCenter = transform.position + Vector3.up * (controller.height / 2);
-        Vector3 boxHalfExtents = new Vector3(
-            controller.radius * 0.9f, 
-            controller.height / 2, 
-            controller.radius * 0.9f
-        );
-        
-        bool inKillZone = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, killZoneMask);
-
-        if (inKillZone)
-        {
-            Debug.Log("player entered death zoneeee");
-
-            RespawnAtCheckpoint();
-        }
-    }
-
-
-    
-    void CheckGroundedBox()
-    {
-        Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
-        Vector3 boxHalfExtents = new Vector3(
-            controller.radius * 0.9f, 
-            groundCheckDistance / 2, 
-            controller.radius * 0.9f
-        );
-        
-        isGrounded = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, groundMask);
-    }*/
     //checker de colisiones generico ahora si hehe
     private bool CheckCollisionWithLayer(LayerMask layerMask, float verticalOffset, float verticalHalfExtent)
     {
@@ -270,6 +245,8 @@ public class PlayerController : MonoBehaviour
     
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (currentMovementMode != MovementMode.Normal) return;
+
         if(!isGrounded && hit.normal.y < 0.1f)
         {
             isTouchingWall = true;
@@ -309,6 +286,11 @@ public class PlayerController : MonoBehaviour
     {
         //Rotar hacia donde nos estamos moviendo
         Vector3 movementDirection = horizontalVelocity + externalVelocity;
+
+        if (currentMovementMode == MovementMode.Surfing) 
+        movementDirection = Vector3.forward;
+        if (currentMovementMode == MovementMode.Halted) 
+        return;
         
         if(movementDirection.magnitude > 0.01f)
         {
@@ -323,6 +305,9 @@ public class PlayerController : MonoBehaviour
 
     void HandleJumpInput()
     {
+
+        if (currentMovementMode == MovementMode.Halted) return;
+
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
@@ -420,6 +405,23 @@ public class PlayerController : MonoBehaviour
         externalVelocityTimer = duration;
     }
 
+    public void SetMovementMode(MovementMode mode) 
+    { 
+        currentMovementMode = mode;
+        
+        if (mode == MovementMode.Halted)
+        {
+            horizontalVelocity = Vector3.zero;
+            inputDirection = Vector3.zero;
+        }
+        
+        if (mode == MovementMode.Surfing) 
+            transform.rotation = Quaternion.LookRotation(Vector3.forward);
+    }
+
+    public void SetToNormal() => SetMovementMode(MovementMode.Normal);
+    public void SetToSurfing() => SetMovementMode(MovementMode.Surfing);  
+    public void SetToHalted() => SetMovementMode(MovementMode.Halted);
 
     Vector3 TransformInputRelativeToCamera(Vector3 input)
     {
