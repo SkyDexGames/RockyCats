@@ -18,10 +18,10 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     //Verificar si el usuario existe
-    const player = await Player.findOne({ email });
+    const player = await Player.findOne({ username });
     if (!player) return res.status(400).json({ message: "Usuario no encontrado" });
     //Verificar la contraseña
     const valid = await player.comparePassword(password);
@@ -31,9 +31,14 @@ exports.login = async (req, res) => {
     const token = generateToken(player);
 
     res.status(200).json({
+      success: true,
       message: "Login exitoso",
       token,
-      user: { id: player._id, username: player.username, email: player.email },
+      user: { id: player._id,
+         username: player.username,
+          email: player.email, 
+          levels: player.levels,
+          scores: player.scores},
     });
   } catch (err) {
     res.status(500).json({ message: "Error en login", error: err.message });

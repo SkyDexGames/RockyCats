@@ -1,0 +1,102 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Net;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class APIRequests 
+{
+    private string serverUrl = "http://localhost:3000/api";
+
+    public IEnumerator GetPlayerByUsername(string username)
+    {
+        string url = $"{serverUrl}/players/{username}";
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Error al obtener jugador: {request.error}");
+            }
+            else
+            {
+                try
+                {
+                    PlayerObj player = JsonUtility.FromJson<PlayerObj>(request.downloadHandler.text);
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError($"Error al parsear JSON: {ex.Message}");
+                }
+            }
+        }
+    }
+
+    public IEnumerator Login(string username, string password, System.Action<LoginResponse> onSuccess, System.Action<string> onError)
+    {
+        LoginRequest loginData = new LoginRequest { username = username, password = password };
+        string json = JsonUtility.ToJson(loginData);
+
+        using (UnityWebRequest request = new UnityWebRequest($"{serverUrl}/auth/LoginPlayer", "POST"))
+        {
+            //Cositas para el body
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+            Debug.Log("Enviando solicitud de inicio de sesión..." + request.url + " " + json);
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Error en la solicitud de inicio de sesión: {request.error}");
+                onError?.Invoke(request.error);
+            }
+            else
+            {
+                try
+                {
+                    LoginResponse response = JsonUtility.FromJson<LoginResponse>(request.downloadHandler.text);
+                    if (response.success)
+                    {
+                        Debug.Log($"Inicio de sesión exitoso: {response.token}");
+                        onSuccess?.Invoke(response);
+                    }
+                    else
+                    {
+                        Debug.LogError("Usuario o contraseña incorrectos");
+                        onError?.Invoke("Usuario o contraseña incorrectos");
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError("Error al parsear respuesta: " + ex.Message);
+                    onError?.Invoke("Error al parsear respuesta: " + ex.Message);
+                }
+            }
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}
+
+[System.Serializable]
+public class LoginRequest
+{
+    public string username;
+    public string password;
+}
+
+[System.Serializable]
+public class LoginResponse
+{
+    public bool success;
+    public string token;
+    public PlayerObj player;
+}
