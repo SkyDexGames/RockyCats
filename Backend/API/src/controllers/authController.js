@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
     const player = new Player({ username, email, password });
     await player.save();
 
-    res.status(201).json({ message: "Usuario registrado exitosamente" });
+    res.status(201).json({ success: true, message: "Usuario registrado exitosamente" });
   } catch (err) {
     res.status(500).json({ message: "Error al registrar usuario", error: err.message });
   }

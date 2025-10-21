@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -78,6 +79,51 @@ public class APIRequests
         }
     }
 
+    public IEnumerator CreateUser(PlayerObj newUser, System.Action onSuccess, System.Action<string> onError)
+    {
+
+        string json = JsonUtility.ToJson(newUser);
+
+        using (UnityWebRequest request = new UnityWebRequest($"{serverUrl}/auth/RegisterPlayer", "POST"))
+        {
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Error en la solicitud de creación de usuario: {request.error}");
+                onError?.Invoke(request.error);
+            }
+            else
+            {
+                try
+                {
+                    RegisterResponse response = JsonUtility.FromJson<RegisterResponse>(request.downloadHandler.text);
+                    if (response.success)
+                    {
+                        Debug.Log("Usuario creado exitosamente");
+                        onSuccess?.Invoke();
+                    }
+                    else
+                    {
+                        Debug.LogError("Error al crear usuario: " + response.message);
+                        onError?.Invoke("Error al crear usuario: " + response.message);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError("Error al parsear respuesta: " + ex.Message);
+                    onError?.Invoke("Error al parsear respuesta: " + ex.Message);
+                }
+                
+            }
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -99,4 +145,10 @@ public class LoginResponse
     public bool success;
     public string token;
     public PlayerObj player;
+}
+
+public class RegisterResponse
+{
+    public bool success;
+    public string message;
 }
