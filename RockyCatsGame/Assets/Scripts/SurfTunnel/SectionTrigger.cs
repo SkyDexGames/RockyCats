@@ -22,7 +22,7 @@ public class SectionTrigger : MonoBehaviour
                 newSection.transform.localPosition = Vector3.zero;
                 newSection.transform.localRotation = Quaternion.identity;
                 
-                newSection.transform.localPosition = new Vector3(-80, 0, 190);
+                newSection.transform.localPosition = new Vector3(-80, 0.7f, 190);
             }
         }
     }
