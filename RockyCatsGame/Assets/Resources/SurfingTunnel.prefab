@@ -405,7 +405,7 @@ MonoBehaviour:
   startYOffset: 0.14
   startZOffset: -27.2
   obstaclePrefabs:
-  - {fileID: 6722582909486410563, guid: 57aa43fd1680aa646a3a89b1cd12fd8d, type: 3}
+  - {fileID: 492481288445432262, guid: cd74bfb907523e74ea232e97e2842243, type: 3}
   - {fileID: 2417483326819686127, guid: 5faab39294ca66743883501f1dcd0ab1, type: 3}
   spawnChance: 0.4
 --- !u!54 &4347760962134126801
@@ -501,4 +501,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d8dea79ce510d4fbea815204520a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSection: {fileID: 7704786442685222037}

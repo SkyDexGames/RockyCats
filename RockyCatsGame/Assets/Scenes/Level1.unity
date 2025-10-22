@@ -1349,8 +1349,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3253177470030334460, guid: 6c5ada2dc38af4347aeece486e9c14fa, type: 3}
       propertyPath: spawnsObstacles
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3253177470030334460, guid: 6c5ada2dc38af4347aeece486e9c14fa, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 492481288445432262, guid: cd74bfb907523e74ea232e97e2842243, type: 3}
     - target: {fileID: 3253177470030334460, guid: 6c5ada2dc38af4347aeece486e9c14fa, type: 3}
       propertyPath: obstaclePrefabPaths.Array.data[1]
       value: PhotonPrefabs/Level1/GOODCUBE

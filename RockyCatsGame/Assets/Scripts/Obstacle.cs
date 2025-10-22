@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
                     Level1Manager.Instance.UpdateMyTemperature(finalTempChange);
                 }
                 
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }

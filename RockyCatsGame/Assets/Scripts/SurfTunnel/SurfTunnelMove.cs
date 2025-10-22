@@ -79,7 +79,7 @@ public class SurfTunnelManager : MonoBehaviour
                 {
                     Vector3 spawnPos = GetGridPosition(lane, row);
                     GameObject obstaclePrefab = obstaclePrefabs[random.Next(0, obstaclePrefabs.Length)];
-                    GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
+                    GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
                     obstacle.transform.SetParent(transform);
                 }
             }
