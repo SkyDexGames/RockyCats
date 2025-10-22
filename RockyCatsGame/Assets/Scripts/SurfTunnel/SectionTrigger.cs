@@ -5,22 +5,29 @@ using Photon.Pun;
 
 public class SectionTrigger : MonoBehaviour
 {
-    public GameObject roadSection;
+    private static int sectionSeedCounter = 1000;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             PhotonView playerPhotonView = other.GetComponent<PhotonView>();
-        
-            if (playerPhotonView.IsMine && PhotonNetwork.IsMasterClient)
+            if (playerPhotonView != null && playerPhotonView.IsMine)
             {
                 Transform granny = transform.parent.parent;
                 
-                GameObject newSection = PhotonNetwork.Instantiate("PhotonPrefabs/Level1/SurfingTunnel", Vector3.zero, Quaternion.identity);
-                newSection.transform.SetParent(granny);
+                GameObject roadSection = Resources.Load<GameObject>("SurfingTunnel");
+                GameObject newSection = Instantiate(roadSection, granny);
+                
                 newSection.transform.localPosition = new Vector3(-80, 0.7f, 180);
-                newSection.transform.localScale = Vector3.one * 0.5f;
+
+                SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                if (manager != null)
+                {
+                    manager.SetSeed(sectionSeedCounter);
+                }
+
+                sectionSeedCounter += 100;
             }
         }
     }

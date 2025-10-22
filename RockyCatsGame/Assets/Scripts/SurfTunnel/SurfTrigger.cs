@@ -42,7 +42,6 @@ public class SurfTrigger : MonoBehaviour
         if (!playersInTrigger.Contains(playerViewID))
         {
             playersInTrigger.Add(playerViewID);
-            Debug.Log($"Player {playerViewID} added to trigger. Total: {playersInTrigger.Count}/{PhotonNetwork.PlayerList.Length}");
             
             CheckAllPlayersReady();
         }
@@ -52,7 +51,6 @@ public class SurfTrigger : MonoBehaviour
     {
         if (playersInTrigger.Count >= PhotonNetwork.PlayerList.Length)
         {
-            Debug.Log("ALL PLAYERS READY! Starting surfing mode...");
             triggered = true;
             StartSurfingMode();
         }
@@ -65,9 +63,13 @@ public class SurfTrigger : MonoBehaviour
             pv.RPC("RPC_SetAllPlayersSurfing", RpcTarget.All);
         }
         
-        if (PhotonNetwork.IsMasterClient && firstPlatform != null)
+        if (firstPlatform != null)
         {
-            firstPlatform.StartMoving();
+            SurfTunnelManager tunnelManager = firstPlatform.GetComponent<SurfTunnelManager>();
+            if (tunnelManager != null)
+            {
+                tunnelManager.StartMoving();
+            }
         }
         
         Destroy(gameObject);
