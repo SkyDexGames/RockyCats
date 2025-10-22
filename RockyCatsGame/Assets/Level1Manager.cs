@@ -2,100 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
-public class Level1Manager : MonoBehaviour
+public class Level1Manager : MonoBehaviourPun
 {
     public static Level1Manager Instance;
     
-    public int gizmoScore = 0;
-    public int chiliScore = 0;
+    private int gizmoTemperature = 0;
+    private int chiliTemperature = 0;
     
-    public GameObject gizmoScoreText;
-    public GameObject chiliScoreText;
+    public TextMeshProUGUI gizmoTempText;
+    public TextMeshProUGUI chiliTempText;
     
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
     }
     
     void Start()
     {
-        UpdateScoreDisplays();
+        UpdateTemperatureDisplays();
     }
     
-    public void UpdateScore(string playerName, int scoreToAdd)
+    // Called by the local player when they hit an obstacle
+    public void UpdateMyTemperature(int tempChange)
     {
-        if (playerName.ToLower() == "gizmo")
+        // Determine if this client is master or not
+        bool isMaster = PhotonNetwork.IsMasterClient;
+        
+        // Send RPC to all clients to update the score
+        photonView.RPC("RPC_UpdateTemperature", RpcTarget.All, isMaster, tempChange);
+    }
+    
+    [PunRPC]
+    void RPC_UpdateTemperature(bool isMasterClient, int tempChange)
+    {
+        if (isMasterClient)
         {
-            gizmoScore += scoreToAdd;
-            if (gizmoScore < 0) gizmoScore = 0;
-        }
-        else if (playerName.ToLower() == "chili")
-        {
-            chiliScore += scoreToAdd;
-            if (chiliScore < 0) chiliScore = 0;
+            gizmoTemperature = Mathf.Max(0, gizmoTemperature + tempChange);
         }
         else
         {
-            return;
+            chiliTemperature = Mathf.Max(0, chiliTemperature + tempChange);
         }
         
-        UpdateScoreDisplays();
+        UpdateTemperatureDisplays();
+        
+        Debug.Log($"Temperature updated - Gizmo: {gizmoTemperature}, Chili: {chiliTemperature}");
     }
     
-    public int GetScore(string playerName)
+    void UpdateTemperatureDisplays()
     {
-        if (playerName.ToLower() == "gizmo")
-            return gizmoScore;
-        else if (playerName.ToLower() == "chili")
-            return chiliScore;
-        else
-            return 0;
-    }
-    
-    void UpdateScoreDisplays()
-    {
-        if (gizmoScoreText != null)
+        if (gizmoTempText != null)
         {
-            TextMeshProUGUI gizmoText = gizmoScoreText.GetComponent<TextMeshProUGUI>();
-            if (gizmoText != null)
-                gizmoText.text = $"Gizmo's Heat Score: {gizmoScore}";
+            gizmoTempText.text = $"Gizmo's Temperature: {gizmoTemperature}°";
         }
         
-        if (chiliScoreText != null)
+        if (chiliTempText != null)
         {
-            TextMeshProUGUI chiliText = chiliScoreText.GetComponent<TextMeshProUGUI>();
-            if (chiliText != null)
-                chiliText.text = $"Chili's Heat Score: {chiliScore}";
+            chiliTempText.text = $"Chili's Temperature: {chiliTemperature}°";
         }
     }
     
-    public void ResetScores()
+    public int GetGizmoTemperature()
     {
-        gizmoScore = 0;
-        chiliScore = 0;
-        UpdateScoreDisplays();
+        return gizmoTemperature;
     }
     
-    public void SetScore(string playerName, int newScore)
+    public int GetChiliTemperature()
     {
-        if (playerName.ToLower() == "gizmo")
-        {
-            gizmoScore = newScore;
-        }
-        else if (playerName.ToLower() == "chili")
-        {
-            chiliScore = newScore;
-        }
-        
-        UpdateScoreDisplays();
+        return chiliTemperature;
     }
 }

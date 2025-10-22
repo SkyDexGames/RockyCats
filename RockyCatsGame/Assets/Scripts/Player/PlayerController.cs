@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 currentSpawnpoint;
 
 
+
     //states for diff game modes (this will be refactored later into abstracts probs)
 
     public enum MovementMode { Normal, Surfing, Halted }

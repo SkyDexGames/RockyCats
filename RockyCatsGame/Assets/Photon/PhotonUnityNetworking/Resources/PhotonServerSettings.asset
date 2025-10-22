@@ -57,6 +57,7 @@ MonoBehaviour:
   - InitializeMovement
   - RPC_StartMoving
   - RPC_SpawnNewSection
+  - RPC_UpdateTemperature
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

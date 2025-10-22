@@ -3,25 +3,28 @@ using Photon.Pun;
 
 public class Obstacle : MonoBehaviour
 {
-    public enum ObstacleType { Lava, Crystal }
+    public enum ObstacleType { Magma, Crystal }
     
-    [Header("Obstacle Settings")]
-    public ObstacleType obstacleType = ObstacleType.Lava;
-    public int scoreChange = 10;
+    public ObstacleType obstacleType = ObstacleType.Magma;
+    public int temperatureChange = 10;
     
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            string playerName = PhotonNetwork.IsMasterClient ? "Gizmo" : "Chili";
+            PhotonView playerPhotonView = other.GetComponent<PhotonView>();
             
-            int finalScoreChange = obstacleType == ObstacleType.Lava ? scoreChange : -scoreChange;
-            
-            if (Level1Manager.Instance != null)
+            if (playerPhotonView != null && playerPhotonView.IsMine)
             {
-                Level1Manager.Instance.UpdateScore(playerName, finalScoreChange);
+                int finalTempChange = obstacleType == ObstacleType.Magma ? temperatureChange : -temperatureChange;
+                
+                if (Level1Manager.Instance != null)
+                {
+                    Level1Manager.Instance.UpdateMyTemperature(finalTempChange);
+                }
+                
+                Destroy(gameObject);
             }
-            
         }
     }
 }
