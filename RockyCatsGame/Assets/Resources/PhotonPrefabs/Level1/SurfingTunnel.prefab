@@ -359,6 +359,8 @@ GameObject:
   - component: {fileID: 6385913619168252397}
   - component: {fileID: 3253177470030334460}
   - component: {fileID: 4347760962134126801}
+  - component: {fileID: -1389437536283640587}
+  - component: {fileID: 8833683687307589613}
   m_Layer: 0
   m_Name: SurfingTunnel
   m_TagString: Untagged
@@ -396,13 +398,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2e98b4203e138479dca645ba036a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnsObstacles: 1
+  isFirstPlatform: 0
   gridWidth: 3
-  gridLength: 5
-  cellSize: 2
-  obstaclePrefabs:
-  - {fileID: 2417483326819686127, guid: 5faab39294ca66743883501f1dcd0ab1, type: 3}
-  - {fileID: 6722582909486410563, guid: 57aa43fd1680aa646a3a89b1cd12fd8d, type: 3}
-  spawnChance: 0.3
+  gridLength: 18
+  cellSize: 3.22
+  startXOffset: -0.45
+  startYOffset: 0.14
+  startZOffset: -27.2
+  obstaclePrefabPaths:
+  - PhotonPrefabs/Level1/BADCUBE
+  - PhotonPrefabs/Level1/GOODCUBE
+  spawnChance: 0.4
 --- !u!54 &4347760962134126801
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -430,6 +437,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!114 &-1389437536283640587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704786442685222037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8833683687307589613}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8833683687307589613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704786442685222037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8275142507433315105
 GameObject:
   m_ObjectHideFlags: 0

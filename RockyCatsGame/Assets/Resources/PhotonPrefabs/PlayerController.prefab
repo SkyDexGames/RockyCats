@@ -104,6 +104,9 @@ MonoBehaviour:
   wallJumpDuration: 0.3
   wallJumpControlReduction: 0.2
   animator: {fileID: 2211283112653848006}
+  normalGravity: -10
+  surfingGravity: -20
+  haltedGravity: -10
   currentMovementMode: 0
 --- !u!143 &3369546892682586659
 CharacterController:

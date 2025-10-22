@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SurfTunnelManager : MonoBehaviour
 {
+    
+    public bool spawnsObstacles = true;
+    public bool isFirstPlatform = false;
+    
     public int gridWidth = 3;
     public int gridLength = 5;
     public float cellSize = 2f;
@@ -12,20 +17,38 @@ public class SurfTunnelManager : MonoBehaviour
     public float startXOffset = 0f;
     public float startYOffset = 0f;
     public float startZOffset = 0f;
-    public GameObject[] obstaclePrefabs;
+
+    public string[] obstaclePrefabPaths = {
+        "PhotonPrefabs/Level1/BADCUBE",
+        "PhotonPrefabs/Level1/GOODCUBE"
+    };
 
     [Range(0f, 1f)] public float spawnChance = 0.3f;
 
     private List<GameObject> spawnedObstacles = new List<GameObject>();
 
+    private bool canMove = false;
+
+
     void Start()
     {
-        SpawnObstacles();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SpawnObstacles();
+            
+            if (!isFirstPlatform)
+            {
+                canMove = true;
+            }
+        }
     }
 
     void Update()
     {
-        transform.position += new Vector3(0,0,-2) * Time.deltaTime;
+        if (PhotonNetwork.IsMasterClient && canMove)
+        {
+            transform.position += new Vector3(0, 0, -20) * Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,17 +59,25 @@ public class SurfTunnelManager : MonoBehaviour
         }
     }
 
+    public void StartMoving()
+    {
+        Debug.Log("SurfTunnelManager: StartMoving called");
+        canMove = true;
+    }
+
     public void SpawnObstacles()
     {
+        if (!spawnsObstacles) return;
+
         for (int row = 0; row < gridLength; row++)
         {
             for (int lane = 0; lane < gridWidth; lane++)
             {
-                if (Random.value < spawnChance && obstaclePrefabs.Length > 0)
+                if (Random.value < spawnChance && obstaclePrefabPaths.Length > 0)
                 {
                     Vector3 spawnPos = GetGridPosition(lane, row);
-                    GameObject obstaclePrefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
-                    GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity, transform);
+                    string obstaclePath = obstaclePrefabPaths[Random.Range(0, obstaclePrefabPaths.Length)];
+                    GameObject obstacle = PhotonNetwork.Instantiate(obstaclePath, spawnPos, Quaternion.identity);obstacle.transform.SetParent(transform);
                     spawnedObstacles.Add(obstacle);
                 }
             }

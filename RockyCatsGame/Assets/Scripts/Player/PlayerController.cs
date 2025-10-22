@@ -92,6 +92,12 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isTouchingWall;
 
+    //gravity settings
+    [SerializeField] private float normalGravity = -10f;
+    [SerializeField] private float surfingGravity = -20f;
+    [SerializeField] private float haltedGravity = -10f;
+    private float currentGravity;
+
     //weas externas que afectan el movimiento
     private Vector3 externalVelocity;
     private float externalVelocityTimer;
@@ -116,6 +122,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         PV = GetComponent<PhotonView>();
         phaseManager = GetComponent<PhaseManager>();
+        currentGravity = normalGravity;
     }
 
     void Update()
@@ -329,7 +336,7 @@ public class PlayerController : MonoBehaviour
         
         if (!isGrounded || verticalVelocity > 0)
         {
-            verticalVelocity += Physics.gravity.y * Time.deltaTime;
+            verticalVelocity += currentGravity * Time.deltaTime;
         }
     }
 
@@ -409,6 +416,19 @@ public class PlayerController : MonoBehaviour
     { 
         currentMovementMode = mode;
         
+        switch (mode)
+        {
+            case MovementMode.Normal:
+                currentGravity = normalGravity;
+                break;
+            case MovementMode.Surfing:
+                currentGravity = surfingGravity;
+                break;
+            case MovementMode.Halted:
+                currentGravity = haltedGravity;
+                break;
+        }
+        
         if (mode == MovementMode.Halted)
         {
             horizontalVelocity = Vector3.zero;
@@ -417,6 +437,7 @@ public class PlayerController : MonoBehaviour
         
         if (mode == MovementMode.Surfing) 
             transform.rotation = Quaternion.LookRotation(Vector3.forward);
+            
     }
 
     public void SetToNormal() => SetMovementMode(MovementMode.Normal);

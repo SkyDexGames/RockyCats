@@ -17,12 +17,10 @@ public class SectionTrigger : MonoBehaviour
             {
                 Transform granny = transform.parent.parent;
                 
-                GameObject newSection = Instantiate(roadSection, granny);
-                
-                newSection.transform.localPosition = Vector3.zero;
-                newSection.transform.localRotation = Quaternion.identity;
-                
-                newSection.transform.localPosition = new Vector3(-80, 0.7f, 190);
+                GameObject newSection = PhotonNetwork.Instantiate("PhotonPrefabs/Level1/SurfingTunnel", Vector3.zero, Quaternion.identity);
+                newSection.transform.SetParent(granny);
+                newSection.transform.localPosition = new Vector3(-80, 0.7f, 180);
+                newSection.transform.localScale = Vector3.one * 0.5f;
             }
         }
     }

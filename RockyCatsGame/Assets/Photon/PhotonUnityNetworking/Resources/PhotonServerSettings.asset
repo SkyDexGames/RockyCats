@@ -48,6 +48,12 @@ MonoBehaviour:
   - RPC_BreakWall
   - RPC_SelectLevel
   - RPC_ForceLeaveRoom
+  - RPC_DestroyTrigger
+  - RPC_PlayerEnteredTrigger
+  - RPC_SetAllPlayersSurfing
+  - RPC_PlayerEnteredSurfTrigger
+  - RPC_StartSurfingForAll
+  - RPC_AddPlayerToTrigger
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
