@@ -58,6 +58,7 @@ public class SurfTrigger : MonoBehaviour
 
     void StartSurfingMode()
     {
+        Level1Manager.Instance.ShowHUD("SurfScores");
         if (pv != null)
         {
             pv.RPC("RPC_SetAllPlayersSurfing", RpcTarget.All);

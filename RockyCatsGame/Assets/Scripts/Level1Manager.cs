@@ -13,6 +13,9 @@ public class Level1Manager : MonoBehaviourPun
     
     public TextMeshProUGUI gizmoTempText;
     public TextMeshProUGUI chiliTempText;
+
+    [SerializeField] private HUDElement[] hudElements;
+    private bool isPaused = false;
     
     void Awake()
     {
@@ -31,8 +34,109 @@ public class Level1Manager : MonoBehaviourPun
     {
         UpdateTemperatureDisplays();
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    public void ShowHUD(string hudName)
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            if (hudElements[i].hudName == hudName)
+            {
+                hudElements[i].Show();
+                return;
+            }
+        }
+    }
+
+    public void HideHUD(string hudName)
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            if (hudElements[i].hudName == hudName)
+            {
+                hudElements[i].Hide();
+                return;
+            }
+        }
+    }
     
-    // Called by the local player when they hit an obstacle
+    public void ShowHUDs(params string[] hudNames)
+    {
+        foreach (string name in hudNames)
+        {
+            ShowHUD(name);
+        }
+    }
+
+    public void HideHUDs(params string[] hudNames)
+    {
+        foreach (string name in hudNames)
+        {
+            HideHUD(name);
+        }
+    }
+    
+    public void ShowAllHUDs()
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            hudElements[i].Show();
+        }
+    }
+
+    public void HideAllHUDs()
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            hudElements[i].Hide();
+        }
+    }
+    
+    public void EnableSurfMode()
+    {
+        ShowHUD("Scores");
+    }
+
+    public void DisableSurfMode()
+    {
+        HideHUD("Scores");
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused; 
+        if (isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+        
+    }
+
+    public void PauseGame()
+    {
+        ShowHUD("PauseMenu");
+        //Time.timeScale = 0f;
+        //set player mode to halted
+    }
+    
+    public void ResumeGame()
+    {
+        HideHUD("PauseMenu");
+        //Time.timeScale = 1f;
+        //set player mode to normal
+    }
+
     public void UpdateMyTemperature(int tempChange)
     {
         // Determine if this client is master or not
