@@ -4,8 +4,11 @@ const Player = require("../models/Player");
 exports.register = async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const existing = await Player.findOne({ email });
-    if (existing) return res.status(400).json({ message: "Email ya registrado" });
+    const existingEmail = await Player.findOne({ email });
+    if (existingEmail) return res.status(400).json({ message: "Email ya registrado" });
+
+    const existingUser = await Player.findOne({ username });
+    if (existingUser) return res.status(400).json({ message: "Nombre de usuario ya existe" });
 
     const player = new Player({ username, email, password });
     await player.save();
@@ -34,7 +37,7 @@ exports.login = async (req, res) => {
       success: true,
       message: "Login exitoso",
       token,
-      user: { id: player._id,
+      player: { id: player._id,
          username: player.username,
           email: player.email, 
           levels: player.levels,

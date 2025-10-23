@@ -49,10 +49,17 @@ public class APIRequests
             Debug.Log("Enviando solicitud de inicio de sesión..." + request.url + " " + json);
             yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.LogError($"Error en la solicitud de inicio de sesión: {request.error}");
-                onError?.Invoke(request.error);
+                // No llegó al servidor
+                Debug.LogError("Error de conexión: " + request.error);
+                onError?.Invoke("Error de conexión con el servidor.");
+            }
+            else if (request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                // El servidor respondió, pero puede que el usuario o contraseña sean incorrectos
+                Debug.LogWarning($"Error del servidor ({request.responseCode}): {request.downloadHandler.text}");
+                onError?.Invoke(request.downloadHandler.text);
             }
             else
             {
@@ -62,6 +69,7 @@ public class APIRequests
                     if (response.success)
                     {
                         Debug.Log($"Inicio de sesión exitoso: {response.token}");
+                        Debug.Log("[APIRequests]respuesta: " + response.player._id);
                         onSuccess?.Invoke(response);
                     }
                     else
@@ -93,10 +101,17 @@ public class APIRequests
 
             yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.LogError($"Error en la solicitud de creación de usuario: {request.error}");
-                onError?.Invoke(request.error);
+                // No llegó al servidor
+                Debug.LogError("Error de conexión: " + request.error);
+                onError?.Invoke("Error de conexión con el servidor.");
+            }
+            else if (request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                // El servidor respondió, pero puede que el usuario o mail ya existan
+                Debug.LogWarning($"Error del servidor ({request.responseCode}): {request.downloadHandler.text}");
+                onError?.Invoke(request.downloadHandler.text);
             }
             else
             {

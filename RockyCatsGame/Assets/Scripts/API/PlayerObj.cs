@@ -1,3 +1,4 @@
+[System.Serializable]
 public class PlayerObj
 {
     public string _id;
@@ -5,8 +6,8 @@ public class PlayerObj
     public string password;
     public string email;
 
-    public int[] levels;
+    public int levels;
 
-    public int[] scores; 
+    public int[] scores;
 
 }

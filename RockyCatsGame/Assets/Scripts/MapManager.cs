@@ -28,6 +28,18 @@ public class MapManager : MonoBehaviourPunCallbacks
             levelButtons[i].onClick.AddListener(() => OnLevelButtonClicked(levelIndex));
         }
         //SelectLevel(-1);
+        
+        for (int i=0; i<levelButtons.Length; i++)
+        {
+            if (i <= PlayerPrefs.GetInt("PlayerLevels", 1))
+            {
+                levelButtons[i].interactable = true;
+            }
+            else
+            {
+                levelButtons[i].interactable = false;
+            }
+        }
     }
 
     void OnLevelButtonClicked(int buttonIndex)

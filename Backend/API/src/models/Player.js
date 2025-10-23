@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const playerSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  email: { type: String, required: true },
-  levels: { type: [Number], default: [] },
-  scores: { type: [Number], default: [] },
+  email: { type: String, required: true, unique: true },
+  levels: { type: Number, default: 0 },
 }, { timestamps: true });
 
 

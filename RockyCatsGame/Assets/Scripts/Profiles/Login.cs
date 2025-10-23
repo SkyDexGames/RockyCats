@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Realtime;
 
 public class LoginHandler : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class LoginHandler : MonoBehaviour
 
     [Header("Referencias")]
     public APIRequests APIRequests;
+
+    public MenuManager menuManager;
     private void Start()
     {
         APIRequests = new APIRequests();
@@ -32,10 +35,14 @@ public class LoginHandler : MonoBehaviour
             onSuccess: (response) =>
             {
                 feedbackText.text = "Login exitoso!";
-                Debug.Log("Token recibido: " + response.token);
-
-                // Aquí puedes guardar el token o cargar otra escena
+                PlayerPrefs.SetString("PlayerUsername", response.player.username);
+                PlayerPrefs.SetInt("PlayerLevels", response.player.levels);
                 PlayerPrefs.SetString("auth_token", response.token);
+                PlayerPrefs.Save();
+                Debug.Log("Datos de jugador guardados en PlayerPrefs");
+
+                // Volver al menú principal
+                menuManager.OpenMenu("Title");
             },
             onError: (error) =>
             {
