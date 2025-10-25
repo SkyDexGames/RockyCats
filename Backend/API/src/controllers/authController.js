@@ -1,0 +1,49 @@
+const generateToken = require("../utils/generateTokens");
+const Player = require("../models/Player");
+
+exports.register = async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const existingEmail = await Player.findOne({ email });
+    if (existingEmail) return res.status(400).json({ message: "Email ya registrado" });
+
+    const existingUser = await Player.findOne({ username });
+    if (existingUser) return res.status(400).json({ message: "Nombre de usuario ya existe" });
+
+    const player = new Player({ username, email, password });
+    await player.save();
+
+    res.status(201).json({ success: true, message: "Usuario registrado exitosamente" });
+  } catch (err) {
+    res.status(500).json({ message: "Error al registrar usuario", error: err.message });
+  }
+};
+
+exports.login = async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    //Verificar si el usuario existe
+    const player = await Player.findOne({ username });
+    if (!player) return res.status(400).json({ message: "Usuario no encontrado" });
+    //Verificar la contraseña
+    const valid = await player.comparePassword(password);
+    if (!valid) return res.status(400).json({ message: "Contraseña incorrecta" });
+
+    //Se genera el token JWT
+    const token = generateToken(player);
+
+    res.status(200).json({
+      success: true,
+      message: "Login exitoso",
+      token,
+      player: { id: player._id,
+         username: player.username,
+          email: player.email, 
+          levels: player.levels,
+          scores: player.scores},
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Error en login", error: err.message });
+  }
+};
