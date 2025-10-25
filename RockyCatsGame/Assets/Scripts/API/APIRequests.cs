@@ -147,23 +147,3 @@ public class APIRequests
     }
 }
 
-[System.Serializable]
-public class LoginRequest
-{
-    public string username;
-    public string password;
-}
-
-[System.Serializable]
-public class LoginResponse
-{
-    public bool success;
-    public string token;
-    public PlayerObj player;
-}
-
-public class RegisterResponse
-{
-    public bool success;
-    public string message;
-}
