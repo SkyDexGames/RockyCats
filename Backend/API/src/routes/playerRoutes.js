@@ -5,7 +5,7 @@ const auth = require("../middleware/auth"); // opcional, si quieres proteger las
 
 // Rutas públicas
 router.get("/", playerController.getPlayers);
-router.post("/CreatePlayer/", playerController.createPlayer);
+router.get("/:username", playerController.getPlayerByUsername);
 
 // Si queremos proteger las rutas con autenticación
 // router.get("/", auth, playerController.getPlayers);

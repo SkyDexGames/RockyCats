@@ -43,12 +43,13 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        MenuManager.Instance.OpenMenu("Title");
+        MenuManager.Instance.OpenMenu("Profile");
 
         Debug.Log("Joined Lobby");
         Debug.Log($"In Lobby: {PhotonNetwork.InLobby}");
 
         PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
+
     }
     public void CreateRoom()
     {
@@ -69,6 +70,9 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log($"Is Visible: {PhotonNetwork.CurrentRoom.IsVisible}");
         Debug.Log($"Is Open: {PhotonNetwork.CurrentRoom.IsOpen}");
         Debug.Log($"Max Players: {PhotonNetwork.CurrentRoom.MaxPlayers}");
+
+        //El nickname del jugador es el username guardado en PlayerPrefs
+        PhotonNetwork.NickName = PlayerPrefs.GetString("PlayerUsername", "Guest");
 
         MenuManager.Instance.OpenMenu("Room");
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;
