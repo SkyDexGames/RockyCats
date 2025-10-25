@@ -6,14 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenus.unity
+    path: Assets/Scenes/PreGame.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/CampaignSelect.unity
-    guid: 978afc7f30f542844bc74ed8c8ea7150
-  - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 8599b06b6d4d05443b91c75d8b35e7b1
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 5082ab77b5d58694dafed273f46958b6
