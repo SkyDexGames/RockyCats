@@ -187,7 +187,8 @@ public class PlayerController : MonoBehaviour
         float controlMultiplier = 1f;
         
         //reducimos control durante el wall jump para que SI se apliquen bien las fuerzas
-        if(externalVelocityTimer > 0)
+        //solo durante el wall jump, porque con el viento se sentia bien unresponsive
+        if(externalVelocityTimer > 0 && externalVelocity.magnitude > wallJumpSideForce * 0.5f)
         {
             controlMultiplier = wallJumpControlReduction;
         }
@@ -407,7 +408,7 @@ public class PlayerController : MonoBehaviour
     public void SetUsingAbility(bool usingAbility) => isUsingAbility = usingAbility;
     public void SetVerticalVelocity(float velocity) => verticalVelocity = velocity;
     
-    public void AddExternalVelocity(Vector3 velocity, float duration)
+    public void SetExternalVelocity(Vector3 velocity, float duration)
     {
         externalVelocity = velocity;
         externalVelocityTimer = duration;

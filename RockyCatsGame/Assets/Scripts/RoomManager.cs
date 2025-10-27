@@ -34,7 +34,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(scene.buildIndex == 2)
+        if(scene.buildIndex > 1 )
         {
             /*PhotonPrefabs must be in the resources folder bc unity automatically excludes any file
             not referenced in the editor from the final build, and we don't reference PhotonPrefabs, we use strings.
