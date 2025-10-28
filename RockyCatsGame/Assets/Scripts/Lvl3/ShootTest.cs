@@ -16,7 +16,11 @@ public class ShootTest : MonoBehaviour
 
         if(_shootCooldownTimer <= 0f)
         {
-            ShotAttack.RadialShot(transform.position, transform.up,  _shotSettings);
+            Vector3 horizontalForward = transform.forward;
+            horizontalForward.y = 0;
+            horizontalForward.Normalize();
+            
+            ShotAttack.RadialShot(transform.position, horizontalForward, _shotSettings);
             _shootCooldownTimer += _shootCooldown;
         }
     }
