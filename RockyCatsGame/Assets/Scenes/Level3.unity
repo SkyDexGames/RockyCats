@@ -1146,6 +1146,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2131289047936395660, guid: c11b96a33e7f61d4b972d6aafc21d505, type: 3}
   m_PrefabInstance: {fileID: 818335921}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &905060886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905060887}
+  - component: {fileID: 905060888}
+  m_Layer: 0
+  m_Name: ShootTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &905060887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905060886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -8.983972, y: 0.66, z: -1.9933628}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &905060888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905060886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef828bc0ecddd34fa87cb09aa807489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootCooldown: 1
+  _shotSettings:
+    NumberOfBullets: 10
+    BulletSpeed: 10
+    CoolDownAfterShot: 0.5
 --- !u!1 &973761600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,6 +1691,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2131289047936395660, guid: c11b96a33e7f61d4b972d6aafc21d505, type: 3}
   m_PrefabInstance: {fileID: 1507655847}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1564733598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1564733599}
+  - component: {fileID: 1564733600}
+  m_Layer: 0
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1564733599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564733598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.8021865, y: -0.6882858, z: -13.885993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1564733600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564733598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f487fc73a7db8fc4da77bd4cc498e185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 5341742681963223575, guid: 3992654f8c3edf64e9b1c875c8c42a54, type: 3}
+  _initialPoolSize: 10
 --- !u!1001 &1565205248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2282,71 +2377,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
---- !u!1001 &7933435673991839335
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 503820765169812007, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_Name
-      value: WindBlower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1724220813547370961, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: windForce
-      value: 3.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -23
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 22.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3250154539877879639, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7882828898675956014, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
-      propertyPath: windForce
-      value: 3.3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 006e94ead8b7b9d45a5ed85ddec2cdc7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2360,4 +2390,5 @@ SceneRoots:
   - {fileID: 1776511022}
   - {fileID: 672821029}
   - {fileID: 6257336903186749112}
-  - {fileID: 7933435673991839335}
+  - {fileID: 1564733599}
+  - {fileID: 905060887}
