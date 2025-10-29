@@ -12,22 +12,25 @@ public class WindBlowerScript : MonoBehaviour
     public WindTriggerScript windTriggerScript;
 
     //private bool isBlowingWind = false;
-    
+
 
     void Start()
     {
         if (windTriggerZone != null)
             windTriggerZone.SetActive(false);
-            
+
         if (windTriggerScript == null && windTriggerZone != null)
             windTriggerScript = windTriggerZone.GetComponent<WindTriggerScript>();
-            
+
         UpdateWindDirection();
-            
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(WindCycle());
     }
 
-    IEnumerator WindCycle()
+    public IEnumerator WindCycle()
     {
         while (true)
         {
@@ -57,8 +60,9 @@ public class WindBlowerScript : MonoBehaviour
         
         if (windTriggerZone != null)
             windTriggerZone.SetActive(false);
-            
+
         Debug.Log("Wind enemy stopped blowing wind");
+        this.gameObject.SetActive(false);
     }
 
     public Vector3 GetWorldWindDirection()

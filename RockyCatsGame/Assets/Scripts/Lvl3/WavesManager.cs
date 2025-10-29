@@ -47,13 +47,22 @@ public class WaveManager : MonoBehaviour
         CurrentWave++;
         Debug.Log($"Starting Wave {CurrentWave}");
 
+        int numberOfContainers = CurrentWave * 2;  // Por ejemplo, más contenedores en cada wave
+        float delayBetweenContainers = 1.5f;
 
-        for (int i = 0; i < CurrentWave * 2; i++)
+        //Logica de la waves
+        for (int i = 0; i < numberOfContainers; i++)
         {
             AttackContainer container = AttackContainers[Random.Range(0, AttackContainers.Count)];
             RadialShotPattern pattern = patternsList[Random.Range(0, patternsList.Count)];
 
-            yield return StartCoroutine(container.ExecutePattern(pattern));
+            StartCoroutine(container.ExecutePattern(pattern));
+
+            if (Random.value > 0.5f)
+            {
+                container.ShootWind();
+            }
+            yield return new WaitForSeconds(delayBetweenContainers);
         }
     }
 
