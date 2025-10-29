@@ -10,23 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dc732f3e4ecde94a8628ea1b91bb03f, type: 3}
-  m_Name: RadialShotPattern
+  m_Name: Barrier
   m_EditorClassIdentifier: 
-  Repetitions: 3
+  Repetitions: 1
   AngleOffsetBetweenReps: 0
   StartWait: 0
   EndWait: 0
   PatternSettings:
-  - NumberOfBullets: 4
+  - NumberOfBullets: 50
     BulletSpeed: 10
-    CoolDownAfterShot: 0.2
-    PhaseOffset: 0
-    AngleOffset: 45
-    RadialMask: 1
-    MaskAngle: 120
-  - NumberOfBullets: 8
-    BulletSpeed: 10
-    CoolDownAfterShot: 0.4
+    CoolDownAfterShot: 0.1
     PhaseOffset: 0
     AngleOffset: 45
     RadialMask: 1

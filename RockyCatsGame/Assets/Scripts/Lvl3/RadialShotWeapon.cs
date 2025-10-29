@@ -9,16 +9,18 @@ public class RadialShotWeapon : MonoBehaviour
 
     private bool _onShotPattern = false;
 
-    private void Update()
+    // private void Update()
+    // {
+    //     if (_onShotPattern)
+    //         return;
+
+    //     StartCoroutine(ExecuteRadialShotPattern(_shotPattern));
+    // }
+
+    public IEnumerator ExecuteRadialShotPattern(RadialShotPattern pattern)
     {
         if (_onShotPattern)
-            return;
-
-        StartCoroutine(ExecuteRadialShotPattern(_shotPattern));
-    }
-
-    private IEnumerator ExecuteRadialShotPattern(RadialShotPattern pattern)
-    {
+            yield break;
         _onShotPattern = true;
         int lap = 0;
         Vector3 aimDirection = transform.forward;

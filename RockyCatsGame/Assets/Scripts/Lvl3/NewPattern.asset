@@ -12,15 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc732f3e4ecde94a8628ea1b91bb03f, type: 3}
   m_Name: NewPattern
   m_EditorClassIdentifier: 
-  Repetitions: 30
-  AngleOffsetBetweenReps: 8
+  Repetitions: 10
+  AngleOffsetBetweenReps: 0
   StartWait: 0
   EndWait: 2
   PatternSettings:
-  - NumberOfBullets: 5
-    BulletSpeed: 1
-    CoolDownAfterShot: 0.5
+  - NumberOfBullets: 20
+    BulletSpeed: 10
+    CoolDownAfterShot: 0.15
     PhaseOffset: 0
-    AngleOffset: 0
+    AngleOffset: 75
     RadialMask: 1
-    MaskAngle: 360
+    MaskAngle: 45
+  - NumberOfBullets: 20
+    BulletSpeed: 10
+    CoolDownAfterShot: 0.15
+    PhaseOffset: 0.15
+    AngleOffset: 75
+    RadialMask: 1
+    MaskAngle: 45
+  - NumberOfBullets: 20
+    BulletSpeed: 10
+    CoolDownAfterShot: 0.15
+    PhaseOffset: -0.15
+    AngleOffset: 75
+    RadialMask: 1
+    MaskAngle: 45
