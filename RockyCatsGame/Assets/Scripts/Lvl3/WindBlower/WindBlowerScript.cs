@@ -11,7 +11,7 @@ public class WindBlowerScript : MonoBehaviour
     public GameObject windTriggerZone;
     public WindTriggerScript windTriggerScript;
 
-    private bool isBlowingWind = false;
+    //private bool isBlowingWind = false;
     
 
     void Start()
@@ -43,7 +43,7 @@ public class WindBlowerScript : MonoBehaviour
 
     void StartBlowingWind()
     {
-        isBlowingWind = true;
+        //isBlowingWind = true;
         
         if (windTriggerZone != null)
             windTriggerZone.SetActive(true);
@@ -53,7 +53,7 @@ public class WindBlowerScript : MonoBehaviour
 
     void StopBlowingWind()
     {
-        isBlowingWind = false;
+        //isBlowingWind = false;
         
         if (windTriggerZone != null)
             windTriggerZone.SetActive(false);

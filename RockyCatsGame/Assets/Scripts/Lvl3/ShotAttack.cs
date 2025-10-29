@@ -15,9 +15,15 @@ public static class ShotAttack
     {
         float angleBetweenBullets = 360f / settings.NumberOfBullets;
 
+        if (settings.AngleOffset != 0f)
+            aimDirection = aimDirection.RotateAroundY(settings.AngleOffset + (settings.PhaseOffset * angleBetweenBullets));
+
         for(int i = 0; i < settings.NumberOfBullets; i++)
         {
             float bulletDirectionAngle = angleBetweenBullets * i;
+
+            if (settings.RadialMask && bulletDirectionAngle > settings.MaskAngle)
+                break;
             Vector3 bulletDirection = aimDirection.RotateAroundY(bulletDirectionAngle);
             SimpleShot(origin, bulletDirection * settings.BulletSpeed);
         }

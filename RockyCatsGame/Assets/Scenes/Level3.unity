@@ -1162,7 +1162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &905060887
 Transform:
   m_ObjectHideFlags: 0
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905060886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ef828bc0ecddd34fa87cb09aa807489, type: 3}
   m_Name: 
@@ -1195,6 +1195,10 @@ MonoBehaviour:
     NumberOfBullets: 5
     BulletSpeed: 10
     CoolDownAfterShot: 0.5
+    PhaseOffset: 0
+    AngleOffset: 0
+    RadialMask: 0
+    MaskAngle: 360
 --- !u!1 &973761600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1628,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToSwitchTo: {fileID: 1731738257}
+--- !u!1 &1491279988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1491279989}
+  - component: {fileID: 1491279990}
+  - component: {fileID: 1491279991}
+  m_Layer: 0
+  m_Name: RadialWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1491279989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491279988}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -11.7, y: 2.2, z: 26.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1491279990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491279988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6716cea20f13214a8f1e3f204185298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shotPattern: {fileID: 11400000, guid: 39f89fa9c10a5614fb870978265274bd, type: 2}
+--- !u!114 &1491279991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491279988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941c4b691a17bbb48828a13ba292818f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pattern: {fileID: 11400000, guid: 39f89fa9c10a5614fb870978265274bd, type: 2}
+  _radius: 0.72
+  _color: {r: 0, g: 0.13725495, b: 1, a: 1}
+  _testTime: 0
 --- !u!1001 &1507655847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2392,3 +2458,4 @@ SceneRoots:
   - {fileID: 6257336903186749112}
   - {fileID: 1564733599}
   - {fileID: 905060887}
+  - {fileID: 1491279989}
