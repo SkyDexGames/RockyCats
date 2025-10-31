@@ -346,24 +346,25 @@ public class PlayerController : MonoBehaviour
     {
         if(animator == null) return;
 
-        int animationState = DetermineAnimationState();
-        animator.SetInteger("State", animationState);
-    }
+        bool isDashing = false;
+        if (phaseManager != null)
+        {
+            var currentPhase = phaseManager.GetCurrentPhase();
+            if (currentPhase != null)
+            {
+                isDashing = currentPhase.IsUsingAbility();
+                // Or check specifically for IgneousPhase
+                if (currentPhase is IgneousPhase igneousPhase)
+                {
+                    isDashing = igneousPhase.IsDashing;
+                }
+            }
+        }
 
-    int DetermineAnimationState()
-    {
-        if(!isGrounded)
-        {
-            return 1; // jump
-        }
-        else if(horizontalVelocity.magnitude > 0.5f)
-        {
-            return 2; // moving
-        }
-        else
-        {
-            return 0; // idle
-        }
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
+        animator.SetFloat("VerticalVelocity", verticalVelocity);
+        animator.SetBool("IsDashing", isDashing);
     }
 
     //spawns
