@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : MonoBehaviourPun
 {
     public static WaveManager Instance;
 
@@ -51,19 +52,34 @@ public class WaveManager : MonoBehaviour
         float delayBetweenContainers = 1.5f;
 
         //Logica de la waves
+        
+
         for (int i = 0; i < numberOfContainers; i++)
         {
-            AttackContainer container = AttackContainers[Random.Range(0, AttackContainers.Count)];
-            RadialShotPattern pattern = patternsList[Random.Range(0, patternsList.Count)];
+            int containerIndex = Random.Range(0, AttackContainers.Count);
+            int patternIndex = Random.Range(0, patternsList.Count);
+            bool shootWind = Random.value > 0.5f;
 
-            StartCoroutine(container.ExecutePattern(pattern));
+            // Enviar la instrucción a TODOS los jugadores
+            photonView.RPC("RPC_ExecuteContainerPattern", RpcTarget.All,
+                containerIndex, patternIndex, shootWind);
 
-            if (Random.value > 0.5f)
-            {
-                container.ShootWind();
-            }
             yield return new WaitForSeconds(delayBetweenContainers);
         }
+    }
+
+    [PunRPC]
+    private void RPC_ExecuteContainerPattern(int containerIndex, int patternIndex, bool shootWind)
+    {
+        Debug.Log($"[CLIENT] Ejecutando patrón {patternIndex} en contenedor {containerIndex}");
+
+        AttackContainer container = AttackContainers[containerIndex];
+        RadialShotPattern pattern = patternsList[patternIndex];
+
+        StartCoroutine(container.ExecutePattern(pattern));
+
+        if (shootWind)
+            container.ShootWind();
     }
 
 }

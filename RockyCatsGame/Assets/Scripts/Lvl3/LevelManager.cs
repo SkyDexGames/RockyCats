@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,8 +9,12 @@ public class LevelManager : MonoBehaviour
     private bool wavedStarted = false;
 
     private void Start()
-    {
-        StartCoroutine(waveManager.StartWaves());
+    { 
+        if (PhotonNetwork.IsMasterClient && !wavedStarted)
+        {
+            wavedStarted = true;
+            StartCoroutine(waveManager.StartWaves());
+        }
     }
 
     
