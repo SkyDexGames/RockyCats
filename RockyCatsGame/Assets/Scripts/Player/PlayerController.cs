@@ -81,7 +81,8 @@ public class PlayerController : MonoBehaviour
 
     //components
     private CharacterController controller;
-    [SerializeField] Animator animator;
+    [SerializeField] private Animator[] phaseAnimators;
+    private Animator currentAnimator;
 
     //weas de movimiento, separamos el input de la velocidad para aplicar los efectos de manera no tosca
     private Vector3 inputDirection;
@@ -277,6 +278,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetCurrentAnimator(Animator newAnimator)
+    {
+        currentAnimator = newAnimator;
+    }
+
     void PerformWallJump(Vector3 wallNormal)
     {
         verticalVelocity = wallJumpUpForce;
@@ -344,7 +350,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateAnimations()
     {
-        if(animator == null) return;
+        if(currentAnimator == null) return;
 
         bool isDashing = false;
         if (phaseManager != null)
@@ -361,10 +367,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        animator.SetBool("IsGrounded", isGrounded);
-        animator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
-        animator.SetFloat("VerticalVelocity", verticalVelocity);
-        animator.SetBool("IsDashing", isDashing);
+        currentAnimator.SetBool("IsGrounded", isGrounded);
+        currentAnimator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
+        currentAnimator.SetFloat("VerticalVelocity", verticalVelocity);
+        currentAnimator.SetBool("IsDashing", isDashing);
     }
 
     //spawns
@@ -441,6 +447,13 @@ public class PlayerController : MonoBehaviour
         if (mode == MovementMode.Surfing) 
             transform.rotation = Quaternion.LookRotation(Vector3.forward);
             
+    }
+    public void SetAnimator(int phaseIndex)
+    {
+        if (phaseIndex >= 0 && phaseIndex < phaseAnimators.Length)
+        {
+            currentAnimator = phaseAnimators[phaseIndex];
+        }
     }
 
     public void SetToNormal() => SetMovementMode(MovementMode.Normal);

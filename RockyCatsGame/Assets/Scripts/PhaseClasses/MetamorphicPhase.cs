@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SedimentPhase : PlayerPhase
+public class MetamorphicPhase : PlayerPhase
 {
     public override void HandleAbility()
     {
         // Habilidad E específica de Sedimento
-        Debug.Log("Sediment ability activated!");
+        Debug.Log("Metamorphic ability activated!");
         // Ejemplo: Escudo temporal o crear obstáculo
     }
     
