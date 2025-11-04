@@ -1248,15 +1248,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3885131270858128064, guid: 66b6b42465cf82747be1b3ac9f8f2b0f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 3885131270858128064, guid: 66b6b42465cf82747be1b3ac9f8f2b0f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.4
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 3885131270858128064, guid: 66b6b42465cf82747be1b3ac9f8f2b0f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.3
+      value: 3.72
       objectReference: {fileID: 0}
     - target: {fileID: 3885131270858128064, guid: 66b6b42465cf82747be1b3ac9f8f2b0f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1288,7 +1288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172841653627010310, guid: 66b6b42465cf82747be1b3ac9f8f2b0f, type: 3}
       propertyPath: m_Priority
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5172841653627010310, guid: 66b6b42465cf82747be1b3ac9f8f2b0f, type: 3}
       propertyPath: m_Transitions.m_InheritPosition
@@ -2210,6 +2210,7 @@ GameObject:
   - component: {fileID: 1388053089}
   - component: {fileID: 1388053090}
   - component: {fileID: 1388053091}
+  - component: {fileID: 1388053092}
   m_Layer: 0
   m_Name: Camtrigger
   m_TagString: Untagged
@@ -2266,6 +2267,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToSwitchTo: {fileID: 1731738257}
+  levelManager: {fileID: 1813179992}
+--- !u!114 &1388053092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388053088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1491279988
 GameObject:
   m_ObjectHideFlags: 0

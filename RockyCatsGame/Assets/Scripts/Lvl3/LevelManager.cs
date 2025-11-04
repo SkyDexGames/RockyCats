@@ -9,7 +9,12 @@ public class LevelManager : MonoBehaviour
     private bool wavedStarted = false;
 
     private void Start()
-    { 
+    {
+        
+    }
+    
+    public void LaunchWaves()
+    {
         if (PhotonNetwork.IsMasterClient && !wavedStarted)
         {
             wavedStarted = true;
