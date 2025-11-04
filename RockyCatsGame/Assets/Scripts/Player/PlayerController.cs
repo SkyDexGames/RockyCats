@@ -187,7 +187,8 @@ public class PlayerController : MonoBehaviour
         float controlMultiplier = 1f;
         
         //reducimos control durante el wall jump para que SI se apliquen bien las fuerzas
-        if(externalVelocityTimer > 0)
+        //solo durante el wall jump, porque con el viento se sentia bien unresponsive
+        if(externalVelocityTimer > 0 && externalVelocity.magnitude > wallJumpSideForce * 0.5f)
         {
             controlMultiplier = wallJumpControlReduction;
         }
@@ -345,24 +346,25 @@ public class PlayerController : MonoBehaviour
     {
         if(animator == null) return;
 
-        int animationState = DetermineAnimationState();
-        animator.SetInteger("State", animationState);
-    }
+        bool isDashing = false;
+        if (phaseManager != null)
+        {
+            var currentPhase = phaseManager.GetCurrentPhase();
+            if (currentPhase != null)
+            {
+                isDashing = currentPhase.IsUsingAbility();
+                // Or check specifically for IgneousPhase
+                if (currentPhase is IgneousPhase igneousPhase)
+                {
+                    isDashing = igneousPhase.IsDashing;
+                }
+            }
+        }
 
-    int DetermineAnimationState()
-    {
-        if(!isGrounded)
-        {
-            return 1; // jump
-        }
-        else if(horizontalVelocity.magnitude > 0.5f)
-        {
-            return 2; // moving
-        }
-        else
-        {
-            return 0; // idle
-        }
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
+        animator.SetFloat("VerticalVelocity", verticalVelocity);
+        animator.SetBool("IsDashing", isDashing);
     }
 
     //spawns
@@ -407,7 +409,7 @@ public class PlayerController : MonoBehaviour
     public void SetUsingAbility(bool usingAbility) => isUsingAbility = usingAbility;
     public void SetVerticalVelocity(float velocity) => verticalVelocity = velocity;
     
-    public void AddExternalVelocity(Vector3 velocity, float duration)
+    public void SetExternalVelocity(Vector3 velocity, float duration)
     {
         externalVelocity = velocity;
         externalVelocityTimer = duration;
