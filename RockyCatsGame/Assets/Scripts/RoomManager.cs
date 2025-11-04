@@ -11,7 +11,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager Instance;
     void Awake()
     {
-        if(Instance)
+        if (Instance)
         {
             Destroy(gameObject);
             return;
@@ -34,8 +34,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        // Spawn player manager when entering Level1 or Level2 (by scene name, not build index)
-        if (scene.name == "Level1" || scene.name == "Level2")
+        if (scene.buildIndex > 1)
         {
             // PhotonPrefabs must be in the Resources folder because Unity excludes non-referenced assets from builds
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
