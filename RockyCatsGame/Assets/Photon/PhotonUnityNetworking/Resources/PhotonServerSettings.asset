@@ -60,6 +60,18 @@ MonoBehaviour:
   - RPC_UpdateTemperature
   - RPC_LoadScene
   - RPC_PlayVideoForAll
+  - RPC_BeginInput
+  - RPC_BeginRound
+  - RPC_EmitCrater
+  - RPC_InputFeedback
+  - RPC_PuzzleCompleted
+  - RPC_RoundFail
+  - RPC_RoundSuccess
+  - RPC_SetSeed
+  - RPC_SubmitInput
+  - RPC_BeginPuzzle
+  - RPC_PlayerEntered
+  - RPC_RequestStartPuzzle
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

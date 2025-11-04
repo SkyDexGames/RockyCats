@@ -34,14 +34,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(scene.buildIndex == 2)
+        // Spawn player manager when entering Level1 or Level2 (by scene name, not build index)
+        if (scene.name == "Level1" || scene.name == "Level2")
         {
-            /*PhotonPrefabs must be in the resources folder bc unity automatically excludes any file
-            not referenced in the editor from the final build, and we don't reference PhotonPrefabs, we use strings.
-            */
-
+            // PhotonPrefabs must be in the Resources folder because Unity excludes non-referenced assets from builds
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
-
         }
     }
 }
