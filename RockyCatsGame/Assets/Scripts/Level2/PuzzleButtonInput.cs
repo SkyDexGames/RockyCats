@@ -12,11 +12,25 @@ public class PuzzleButtonInput : MonoBehaviour
             sequenceManager = FindObjectOfType<GasSequenceManager>();
     }
 
-    // Llama esto desde UI/Button, OnMouseDown, o un trigger interactivo
+    void OnTriggerEnter(Collider other)
+    {
+        // Verificar si es un jugador
+        if (other.CompareTag("Player") || other.GetComponent<PlayerController>() != null || other.GetComponent<CharacterController>() != null)
+        {
+            Debug.Log($"[PuzzleButtonInput] Jugador tocó el botón {buttonId}");
+            Press();
+        }
+    }
+
     public void Press()
     {
-        if (sequenceManager == null) return;
+        if (sequenceManager == null)
+        {
+            Debug.LogWarning($"[PuzzleButtonInput] sequenceManager es NULL en botón {buttonId}!");
+            return;
+        }
+
+        Debug.Log($"[PuzzleButtonInput] Botón {buttonId} presionado - Enviando input");
         sequenceManager.SubmitInput(buttonId);
     }
 }
-
