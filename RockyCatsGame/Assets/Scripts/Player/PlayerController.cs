@@ -110,6 +110,12 @@ public class PlayerController : MonoBehaviour
     //respawn pos
     private Vector3 currentSpawnpoint;
 
+    private int hp;
+
+    private int maxHp = 100;
+
+    private bool isDead = false;
+
 
 
     //states for diff game modes (this will be refactored later into abstracts probs)
@@ -124,6 +130,7 @@ public class PlayerController : MonoBehaviour
         PV = GetComponent<PhotonView>();
         phaseManager = GetComponent<PhaseManager>();
         currentGravity = normalGravity;
+        hp = maxHp;
     }
 
     void Update()
@@ -469,18 +476,56 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!Application.isPlaying || controller == null) return;
-        
+
         if (useBoxGroundCheck)
         {
             Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
             Vector3 boxSize = new Vector3(
-                controller.radius * 1.8f, 
-                groundCheckDistance, 
+                controller.radius * 1.8f,
+                groundCheckDistance,
                 controller.radius * 1.8f
             );
-            
+
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireCube(boxCenter, boxSize);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (!PV.IsMine) return;
+
+        hp -= damage;
+        if (hp <= 0)
+        {
+            hp = 0;
+            Die();
+        }
+    }
+     void Die()
+    {
+        if (PV.IsMine)
+        {
+            // Notifica a todos (incluido yo) que este PhotonView ha muerto
+            PV.RPC(nameof(RPC_OnDeath), RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    void RPC_OnDeath()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        // efectos locales: animación, desactivar controles, collider, etc.
+        var controller = GetComponent<PlayerController>();
+        if (controller != null) controller.enabled = false;
+        var characterController = GetComponent<CharacterController>();
+        if (characterController != null) characterController.enabled = false;
+
+        gameObject.SetActive(false);
+
+        // Si quieres borrar el objeto de la sala (todos lo verán desaparecer)
+        // PhotonNetwork.Destroy(gameObject); // usar sólo si el objeto fue instanciado con PhotonNetwork.Instantiate
     }
 }

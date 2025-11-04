@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     {
         
     }
-    
+
     public void LaunchWaves()
     {
         if (PhotonNetwork.IsMasterClient && !wavedStarted)
@@ -20,6 +20,11 @@ public class LevelManager : MonoBehaviour
             wavedStarted = true;
             StartCoroutine(waveManager.StartWaves());
         }
+    }
+    
+    private void Update()
+    {
+        
     }
 
     
