@@ -22,9 +22,13 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
     private enum PuzzleState { Idle, ShowingSequence, AwaitingInputs, Completed }
     private PuzzleState state = PuzzleState.Idle;
 
+    // Propiedad pública para que los botones verifiquen si pueden aceptar input
+    public bool CanAcceptInput => state == PuzzleState.AwaitingInputs;
+
     private List<int> currentSequence = new List<int>();
     private int currentRoundIndex = 0; // 0..7
     private int currentStepIndex = 0;  // índice del input esperado
+    private bool hasError = false;     // indica si hubo un error en la secuencia actual
 
     private System.Random rng;
 
@@ -35,7 +39,7 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
             Debug.LogWarning("[GasSequenceManager] Falta GasSequenceConfig en el inspector.");
         }
 
-        // Inicio automtico opcional
+        // Inicio automatico opcional
         if (PhotonNetwork.IsMasterClient && autoStartOnStart)
         {
             EnsureSeedInitialized();
@@ -97,6 +101,18 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         }
     }
 
+    // Llamado por botones locales para activar feedback visual
+    public void ActivateCraterFeedback(int craterId, float duration)
+    {
+        if (craters == null || craterId < 0 || craterId >= craters.Length)
+        {
+            Debug.LogWarning($"[GasSequenceManager] Crater {craterId} fuera de rango o array null");
+            return;
+        }
+
+        Debug.Log($"[GasSequenceManager] Activando feedback visual en crater {craterId}");
+        craters[craterId].PlayGas(duration);
+    }
 
     // Llamado por botones locales
     public void SubmitInput(int buttonId)
@@ -116,28 +132,39 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         bool correct = (buttonId == currentSequence[currentStepIndex]);
         photonView.RPC("RPC_InputFeedback", RpcTarget.All, correct, currentRoundIndex, currentStepIndex, buttonId);
 
-        if (correct)
+        // Marcar si hubo error
+        if (!correct)
         {
-            currentStepIndex++;
-            if (currentStepIndex >= currentSequence.Count)
+            hasError = true;
+        }
+
+        // Avanzar al siguiente paso
+        currentStepIndex++;
+
+        // Verificar si se completó la secuencia
+        if (currentStepIndex >= currentSequence.Count)
+        {
+            // Se ingresaron todos los inputs
+            if (hasError)
             {
-                // Ronda superada
+                // Hubo al menos un error: reiniciar ronda
+                photonView.RPC("RPC_RoundFail", RpcTarget.All, currentRoundIndex);
+                RestartCurrentRound();
+            }
+            else
+            {
+                // Todos correctos: ronda superada
                 photonView.RPC("RPC_RoundSuccess", RpcTarget.All, currentRoundIndex);
                 StartNextRoundOrComplete();
             }
-        }
-        else
-        {
-            // Falló: reiniciar ronda actual
-            photonView.RPC("RPC_RoundFail", RpcTarget.All, currentRoundIndex);
-            RestartCurrentRound();
         }
     }
 
     void StartNextRoundOrComplete()
     {
         currentRoundIndex++;
-        if (currentRoundIndex >= (config != null ? config.rounds : 8))
+        int totalRounds = (config != null) ? config.GetTotalRounds() : 8;
+        if (currentRoundIndex >= totalRounds)
         {
             photonView.RPC("RPC_PuzzleCompleted", RpcTarget.All);
         }
@@ -152,6 +179,7 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         StopAllCoroutines();
         state = PuzzleState.ShowingSequence;
         currentStepIndex = 0;
+        hasError = false; // Resetear el estado de error
 
         // Generar secuencia con posibles repeticiones
         int length = (config != null) ? config.GetSequenceLength(roundIndex) : Mathf.Min(4 + roundIndex, 8);
@@ -177,8 +205,10 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
     {
         float stepInterval = (config != null) ? config.GetStepInterval(roundIndex) : Mathf.Max(0.5f, 1.2f - 0.1f * roundIndex);
         float gasDuration = (config != null) ? config.gasDuration : 0.5f;
+        float delayBeforePattern = (config != null) ? config.delayBeforePattern : 2.0f;
 
-        yield return new WaitForSeconds(0.6f); // pequeña pausa antes de mostrar
+        // Pausa para que el jugador lea las instrucciones
+        yield return new WaitForSeconds(delayBeforePattern);
 
         for (int i = 0; i < sequence.Count; i++)
         {
@@ -205,7 +235,7 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         var l2 = Level2Manager.Instance;
         if (l2 != null)
         {
-            if (config != null) l2.SetTotalRounds(config.rounds);
+            if (config != null) l2.SetTotalRounds(config.GetTotalRounds());
             l2.OnBeginRound(roundIndex, length);
         }
     }

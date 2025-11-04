@@ -12,13 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5916b064c12964d88508da871a37ea, type: 3}
   m_Name: GasSequenceConfig
   m_EditorClassIdentifier: 
+  customRounds:
+  - sequenceLength: 4
+    stepInterval: 1.2
+  - sequenceLength: 4
+    stepInterval: 1.1
+  - sequenceLength: 4
+    stepInterval: 1
+  - sequenceLength: 4
+    stepInterval: 0.9
+  - sequenceLength: 5
+    stepInterval: 0.9
+  - sequenceLength: 6
+    stepInterval: 0.9
+  - sequenceLength: 7
+    stepInterval: 0.9
+  - sequenceLength: 8
+    stepInterval: 0.5
   craterCount: 4
-  rounds: 8
-  initialSequenceLength: 4
-  lengthIncrementPerRound: 1
-  maxSequenceLength: 8
-  baseStepInterval: 1.2
-  intervalDecrementPerRound: 0.1
-  minStepInterval: 0.5
   gasDuration: 0.5
+  delayBeforePattern: 2
   randomSeed: 0

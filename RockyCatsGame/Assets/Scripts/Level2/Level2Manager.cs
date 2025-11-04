@@ -77,10 +77,8 @@ public class Level2Manager : MonoBehaviourPun
 
     public void OnInputFeedback(bool correct, int roundIndex, int stepIndex, int buttonId)
     {
-        if (correct)
-            SetStatus("Correcto");
-        else
-            SetStatus("Incorrecto, repite la secuencia");
+        // No mostrar feedback inmediato - solo actualizar el contador de progreso
+        SetStatus($"Ingresando patrón ({stepIndex + 1})");
     }
 
     public void OnRoundSuccess(int roundIndex)

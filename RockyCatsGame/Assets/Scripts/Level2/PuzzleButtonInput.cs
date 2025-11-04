@@ -6,6 +6,10 @@ public class PuzzleButtonInput : MonoBehaviour
     [Range(0, 3)] public int buttonId = 0;
     [SerializeField] private GasSequenceManager sequenceManager;
 
+    [Header("Feedback Visual")]
+    [Tooltip("Duración del feedback visual al presionar el botón")]
+    [SerializeField] private float feedbackDuration = 0.3f;
+
     void Awake()
     {
         if (sequenceManager == null)
@@ -30,7 +34,19 @@ public class PuzzleButtonInput : MonoBehaviour
             return;
         }
 
+        // Verificar si el puzzle está aceptando inputs
+        if (!sequenceManager.CanAcceptInput)
+        {
+            Debug.Log($"[PuzzleButtonInput] Botón {buttonId} presionado pero el puzzle no está aceptando inputs (mostrando patrón o inactivo)");
+            return;
+        }
+
         Debug.Log($"[PuzzleButtonInput] Botón {buttonId} presionado - Enviando input");
+
+        // Activar el cráter correspondiente como feedback visual
+        sequenceManager.ActivateCraterFeedback(buttonId, feedbackDuration);
+
+        // Enviar el input al manager
         sequenceManager.SubmitInput(buttonId);
     }
 }
