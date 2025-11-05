@@ -367,10 +367,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        bool isSurfing = currentMovementMode == MovementMode.Surfing;
+
         currentAnimator.SetBool("IsGrounded", isGrounded);
         currentAnimator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
         currentAnimator.SetFloat("VerticalVelocity", verticalVelocity);
         currentAnimator.SetBool("IsDashing", isDashing);
+        currentAnimator.SetBool("isSurfing", isSurfing);
     }
 
     //spawns
