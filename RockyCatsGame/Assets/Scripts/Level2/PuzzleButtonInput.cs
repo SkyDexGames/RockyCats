@@ -10,6 +10,12 @@ public class PuzzleButtonInput : MonoBehaviour
     [Tooltip("Duración del feedback visual al presionar el botón")]
     [SerializeField] private float feedbackDuration = 0.3f;
 
+    [Header("Cooldown")]
+    [Tooltip("Tiempo mínimo entre activaciones del mismo botón (evita doble presión)")]
+    [SerializeField] private float cooldownTime = 0.5f;
+
+    private float lastPressTime = -999f;
+
     void Awake()
     {
         if (sequenceManager == null)
@@ -18,6 +24,13 @@ public class PuzzleButtonInput : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // Verificar cooldown
+        if (Time.time - lastPressTime < cooldownTime)
+        {
+            Debug.Log($"[PuzzleButtonInput] Botón {buttonId} en cooldown, ignorando");
+            return;
+        }
+
         // Verificar si es un jugador
         if (other.CompareTag("Player") || other.GetComponent<PlayerController>() != null || other.GetComponent<CharacterController>() != null)
         {
@@ -42,6 +55,9 @@ public class PuzzleButtonInput : MonoBehaviour
         }
 
         Debug.Log($"[PuzzleButtonInput] Botón {buttonId} presionado - Enviando input");
+
+        // Actualizar el tiempo de la última presión
+        lastPressTime = Time.time;
 
         // Activar el cráter correspondiente como feedback visual
         sequenceManager.ActivateCraterFeedback(buttonId, feedbackDuration);

@@ -39,6 +39,16 @@ public class Level2PuzzleStartTrigger : MonoBehaviour
         PhotonView playerPV = other.GetComponent<PhotonView>();
         if (playerPV == null || !playerPV.IsMine) return; // Solo reacciona al jugador local
 
+        // Cambiar la cámara localmente para este jugador usando Level2CameraManager
+        if (Level2CameraManager.Instance != null)
+        {
+            Level2CameraManager.Instance.SwitchToPuzzleCamera();
+        }
+        else
+        {
+            Debug.LogWarning("[Level2PuzzleStartTrigger] Level2CameraManager.Instance es null!");
+        }
+
         if (waitForBothPlayers)
         {
             pv.RPC("RPC_PlayerEntered", RpcTarget.AllBuffered, playerPV.ViewID);
@@ -69,11 +79,8 @@ public class Level2PuzzleStartTrigger : MonoBehaviour
         if (fired) return;
         fired = true;
 
-        // Cambiar a la cámara fija
-        if (virtualCamera != null)
-        {
-            virtualCamera.Priority = cameraActivePriority;
-        }
+        // Ya no necesitamos cambiar la cámara aquí porque se hizo en OnTriggerEnter
+        // Cada cliente ya cambió su cámara localmente usando CameraManager
 
         // Iniciar el puzzle (solo lo hará el Master internamente)
         if (sequenceManager != null)

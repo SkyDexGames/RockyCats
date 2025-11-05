@@ -149,7 +149,7 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
             {
                 // Hubo al menos un error: reiniciar ronda
                 photonView.RPC("RPC_RoundFail", RpcTarget.All, currentRoundIndex);
-                RestartCurrentRound();
+                StartCoroutine(CoRestartAfterFail());
             }
             else
             {
@@ -199,6 +199,18 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
     void RestartCurrentRound()
     {
         StartRound(currentRoundIndex);
+    }
+
+    /// <summary>
+    /// Coroutine que espera 3 segundos después de fallar para que el jugador vea el mensaje
+    /// </summary>
+    private IEnumerator CoRestartAfterFail()
+    {
+        // Esperar 3 segundos para que el jugador vea el mensaje "Fallaste, se reinicia la ronda"
+        yield return new WaitForSeconds(3.0f);
+
+        // Ahora reiniciar la ronda (que incluye los 2 segundos de delay antes del patrón)
+        RestartCurrentRound();
     }
 
     private IEnumerator CoShowSequence(int roundIndex, List<int> sequence)
@@ -293,9 +305,14 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
             l2.OnPuzzleCompleted();
         }
 
-        // Volver a la cámara del jugador: bajar la prioridad de la cámara del puzzle si está asignada
-        if (puzzleCamera != null)
+        // Volver a la cámara del jugador usando Level2CameraManager
+        if (Level2CameraManager.Instance != null)
         {
+            Level2CameraManager.Instance.SwitchToStartCamera();
+        }
+        else if (puzzleCamera != null)
+        {
+            // Fallback: usar el método antiguo si no existe Level2CameraManager
             puzzleCamera.Priority = cameraPriorityAfterPuzzle;
         }
 

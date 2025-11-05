@@ -25,11 +25,7 @@ MonoBehaviour:
     stepInterval: 0.9
   - sequenceLength: 6
     stepInterval: 0.9
-  - sequenceLength: 7
-    stepInterval: 0.9
-  - sequenceLength: 8
-    stepInterval: 0.5
   craterCount: 4
   gasDuration: 0.5
-  delayBeforePattern: 2
+  delayBeforePattern: 3
   randomSeed: 0
