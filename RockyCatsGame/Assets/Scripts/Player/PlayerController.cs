@@ -506,26 +506,39 @@ public class PlayerController : MonoBehaviour
     {
         if (PV.IsMine)
         {
-            // Notifica a todos (incluido yo) que este PhotonView ha muerto
-            PV.RPC(nameof(RPC_OnDeath), RpcTarget.AllBuffered);
+            if (isDead) return;
+            isDead = true;
+
+            controller.enabled = false;
+            transform.position = new Vector3(-999, -999, -999); 
+            currentMovementMode = MovementMode.Halted;
+
+            
+            StartCoroutine(RespawnRoutine());
+            
         }
     }
 
-    [PunRPC]
-    void RPC_OnDeath()
+
+    private IEnumerator RespawnRoutine()
     {
-        if (isDead) return;
-        isDead = true;
+        if (!PV.IsMine) yield break;
+        yield return new WaitForSeconds(2f); // Esperar 5 segundos
 
-        // efectos locales: animación, desactivar controles, collider, etc.
-        var controller = GetComponent<PlayerController>();
-        if (controller != null) controller.enabled = false;
-        var characterController = GetComponent<CharacterController>();
-        if (characterController != null) characterController.enabled = false;
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        Vector3 spawnPos = levelManager.GetSpawnPoint(); 
+        OnRespawn(spawnPos);
+    }
 
-        gameObject.SetActive(false);
+   
+    void OnRespawn(Vector3 pos)
+    {
+        if (!PV.IsMine) return;
+        transform.position = pos;
+        controller.enabled = true;
+        hp = 100;
+        isDead = false;
+        currentMovementMode = MovementMode.Normal;
 
-        // Si quieres borrar el objeto de la sala (todos lo verán desaparecer)
-        // PhotonNetwork.Destroy(gameObject); // usar sólo si el objeto fue instanciado con PhotonNetwork.Instantiate
     }
 }

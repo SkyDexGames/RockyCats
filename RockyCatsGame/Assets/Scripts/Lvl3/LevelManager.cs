@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     public WaveManager waveManager;
     private bool wavedStarted = false;
 
+    public GameObject respawnPoint;
+
     private void Start()
     {
         
@@ -21,10 +23,15 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(waveManager.StartWaves());
         }
     }
-    
+
     private void Update()
     {
-        
+
+    }
+    
+    public Vector3 GetSpawnPoint()
+    {
+        return respawnPoint.transform.position;
     }
 
     
