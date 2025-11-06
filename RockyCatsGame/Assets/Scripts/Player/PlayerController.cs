@@ -510,7 +510,8 @@ public class PlayerController : MonoBehaviour
             isDead = true;
 
             controller.enabled = false;
-            transform.position = new Vector3(-999, -999, -999); 
+            transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
+
             currentMovementMode = MovementMode.Halted;
 
             

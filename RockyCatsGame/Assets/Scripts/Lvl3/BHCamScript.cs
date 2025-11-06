@@ -1,14 +1,15 @@
 using Photon.Pun;
-using Cinemachine;
 using UnityEngine;
+using Cinemachine;
+using System.Collections.Generic;
 
 public class BHCamScript : MonoBehaviourPunCallbacks
 {
     public CinemachineVirtualCamera cameraToSwitchTo;
     public LevelManager levelManager;
 
-    private bool chilliInside = false;
-    private bool gizmoInside = false;
+    // Se guarda solo en el Master quiénes han entrado
+    private HashSet<int> playersInside = new HashSet<int>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,50 +18,37 @@ public class BHCamScript : MonoBehaviourPunCallbacks
         PhotonView playerPhotonView = other.GetComponent<PhotonView>();
         if (playerPhotonView == null) return;
 
-        // Solo el jugador local cambia la cámara
+        // Cambia cámara solo en el jugador local
         if (playerPhotonView.IsMine)
         {
             CameraManager.Instance.SwitchCamera(cameraToSwitchTo);
-
-            // Avisamos al MasterClient que este jugador entró al trigger
-            photonView.RPC("RPC_PlayerEnteredTrigger", RpcTarget.MasterClient, PhotonNetwork.IsMasterClient);
         }
+
+        // Avisamos al MasterClient que este jugador entró
+        photonView.RPC("RPC_PlayerEnteredTrigger", RpcTarget.MasterClient, playerPhotonView.OwnerActorNr);
     }
 
     [PunRPC]
-    private void RPC_PlayerEnteredTrigger(bool isMaster)
+    private void RPC_PlayerEnteredTrigger(int actorNumber)
     {
-        // Este código se ejecuta solo en el MasterClient
-        if (isMaster)
-        {
-            gizmoInside = true;
-            Debug.Log(" Gizmo (Master) entró al trigger");
-        }
-        else
-        {
-            chilliInside = true;
-            Debug.Log("Chilli (Cliente) entró al trigger");
-        }
+        // Si ya estaba registrado, no lo contamos otra vez
+        playersInside.Add(actorNumber);
 
-        // Si ambos están dentro, el Master ejecuta la acción
-        if (gizmoInside && chilliInside)
+        CheckAllPlayersInside();
+    }
+
+    private void CheckAllPlayersInside()
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        int totalPlayers = PhotonNetwork.PlayerList.Length;
+
+        Debug.Log($"Jugadores dentro: {playersInside.Count}/{totalPlayers}");
+
+        if (playersInside.Count == totalPlayers)
         {
-            Debug.Log("Ambos jugadores dentro, lanzando olas...");
+            Debug.Log("Todos los jugadores entraron al trigger. Lanzando waves...");
             levelManager.LaunchWaves();
-
-            // Reiniciamos el estado
-            gizmoInside = false;
-            chilliInside = false;
-
-            // (Opcional) Sincronizamos con todos si quieres que vean el cambio
-            photonView.RPC("RPC_ResetTriggerState", RpcTarget.All);
         }
-    }
-
-    [PunRPC]
-    private void RPC_ResetTriggerState()
-    {
-        gizmoInside = false;
-        chilliInside = false;
     }
 }
