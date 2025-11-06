@@ -111,6 +111,8 @@ public class PlayerController : MonoBehaviour
     //respawn pos
     private Vector3 currentSpawnpoint;
 
+    [SerializeField] private GameObject surfBoard;
+
 
 
     //states for diff game modes (this will be refactored later into abstracts probs)
@@ -466,20 +468,33 @@ public class PlayerController : MonoBehaviour
     Vector3 TransformInputRelativeToCamera(Vector3 input)
     {
         if (input.magnitude < 0.01f) return Vector3.zero;
-        
+
         Camera cam = Camera.main;
         Vector3 camForward = cam.transform.forward;
         Vector3 camRight = cam.transform.right;
-        
+
         camForward.y = 0f;
         camRight.y = 0f;
-        
+
         camForward.Normalize();
         camRight.Normalize();
-        
+
         Vector3 worldInput = camRight * input.x + camForward * input.z;
-        
+
         return worldInput.normalized;
+    }
+
+    public Animator GetCurrentAnimator()
+    {
+        return currentAnimator;
+    }
+    
+    public void SetSurfBoardActive(bool active)
+    {
+        if (surfBoard != null)
+        {
+            surfBoard.SetActive(active);
+        }
     }
 
     void OnDrawGizmos()

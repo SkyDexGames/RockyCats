@@ -484,6 +484,7 @@ MonoBehaviour:
   normalGravity: -10
   surfingGravity: -20
   haltedGravity: -10
+  surfBoard: {fileID: 2858693506305240823}
   currentMovementMode: 0
 --- !u!143 &3369546892682586659
 CharacterController:
@@ -1194,7 +1195,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3235781586728940621}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.0002130632, y: 0.04308867, z: -90.26631}
 --- !u!33 &9117967011582661247
 MeshFilter:
   m_ObjectHideFlags: 0
