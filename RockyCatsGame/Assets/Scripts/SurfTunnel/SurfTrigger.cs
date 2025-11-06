@@ -29,7 +29,6 @@ public class SurfTrigger : MonoBehaviour
 
                     Animator currentAnimator = playerController.GetCurrentAnimator();
                     currentAnimator.SetBool("pullBoard", true);
-                    playerController.SetSurfBoardActive(true);
                     
                     if (pv != null)
                     {

@@ -489,11 +489,11 @@ public class PlayerController : MonoBehaviour
         return currentAnimator;
     }
     
-    public void SetSurfBoardActive(bool active)
+    public void SetSurfBoardActive()
     {
         if (surfBoard != null)
         {
-            surfBoard.SetActive(active);
+            surfBoard.SetActive(true);
         }
     }
 
