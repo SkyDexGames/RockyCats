@@ -9,14 +9,14 @@ public class Level2Manager : MonoBehaviourPun
     public static Level2Manager Instance;
 
     [Header("HUD Elements")]
-    [SerializeField] private HUDElement[] hudElements; // Para reutilizar ShowHUD/HideHUD por nombre
+    [SerializeField] private GameObject roundTextContainer; // Contenedor del texto de rondas (para ocultar/mostrar)
     [SerializeField] private TextMeshProUGUI roundText;
+    [SerializeField] private GameObject statusTextContainer; // Contenedor del texto de status (para ocultar/mostrar)
     [SerializeField] private TextMeshProUGUI statusText;
-    [SerializeField] private string puzzleHUDName = "Level2HUD"; // Contenedor de HUD para este nivel
 
     [Header("Barra de Energía")]
     [SerializeField] private GameObject energyBarContainer; // Contenedor completo de la barra (se oculta/muestra)
-    [SerializeField] private Image energyBarFill; // La imagen que se llenará (debe tener Image Type = Filled)
+    [SerializeField] private Image energyBarFill; 
     [Tooltip("Duración de la animación de llenado de la barra")]
     [SerializeField] private float fillAnimationDuration = 0.5f;
 
@@ -44,37 +44,20 @@ public class Level2Manager : MonoBehaviourPun
         // Inicializar la barra de energía vacía y oculta
         ResetEnergyBar();
 
-        // Ocultar la barra al inicio
+        // Ocultar todos los elementos del HUD al inicio (solo se muestran durante el puzzle)
+        if (roundTextContainer != null)
+        {
+            roundTextContainer.SetActive(false);
+        }
+
+        if (statusTextContainer != null)
+        {
+            statusTextContainer.SetActive(false);
+        }
+
         if (energyBarContainer != null)
         {
             energyBarContainer.SetActive(false);
-        }
-    }
-
-    // API de HUD (similar a Level1Manager para consistencia)
-    public void ShowHUD(string hudName)
-    {
-        if (hudElements == null) return;
-        for (int i = 0; i < hudElements.Length; i++)
-        {
-            if (hudElements[i].hudName == hudName)
-            {
-                hudElements[i].Show();
-                return;
-            }
-        }
-    }
-
-    public void HideHUD(string hudName)
-    {
-        if (hudElements == null) return;
-        for (int i = 0; i < hudElements.Length; i++)
-        {
-            if (hudElements[i].hudName == hudName)
-            {
-                hudElements[i].Hide();
-                return;
-            }
         }
     }
 
@@ -86,10 +69,17 @@ public class Level2Manager : MonoBehaviourPun
 
     public void OnBeginRound(int roundIndex, int length)
     {
-        if (!string.IsNullOrEmpty(puzzleHUDName))
-            ShowHUD(puzzleHUDName);
+        // Mostrar todos los elementos del HUD cuando empieza el puzzle
+        if (roundTextContainer != null)
+        {
+            roundTextContainer.SetActive(true);
+        }
 
-        // Mostrar la barra de energía cuando empieza el puzzle
+        if (statusTextContainer != null)
+        {
+            statusTextContainer.SetActive(true);
+        }
+
         if (energyBarContainer != null)
         {
             energyBarContainer.SetActive(true);
@@ -148,9 +138,26 @@ public class Level2Manager : MonoBehaviourPun
         }
     }
 
-    /// <summary>
+    /// Oculta todos los elementos del HUD del puzzle (Round, Status, Energy Bar)
+    public void HideAllPuzzleHUD()
+    {
+        if (roundTextContainer != null)
+        {
+            roundTextContainer.SetActive(false);
+        }
+
+        if (statusTextContainer != null)
+        {
+            statusTextContainer.SetActive(false);
+        }
+
+        if (energyBarContainer != null)
+        {
+            energyBarContainer.SetActive(false);
+        }
+    }
+
     /// Resetea la barra de energía a 0
-    /// </summary>
     private void ResetEnergyBar()
     {
         currentEnergyFill = 0f;
@@ -160,10 +167,7 @@ public class Level2Manager : MonoBehaviourPun
         }
     }
 
-    /// <summary>
     /// Actualiza la barra de energía basándose en las rondas completadas
-    /// </summary>
-    /// <param name="completedRounds">Número de rondas completadas (1-based)</param>
     private void UpdateEnergyBar(int completedRounds)
     {
         if (energyBarFill == null)
@@ -185,9 +189,7 @@ public class Level2Manager : MonoBehaviourPun
         fillCoroutine = StartCoroutine(AnimateFillBar(targetFill));
     }
 
-    /// <summary>
     /// Anima el llenado de la barra de energía
-    /// </summary>
     private IEnumerator AnimateFillBar(float targetFill)
     {
         float startFill = currentEnergyFill;

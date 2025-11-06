@@ -16,15 +16,11 @@ MonoBehaviour:
   - sequenceLength: 4
     stepInterval: 1.2
   - sequenceLength: 4
-    stepInterval: 1.1
+    stepInterval: 0.9
   - sequenceLength: 4
-    stepInterval: 1
+    stepInterval: 0.8
   - sequenceLength: 4
-    stepInterval: 0.9
-  - sequenceLength: 5
-    stepInterval: 0.9
-  - sequenceLength: 6
-    stepInterval: 0.9
+    stepInterval: 0.7
   craterCount: 4
   gasDuration: 0.5
   delayBeforePattern: 3

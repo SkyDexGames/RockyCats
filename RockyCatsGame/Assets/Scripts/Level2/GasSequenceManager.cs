@@ -14,11 +14,6 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
     [Header("Inicio")]
     [SerializeField] private bool autoStartOnStart = false; // Si true, el Master inicia automáticamente en Start()
 
-    [Header("Cámara (opcional)")]
-    [SerializeField] private CinemachineVirtualCamera puzzleCamera; // Cámara fija del puzzle para bajar prioridad al terminar
-    [SerializeField] private int cameraPriorityAfterPuzzle = 5;
-
-
     private enum PuzzleState { Idle, ShowingSequence, AwaitingInputs, Completed }
     private PuzzleState state = PuzzleState.Idle;
 
@@ -310,21 +305,24 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         {
             Level2CameraManager.Instance.SwitchToStartCamera();
         }
-        else if (puzzleCamera != null)
-        {
-            // Fallback: usar el método antiguo si no existe Level2CameraManager
-            puzzleCamera.Priority = cameraPriorityAfterPuzzle;
-        }
-
-        // Disparar cutscene usando VideoManager del nivel si existe
-        var vm = FindObjectOfType<VideoManager>();
-        if (vm != null && vm.photonView != null)
-        {
-            vm.photonView.RPC("RPC_PlayVideoForAll", RpcTarget.All);
-        }
         else
         {
-            Debug.LogWarning("[GasSequenceManager] No se encontró VideoManager en la escena para reproducir la cutscene.");
+            Debug.LogWarning("[GasSequenceManager] Level2CameraManager.Instance es null!");
+        }
+
+        // Disparar cutscene con shake + look up + video
+        // Solo el Master Client inicia la cutscene (el controller se encarga de sincronizar)
+        if (PhotonNetwork.IsMasterClient)
+        {
+            var cutsceneController = FindObjectOfType<Level2CutsceneController>();
+            if (cutsceneController != null)
+            {
+                cutsceneController.StartCutscene();
+            }
+            else
+            {
+                Debug.LogError("[GasSequenceManager] No se encontró Level2CutsceneController en la escena!");
+            }
         }
     }
 }

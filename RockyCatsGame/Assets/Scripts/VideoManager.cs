@@ -44,10 +44,6 @@ public class VideoManager : MonoBehaviourPun
             {
                 Level1Manager.Instance.ShowHUD("VideoContainer");
             }
-            else if (Level2Manager.Instance != null)
-            {
-                Level2Manager.Instance.ShowHUD("VideoContainer");
-            }
         }
     }
 
