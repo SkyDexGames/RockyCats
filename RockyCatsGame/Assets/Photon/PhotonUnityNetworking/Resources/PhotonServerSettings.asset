@@ -62,6 +62,8 @@ MonoBehaviour:
   - RPC_PlayVideoForAll
   - RPC_ExecuteContainerPattern
   - RPC_ResetTriggerState
+  - RPC_OnDeath
+  - RPC_OnRespawn
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

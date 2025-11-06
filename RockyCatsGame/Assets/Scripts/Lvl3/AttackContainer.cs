@@ -6,7 +6,6 @@ public class AttackContainer : MonoBehaviour
 {
     public RadialShotWeapon weapon;
 
-    public GameObject windBlower;
 
 
     public IEnumerator ExecutePattern(RadialShotPattern pattern)
@@ -15,9 +14,4 @@ public class AttackContainer : MonoBehaviour
     }
 
 
-    public void ShootWind()
-    {
-        windBlower.SetActive(true);
-        return;
-    }
 }

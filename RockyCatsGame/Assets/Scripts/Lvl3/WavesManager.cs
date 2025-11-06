@@ -18,6 +18,8 @@ public class WaveManager : MonoBehaviourPun
     public List<AttackContainer> AttackContainers;
     public List<RadialShotPattern> patternsList;
 
+    public GameObject windBlower;
+
 
 
     private void Awake()
@@ -79,7 +81,7 @@ public class WaveManager : MonoBehaviourPun
         StartCoroutine(container.ExecutePattern(pattern));
 
         if (shootWind)
-            container.ShootWind();
+            windBlower.SetActive(true);
     }
 
 }

@@ -8,11 +8,13 @@ public class LevelManager : MonoBehaviour
     public WaveManager waveManager;
     private bool wavedStarted = false;
 
+    public GameObject respawnPoint;
+
     private void Start()
     {
         
     }
-    
+
     public void LaunchWaves()
     {
         if (PhotonNetwork.IsMasterClient && !wavedStarted)
@@ -20,6 +22,16 @@ public class LevelManager : MonoBehaviour
             wavedStarted = true;
             StartCoroutine(waveManager.StartWaves());
         }
+    }
+
+    private void Update()
+    {
+
+    }
+    
+    public Vector3 GetSpawnPoint()
+    {
+        return respawnPoint.transform.position;
     }
 
     
