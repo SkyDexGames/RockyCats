@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MetamorphicEventHandler : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{   
+    [SerializeField] private GameObject surfBoard;
+    
+    public void SetSurfBoardActive()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        surfBoard.SetActive(true);  
     }
 }

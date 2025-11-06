@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
     //respawn pos
     private Vector3 currentSpawnpoint;
 
-    [SerializeField] private GameObject surfBoard;
 
 
 
@@ -487,14 +486,6 @@ public class PlayerController : MonoBehaviour
     public Animator GetCurrentAnimator()
     {
         return currentAnimator;
-    }
-    
-    public void SetSurfBoardActive()
-    {
-        if (surfBoard != null)
-        {
-            surfBoard.SetActive(true);
-        }
     }
 
     void OnDrawGizmos()
