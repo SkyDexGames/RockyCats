@@ -45,6 +45,10 @@ public class Level2CutsceneController : MonoBehaviourPun
 
     void Awake()
     {
+        if (videoPlayer != null)
+        {
+            videoPlayer.loopPointReached += OnVideoEnd;
+        }
         // Obtener el componente de noise para el shake
         if (cutsceneCamera != null)
         {
@@ -67,12 +71,13 @@ public class Level2CutsceneController : MonoBehaviourPun
             // Asegurar que la cámara empiece con baja prioridad
             cutsceneCamera.Priority = cutsceneCameraInactivePriority;
         }
-
+        /*
         // Asegurar que el video esté oculto al inicio
         if (videoContainer != null)
         {
             videoContainer.SetActive(false);
         }
+        */
     }
 
     /// Inicia la cutscene de finalización (llamado por GasSequenceManager)
@@ -124,7 +129,8 @@ public class Level2CutsceneController : MonoBehaviourPun
         yield return StartCoroutine(LookUpToSky());
 
         // 6. Disparar el video (el shake continúa hasta aquí)
-        PlayVideo();
+        //PlayVideo();
+        photonView.RPC("RPC_PlayVideoForAll", RpcTarget.All);
 
         // 7. Detener el shake cuando empieza el video
         StopShakeImmediately();
@@ -231,6 +237,7 @@ public class Level2CutsceneController : MonoBehaviourPun
         Debug.Log("[Level2CutsceneController] Look up completado");
     }
 
+    /*
     /// Dispara el video pregrabado
     private void PlayVideo()
     {
@@ -259,7 +266,35 @@ public class Level2CutsceneController : MonoBehaviourPun
         videoPlayer.Play();
 
         Debug.Log("[Level2CutsceneController] Video reproduciendo");
+    }*/
+
+    [PunRPC]
+    void RPC_PlayVideoForAll()
+    {
+        if (videoPlayer != null)
+        {
+            videoPlayer.enabled = true;
+            videoPlayer.Play();
+
+            if (Level1Manager.Instance != null)
+            {
+                Level1Manager.Instance.ShowHUD("VideoContainer");
+            }
+        }
     }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        PhotonNetwork.LoadLevel(sceneIndex);
+    }
+
+    
 
     /// Método público para testear la cutscene manualmente
     [ContextMenu("Test Cutscene")]
