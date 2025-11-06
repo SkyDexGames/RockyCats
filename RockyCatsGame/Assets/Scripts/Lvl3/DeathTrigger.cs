@@ -34,7 +34,8 @@ public class DeathTrigger : MonoBehaviourPunCallbacks
         if (playersInside >= totalPlayers)
         {
             // Llama al método de fin de nivel en todos
-            photonView.RPC("EndLevelRPC", RpcTarget.All);
+            //photonView.RPC("EndLevelRPC", RpcTarget.All);
+            return;
         }
     }
 

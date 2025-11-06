@@ -26,8 +26,7 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //Logica de daño 
-        Debug.Log("Bullet hit: " + other.name);
+        
         other.GetComponent<PlayerController>()?.TakeDamage(10);
         Disable();
     }

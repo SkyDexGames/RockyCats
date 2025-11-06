@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     private int maxHp = 100;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
 
 
@@ -504,30 +504,32 @@ public class PlayerController : MonoBehaviour
     }
      void Die()
     {
-        if (PV.IsMine)
-        {
-            if (isDead) return;
-            isDead = true;
+        if (!PV.IsMine) return;
 
-            controller.enabled = false;
-            transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
+        isDead = true;
+        ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+        hash["isDead"] = true;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
-            currentMovementMode = MovementMode.Halted;
+        controller.enabled = false;
+        transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
+        controller.enabled = true;
 
+        currentMovementMode = MovementMode.Halted;
+
+        
+        StartCoroutine(RespawnRoutine());
             
-            StartCoroutine(RespawnRoutine());
-            
-        }
     }
 
 
     private IEnumerator RespawnRoutine()
     {
         if (!PV.IsMine) yield break;
-        yield return new WaitForSeconds(2f); // Esperar 5 segundos
+        yield return new WaitForSeconds(10f); // Esperar 5 segundos
 
-        LevelManager levelManager = FindObjectOfType<LevelManager>();
-        Vector3 spawnPos = levelManager.GetSpawnPoint(); 
+
+        Vector3 spawnPos = LevelManager.Instance.GetSpawnPoint() ;
         OnRespawn(spawnPos);
     }
 
@@ -535,9 +537,10 @@ public class PlayerController : MonoBehaviour
     void OnRespawn(Vector3 pos)
     {
         if (!PV.IsMine) return;
+        hp = 100;
+        controller.enabled = false;
         transform.position = pos;
         controller.enabled = true;
-        hp = 100;
         isDead = false;
         currentMovementMode = MovementMode.Normal;
 

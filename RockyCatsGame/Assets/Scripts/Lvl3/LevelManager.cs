@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 
@@ -14,7 +15,9 @@ public class LevelManager : MonoBehaviour
 
     public GameObject deathPoint;
 
-    public List<PlayerController> alivePlayers;
+    public List<PlayerController> deathPlayers;
+
+
 
     private PhotonView photonView;
 
@@ -32,8 +35,12 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        alivePlayers = new List<PlayerController>();
+        deathPlayers = new List<PlayerController>();
         photonView = GetComponent<PhotonView>();
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(CheckPlayersDeadRoutine());
+
+
     }
 
     public void LaunchWaves()
@@ -68,6 +75,27 @@ public class LevelManager : MonoBehaviour
             photonView.RPC("PauseRPC", RpcTarget.All);
         }
     }
+
+    private IEnumerator CheckPlayersDeadRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            int deadCount = PhotonNetwork.PlayerList.Count(p =>
+                p.CustomProperties.ContainsKey("isDead") &&
+                (bool)p.CustomProperties["isDead"] == true
+            );
+
+            if (deadCount >= PhotonNetwork.PlayerList.Length)
+            {
+                EndLevel(false);
+                yield break;
+            }
+        }
+    }
+        
+    
     
     [PunRPC]
     void PauseRPC()

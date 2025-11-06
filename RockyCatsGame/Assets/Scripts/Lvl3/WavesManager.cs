@@ -73,7 +73,7 @@ public class WaveManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_ExecuteContainerPattern(int containerIndex, int patternIndex, bool shootWind)
     {
-        Debug.Log($"[CLIENT] Ejecutando patrón {patternIndex} en contenedor {containerIndex}");
+        
 
         AttackContainer container = AttackContainers[containerIndex];
         RadialShotPattern pattern = patternsList[patternIndex];
