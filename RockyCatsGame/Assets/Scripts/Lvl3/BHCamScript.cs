@@ -57,5 +57,6 @@ public class BHCamScript : MonoBehaviourPunCallbacks
     private void RPC_ActiveScores()
     {
         HUDManager.Instance.ShowHUD("BHScores");
+        HUDManager.Instance.ShowHUD("Waves");
     }
 }

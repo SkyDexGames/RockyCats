@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI gizmoLifeText;
     public TextMeshProUGUI chiliLifeText;
 
+    public TextMeshProUGUI waveText;
+
     private int gizmoLife = 100;
     private int chiliLife = 100;
 
@@ -44,6 +46,7 @@ public class LevelManager : MonoBehaviour
     {
         deathPlayers = new List<PlayerController>();
         photonView = GetComponent<PhotonView>();
+        UpdateTemperatureDisplays();
         if (PhotonNetwork.IsMasterClient)
             StartCoroutine(CheckPlayersDeadRoutine());
 
@@ -126,7 +129,7 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log($"Temperature updated - Gizmo: {gizmoLife}, Chili: {chiliLife}");
     }
-    
+
     void UpdateTemperatureDisplays()
     {
         if (gizmoLifeText != null)
@@ -139,9 +142,13 @@ public class LevelManager : MonoBehaviour
             chiliLifeText.text = $"Chili's Life: {chiliLife}";
         }
     }
-        
-    
-    
+
+    public void UpdateWaveDisplay(int currentWave)
+    {
+        // Update the wave display UI
+        waveText.text = $"Wave: {currentWave}";
+    }
+
     [PunRPC]
     void PauseRPC()
     {
