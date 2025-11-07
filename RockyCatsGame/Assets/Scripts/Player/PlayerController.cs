@@ -496,6 +496,7 @@ public class PlayerController : MonoBehaviour
         if (!PV.IsMine) return;
 
         hp -= damage;
+        LevelManager.Instance.UpdateMyTemperature(hp);
         if (hp <= 0)
         {
             hp = 0;
@@ -538,6 +539,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!PV.IsMine) return;
         hp = 100;
+        LevelManager.Instance.UpdateMyTemperature(hp);
         controller.enabled = false;
         transform.position = pos;
         controller.enabled = true;

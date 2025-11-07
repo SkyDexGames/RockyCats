@@ -49,6 +49,13 @@ public class BHCamScript : MonoBehaviourPunCallbacks
         {
             Debug.Log("Todos los jugadores entraron al trigger. Lanzando waves...");
             levelManager.LaunchWaves();
+            photonView.RPC("RPC_ActiveScores", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void RPC_ActiveScores()
+    {
+        HUDManager.Instance.ShowHUD("BHScores");
     }
 }

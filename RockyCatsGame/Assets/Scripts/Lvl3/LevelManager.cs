@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class LevelManager : MonoBehaviour
 
 
     private PhotonView photonView;
+
+    public TextMeshProUGUI gizmoLifeText;
+    public TextMeshProUGUI chiliLifeText;
+
+    private int gizmoLife = 100;
+    private int chiliLife = 100;
 
 
     private void Awake()
@@ -92,6 +99,44 @@ public class LevelManager : MonoBehaviour
                 EndLevel(false);
                 yield break;
             }
+        }
+    }
+    public void UpdateMyTemperature(int currentLife)
+    {
+        // Determine if this client is master or not
+        bool isMaster = PhotonNetwork.IsMasterClient;
+        
+        // Send RPC to all clients to update the score
+        photonView.RPC("RPC_UpdateTemperature", RpcTarget.All, isMaster, currentLife);
+    }
+    
+    [PunRPC]
+    void RPC_UpdateTemperature(bool isMasterClient, int currentLife)
+    {
+        if (isMasterClient)
+        {
+            gizmoLife = currentLife;
+        }
+        else
+        {
+            chiliLife = currentLife;
+        }
+        
+        UpdateTemperatureDisplays();
+
+        Debug.Log($"Temperature updated - Gizmo: {gizmoLife}, Chili: {chiliLife}");
+    }
+    
+    void UpdateTemperatureDisplays()
+    {
+        if (gizmoLifeText != null)
+        {
+            gizmoLifeText.text = $"Gizmo's Life: {gizmoLife}";
+        }
+
+        if (chiliLifeText != null)
+        {
+            chiliLifeText.text = $"Chili's Life: {chiliLife}";
         }
     }
         

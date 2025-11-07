@@ -1348,6 +1348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 1813179992}
+  playersInside: 0
 --- !u!65 &887832266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3182,7 +3183,9 @@ MonoBehaviour:
   waveManager: {fileID: 1083757825}
   respawnPoint: {fileID: 1328671982}
   deathPoint: {fileID: 887832264}
-  alivePlayers: []
+  deathPlayers: []
+  gizmoLifeText: {fileID: 2048966958}
+  chiliLifeText: {fileID: 2101978409}
 --- !u!4 &1813179993
 Transform:
   m_ObjectHideFlags: 0
@@ -3310,6 +3313,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2048966958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1596929163694582993, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+  m_PrefabInstance: {fileID: 6257336903186749112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2101978409 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1794279416561431463, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+  m_PrefabInstance: {fileID: 6257336903186749112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2132661244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,9 +3479,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 684082041335185060, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: hudName
+      value: BHScores
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596929163694582993, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_text
+      value: 'Gizmo''s life: 100'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794279416561431463, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_text
+      value: 'Chili''s Life: 100'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633975013643859283, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699609336873212873, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699609336873212873, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699609336873212873, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699609336873212873, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5174223736883740548, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
       propertyPath: m_Name
       value: HUDCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091636428309752302, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091636428309752302, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091636428309752302, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091636428309752302, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8348279510510830958, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
       propertyPath: m_Pivot.x
