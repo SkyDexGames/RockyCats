@@ -201,6 +201,7 @@ MonoBehaviour:
   normalGravity: -10
   surfingGravity: -20
   haltedGravity: -10
+  isDead: 0
   currentMovementMode: 0
 --- !u!143 &3369546892682586659
 CharacterController:

@@ -23,4 +23,11 @@ public class Bullet : MonoBehaviour
         _lifeTime = 0f;
         gameObject.SetActive(false);
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        
+        other.GetComponent<PlayerController>()?.TakeDamage(10);
+        Disable();
+    }
 }

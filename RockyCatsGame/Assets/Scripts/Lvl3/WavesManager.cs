@@ -18,6 +18,8 @@ public class WaveManager : MonoBehaviourPun
     public List<AttackContainer> AttackContainers;
     public List<RadialShotPattern> patternsList;
 
+    public GameObject windBlower;
+
 
 
     private void Awake()
@@ -46,6 +48,7 @@ public class WaveManager : MonoBehaviourPun
             yield break;
         }
         CurrentWave++;
+        photonView.RPC("UpdateWave", RpcTarget.All, CurrentWave);
         Debug.Log($"Starting Wave {CurrentWave}");
 
         int numberOfContainers = CurrentWave * 2;  // Por ejemplo, más contenedores en cada wave
@@ -71,7 +74,7 @@ public class WaveManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_ExecuteContainerPattern(int containerIndex, int patternIndex, bool shootWind)
     {
-        Debug.Log($"[CLIENT] Ejecutando patrón {patternIndex} en contenedor {containerIndex}");
+
 
         AttackContainer container = AttackContainers[containerIndex];
         RadialShotPattern pattern = patternsList[patternIndex];
@@ -79,7 +82,13 @@ public class WaveManager : MonoBehaviourPun
         StartCoroutine(container.ExecutePattern(pattern));
 
         if (shootWind)
-            container.ShootWind();
+            windBlower.SetActive(true);
+    }
+
+    [PunRPC]
+    private void UpdateWave(int currentWave)
+    {
+        LevelManager.Instance.UpdateWaveDisplay(currentWave);
     }
 
 }

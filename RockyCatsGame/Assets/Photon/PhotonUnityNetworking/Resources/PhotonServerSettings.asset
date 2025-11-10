@@ -76,6 +76,12 @@ MonoBehaviour:
   - RPC_SubmitInput
   - RPC_StartCutscene
   - RPC_PlayVideo
+  - RPC_OnDeath
+  - RPC_OnRespawn
+  - EndLevelRPC
+  - PauseRPC
+  - RPC_ActiveScores
+  - UpdateWave
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

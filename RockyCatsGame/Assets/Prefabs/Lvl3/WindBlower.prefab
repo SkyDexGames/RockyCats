@@ -48,8 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windDuration: 5
   localWindDirection: {x: 0, y: 0, z: 1}
-  windForce: 5
-  windRadius: 5
   windTriggerZone: {fileID: 612007230113316874}
   windTriggerScript: {fileID: 0}
 --- !u!1 &612007230113316874
@@ -104,8 +102,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.2805352, y: 2.0553656, z: 16.241499}
-  m_Center: {x: 0.91642874, y: 0.52768236, z: 12.012829}
+  m_Size: {x: 14.632758, y: 2.0553656, z: 16.241499}
+  m_Center: {x: 0.8218173, y: 0.52768236, z: 12.012829}
 --- !u!114 &7882828898675956014
 MonoBehaviour:
   m_ObjectHideFlags: 0
