@@ -83,6 +83,7 @@ public class AirBooster : MonoBehaviour
         }
     }
 
+
     private void OnTriggerStay(Collider other)
     {
         if (!active || currentHeight < 0.2f) return;

@@ -11,7 +11,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     public static RoomManager Instance;
     void Awake()
     {
-        if(Instance)
+        if (Instance)
         {
             Destroy(gameObject);
             return;
@@ -34,14 +34,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        if(scene.buildIndex > 1 )
+        if (scene.buildIndex > 1)
         {
-            /*PhotonPrefabs must be in the resources folder bc unity automatically excludes any file
-            not referenced in the editor from the final build, and we don't reference PhotonPrefabs, we use strings.
-            */
-
+            // PhotonPrefabs must be in the Resources folder because Unity excludes non-referenced assets from builds
             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
-
         }
     }
 }
