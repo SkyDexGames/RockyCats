@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2693204007118941633}
   - component: {fileID: 5341742681963223575}
+  - component: {fileID: 3307627668385649197}
   m_Layer: 0
   m_Name: waterdrop
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2104336057274668229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -46,6 +47,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocity: {x: 0, y: 0, z: 0}
+--- !u!136 &3307627668385649197
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104336057274668229}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3085908
+  m_Height: 0.6171816
+  m_Direction: 1
+  m_Center: {x: -0.008613795, y: -0.05526945, z: 0.029725194}
 --- !u!1 &8919318800696403501
 GameObject:
   m_ObjectHideFlags: 0

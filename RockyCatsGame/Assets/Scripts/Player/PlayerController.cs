@@ -111,6 +111,12 @@ public class PlayerController : MonoBehaviour
     //respawn pos
     private Vector3 currentSpawnpoint;
 
+    private int hp;
+
+    private int maxHp = 100;
+
+    private bool isDead = false;
+
 
 
 
@@ -126,6 +132,7 @@ public class PlayerController : MonoBehaviour
         PV = GetComponent<PhotonView>();
         phaseManager = GetComponent<PhaseManager>();
         currentGravity = normalGravity;
+        hp = maxHp;
     }
 
     void Update()
@@ -491,18 +498,69 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!Application.isPlaying || controller == null) return;
-        
+
         if (useBoxGroundCheck)
         {
             Vector3 boxCenter = transform.position + Vector3.up * (groundCheckDistance / 2);
             Vector3 boxSize = new Vector3(
-                controller.radius * 1.8f, 
-                groundCheckDistance, 
+                controller.radius * 1.8f,
+                groundCheckDistance,
                 controller.radius * 1.8f
             );
-            
+
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireCube(boxCenter, boxSize);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (!PV.IsMine) return;
+
+        hp -= damage;
+        if (hp <= 0)
+        {
+            hp = 0;
+            Die();
+        }
+    }
+     void Die()
+    {
+        if (PV.IsMine)
+        {
+            if (isDead) return;
+            isDead = true;
+
+            controller.enabled = false;
+            transform.position = new Vector3(-999, -999, -999); 
+            currentMovementMode = MovementMode.Halted;
+
+            
+            StartCoroutine(RespawnRoutine());
+            
+        }
+    }
+
+
+    private IEnumerator RespawnRoutine()
+    {
+        if (!PV.IsMine) yield break;
+        yield return new WaitForSeconds(2f); // Esperar 5 segundos
+
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        Vector3 spawnPos = levelManager.GetSpawnPoint(); 
+        OnRespawn(spawnPos);
+    }
+
+   
+    void OnRespawn(Vector3 pos)
+    {
+        if (!PV.IsMine) return;
+        transform.position = pos;
+        controller.enabled = true;
+        hp = 100;
+        isDead = false;
+        currentMovementMode = MovementMode.Normal;
+
     }
 }
