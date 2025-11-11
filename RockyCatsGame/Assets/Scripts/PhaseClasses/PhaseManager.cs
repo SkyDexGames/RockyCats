@@ -20,6 +20,10 @@ public class PhaseManager : MonoBehaviour
     private PlayerController playerController;
     private int currentPhaseIndex = 0;
 
+    [SerializeField] private GameObject[] characterModels;
+    [SerializeField] private Animator[] characterAnimators;
+    private Animator currentAnimator;
+
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -69,9 +73,27 @@ public class PhaseManager : MonoBehaviour
         }
 
         UpdatePlayerMaterial();
+        UpdateCharacterModel();
+    }
+
+    void UpdateCharacterModel()
+    {
+        foreach (var model in characterModels)
+            model.SetActive(false);
+        
+        if (characterModels.Length > currentPhaseIndex)
+            characterModels[currentPhaseIndex].SetActive(true);
+
+            if (characterAnimators.Length > currentPhaseIndex)
+            {
+                currentAnimator = characterAnimators[currentPhaseIndex];
+                
+                playerController.SetCurrentAnimator(currentAnimator);
+            }
 
     }
 
+    //this func will get nuked later
     void UpdatePlayerMaterial()
     {
         if (playerMeshRenderer == null) return;

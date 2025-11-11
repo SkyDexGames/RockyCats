@@ -26,6 +26,9 @@ public class SurfTrigger : MonoBehaviour
                 if (playerController != null)
                 {
                     playerController.SetToHalted();
+
+                    Animator currentAnimator = playerController.GetCurrentAnimator();
+                    currentAnimator.SetBool("pullBoard", true);
                     
                     if (pv != null)
                     {
