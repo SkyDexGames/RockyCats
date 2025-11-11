@@ -6,10 +6,14 @@ public class MetamorphicEventHandler : MonoBehaviour
 {   
     [SerializeField] private GameObject surfBoard;
     [SerializeField] private Animator animator;
-    
+
     public void SetSurfBoardActive()
     {
         surfBoard.SetActive(true);
+    }
+    public void AdjustYPos()
+    {
+        
     }
     
     public void SetOllieTrue()

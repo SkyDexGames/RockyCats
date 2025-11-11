@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     //gravity settings
     [SerializeField] private float normalGravity = -10f;
-    [SerializeField] private float surfingGravity = -20f;
+    [SerializeField] private float surfingGravity = -10f;
     [SerializeField] private float haltedGravity = -10f;
     private float currentGravity;
 
