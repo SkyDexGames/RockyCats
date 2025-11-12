@@ -25,7 +25,7 @@ public class SectionTrigger : MonoBehaviour
                     int gizmoTemp = Level1Manager.Instance.GetGizmoTemperature();
                     int chiliTemp = Level1Manager.Instance.GetChiliTemperature();
                     
-                    shouldStopSpawning = (gizmoTemp >= 900 && chiliTemp >= 900);
+                    shouldStopSpawning = ((gizmoTemp >= 900 && chiliTemp >= 900)||(gizmoTemp >= 900 && chiliTemp ==0));
                     
                     Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}, Stop Spawning: {shouldStopSpawning}");
                 }
