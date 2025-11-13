@@ -537,9 +537,6 @@ public class PlayerController : MonoBehaviour
         hash["isDead"] = true;
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
-        controller.enabled = false;
-        //transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
-        controller.enabled = true;
 
         currentMovementMode = MovementMode.Halted;
         currentAnimator.SetTrigger("Die");
@@ -552,7 +549,13 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RespawnRoutine()
     {
         if (!PV.IsMine) yield break;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
+
+        controller.enabled = false;
+        transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
+        controller.enabled = true;
+
+        yield return new WaitForSeconds(5f);
 
         Vector3 spawnPos = LevelManager.Instance.GetSpawnPoint() ;
         OnRespawn(spawnPos);
