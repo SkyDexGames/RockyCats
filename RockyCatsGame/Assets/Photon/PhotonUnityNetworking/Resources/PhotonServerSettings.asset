@@ -82,6 +82,7 @@ MonoBehaviour:
   - PauseRPC
   - RPC_ActiveScores
   - UpdateWave
+  - RPC_StartSurfingWithDelay
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

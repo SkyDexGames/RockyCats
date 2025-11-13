@@ -5,50 +5,6 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
-    /*
-    PlayerController should manage:
-    1. Player movement
-    2. Colliders
-    3. Graphics
-    
-    Basically the client sided stuff
-    */
-    /*OTHER NOTES
-    ------------------------------------
-    ORIENTACION DEL MODELO
-
-    si hay problemas de orientacion con los fbx del player, revisar linea
-    targetRotation *= Quaternion.Euler(0, 180, 0);
-    en HandleRotation
-
-    puse un offset de 180 porque las orientaciones del modelo se estaban comportando raro y a pesar de intentar
-    con diferentes orientaciones tanto en el unity como desde el blender, el modelo seguia mirando para atras o tenia offsets
-    que la vdd no tengo ni idea de donde vienen
-
-    ------------------------------------
-    CHARACTER CONTROLLER OVER RIGIDBODY
-
-    Estamos usando character controller en vez de rigidbody para el movimiento porque es 
-    simplemente mejor en muchos sentidos, da mas modularidad, es mejor para multiplayer y se siente mas crisp, clean, y responsivo.
-    
-    El rigidbody es mas floaty y se siente muy raro para platformers.
-    
-    Nomas fue cuestion de agregar las funciones de gravedad, etc.
-    ------------------------------------
-    SEPARACION DE CONTROLLER Y FBX
-
-    En teoria podriamos juntar el controller en un solo prefab, pero lo dejaremos separado, pues al menos este FBX no es la version final,
-    y prefiero encapsular reponsabilidades (logica y animaciones)
-    
-
-    --------------
-    REFACTOR DEL MOVIMIENTO
-
-    ANTES el input era indicacion directa de movimiento y eso daba problemas al aplicar fuerzas externas, como lo son el caso del wall jump
-
-    AHORA el input solo indica direccion y la velocidad se maneja aparte, esto nos da chance de aplicar efectos al movimiento sin que el input este sobreescribiendo todo cada frame.
-    */
-    //movement settings
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 1000; //rotate almost instantly, we can tweak this in the future if we need it
     [SerializeField] private float groundAcceleration = 50f; //que tan rapido aceleras
@@ -118,8 +74,6 @@ public class PlayerController : MonoBehaviour
     public bool isDead = false;
 
 
-
-
     //states for diff game modes (this will be refactored later into abstracts probs)
 
     public enum MovementMode { Normal, Surfing, Halted }
@@ -137,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!PV.IsMine) return;
+        if (!PV.IsMine) return;
 
         CaptureInput();
         HandleJumpInput();

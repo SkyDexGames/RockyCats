@@ -55,16 +55,38 @@ public class SurfTrigger : MonoBehaviour
         if (playersInTrigger.Count >= PhotonNetwork.PlayerList.Length)
         {
             triggered = true;
-            StartSurfingMode();
+            //StartSurfingMode();
+            if (pv != null)
+            {
+                pv.RPC("RPC_StartSurfingWithDelay", RpcTarget.All);
+            }
         }
     }
 
+    [PunRPC]
+    void RPC_StartSurfingWithDelay()
+    {
+        StartCoroutine(StartSurfingAfterDelay());
+    }
+
+
+    IEnumerator StartSurfingAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        StartSurfingMode();
+    }
+    
     void StartSurfingMode()
     {
         Level1Manager.Instance.ShowHUD("SurfScores");
-        if (pv != null)
+
+        PlayerController[] allPlayers = FindObjectsOfType<PlayerController>();
+        foreach (PlayerController player in allPlayers)
         {
-            pv.RPC("RPC_SetAllPlayersSurfing", RpcTarget.All);
+            if (player.GetComponent<PhotonView>().IsMine)
+            {
+                player.SetToSurfing();
+            }
         }
         
         if (firstPlatform != null)
@@ -82,13 +104,6 @@ public class SurfTrigger : MonoBehaviour
     [PunRPC]
     void RPC_SetAllPlayersSurfing()
     {
-        PlayerController[] allPlayers = FindObjectsOfType<PlayerController>();
-        foreach (PlayerController player in allPlayers)
-        {
-            if (player.GetComponent<PhotonView>().IsMine)
-            {
-                player.SetToSurfing();
-            }
-        }
+        
     }
 }
