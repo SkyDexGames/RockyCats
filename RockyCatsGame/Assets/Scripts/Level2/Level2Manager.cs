@@ -3,6 +3,7 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using Photon.Realtime;
 
 public class Level2Manager : MonoBehaviourPun
 {
@@ -25,6 +26,8 @@ public class Level2Manager : MonoBehaviourPun
 
     private float currentEnergyFill = 0f; // Valor actual de la barra (0 a 1)
     private Coroutine fillCoroutine;
+
+    private APIRequests apiRequests;
 
     void Awake()
     {
@@ -117,9 +120,32 @@ public class Level2Manager : MonoBehaviourPun
     public void OnPuzzleCompleted()
     {
         SetStatus("Puzzle completado");
+        Debug.Log("[Level2Manager] Puzzle completado!");
+        Debug.Log($"[Level2Manager] {PlayerPrefs.GetString("PlayerUsername", "N/A")}");
 
         // Asegurar que la barra esté completamente llena
         UpdateEnergyBar(totalRounds);
+        if (PhotonNetwork.IsMasterClient && PlayerPrefs.HasKey("PlayerUsername"))
+        {
+            if (PlayerPrefs.GetInt("PlayerLevels") < 2)
+            {
+                Debug.Log("[Level2Manager] Actualizando niveles del jugador en el servidor...");
+                apiRequests = new APIRequests();
+                string username = PlayerPrefs.GetString("PlayerUsername");
+                StartCoroutine(apiRequests.UpdatePlayerLevels(username, 2,
+                    onSuccess: () =>
+                    {
+                        Debug.Log("Niveles del jugador actualizados correctamente.");
+                        PlayerPrefs.SetInt("PlayerLevels", 2);
+                    },
+                    onError: (error) =>
+                    {
+                        Debug.LogError("Error al actualizar niveles del jugador: " + error);
+                    }
+                ));
+            }
+        }
+        
     }
 
     private void SetStatus(string text)

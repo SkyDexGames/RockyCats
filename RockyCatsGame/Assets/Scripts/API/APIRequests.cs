@@ -5,7 +5,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class APIRequests 
+public class APIRequests
 {
     private string serverUrl = "http://localhost:3000/api";
 
@@ -134,16 +134,57 @@ public class APIRequests
                     Debug.LogError("Error al parsear respuesta: " + ex.Message);
                     onError?.Invoke("Error al parsear respuesta: " + ex.Message);
                 }
-                
+
             }
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public IEnumerator UpdatePlayerLevels(string username, int levels, System.Action onSuccess, System.Action<string> onError)
     {
+        string url = $"{serverUrl}/players/UpdateLevels/{username}";
+        LevelUpdateRequest levelUpdate = new LevelUpdateRequest { levels = levels, username = username };
+        string json = JsonUtility.ToJson(levelUpdate);
+
+        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+        {
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(json);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError ||
+                request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Error al actualizar nivel: {request.error}");
+                onError?.Invoke(request.error);
+            }
+            else
+            {
+                Debug.Log($"Respuesta del servidor: {request.downloadHandler.text}");
+
+                try
+                {
+                    // Si la API devuelve { message, player }
+                    var responseWrapper = JsonUtility.FromJson<ResponseWrapper>(request.downloadHandler.text);
+                    Debug.Log($"Jugador actualizado: {responseWrapper.player.username}");
+                    onSuccess?.Invoke();
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning($"Error al parsear JSON de respuesta: {ex.Message}");
+                    onError?.Invoke("Error al parsear respuesta del servidor.");
+                }
+            }
+        }
 
     }
+
 }
+
+
+
+
+
 
