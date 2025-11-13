@@ -377,11 +377,14 @@ public class PlayerController : MonoBehaviour
 
         bool isSurfing = currentMovementMode == MovementMode.Surfing;
 
-        currentAnimator.SetBool("IsGrounded", isGrounded);
-        currentAnimator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
-        currentAnimator.SetFloat("VerticalVelocity", verticalVelocity);
-        currentAnimator.SetBool("IsDashing", isDashing);
-        currentAnimator.SetBool("isSurfing", isSurfing);
+        if (!isDead)
+        {
+            currentAnimator.SetBool("IsGrounded", isGrounded);
+            currentAnimator.SetFloat("MoveSpeed", horizontalVelocity.magnitude);
+            currentAnimator.SetFloat("VerticalVelocity", verticalVelocity);
+            currentAnimator.SetBool("IsDashing", isDashing);
+            currentAnimator.SetBool("isSurfing", isSurfing);
+        }
     }
 
     //spawns
@@ -515,19 +518,19 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!PV.IsMine) return;
-
-        hp -= damage;
+        if (!PV.IsMine || isDead) return;
+        
+        hp = Mathf.Max(0, hp - damage);
         LevelManager.Instance.UpdateMyTemperature(hp);
         if (hp <= 0)
         {
-            hp = 0;
+            
             Die();
         }
     }
-     void Die()
+    void Die()
     {
-        if (!PV.IsMine) return;
+        if (!PV.IsMine || isDead) return;
 
         isDead = true;
         ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
@@ -535,11 +538,11 @@ public class PlayerController : MonoBehaviour
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
         controller.enabled = false;
-        transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
+        //transform.position = LevelManager.Instance.GetDeathPoint() + new Vector3(0, 3, 0);
         controller.enabled = true;
 
         currentMovementMode = MovementMode.Halted;
-
+        currentAnimator.SetTrigger("Die");
         
         StartCoroutine(RespawnRoutine());
             
@@ -549,8 +552,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator RespawnRoutine()
     {
         if (!PV.IsMine) yield break;
-        yield return new WaitForSeconds(10f); // Esperar 5 segundos
-
+        yield return new WaitForSeconds(10f);
 
         Vector3 spawnPos = LevelManager.Instance.GetSpawnPoint() ;
         OnRespawn(spawnPos);

@@ -106,10 +106,7 @@ public class LevelManager : MonoBehaviour
     }
     public void UpdateMyTemperature(int currentLife)
     {
-        // Determine if this client is master or not
         bool isMaster = PhotonNetwork.IsMasterClient;
-        
-        // Send RPC to all clients to update the score
         photonView.RPC("RPC_UpdateTemperature", RpcTarget.All, isMaster, currentLife);
     }
     
@@ -152,7 +149,7 @@ public class LevelManager : MonoBehaviour
     [PunRPC]
     void PauseRPC()
     {
-        Time.timeScale = 0f; 
+        //Time.timeScale = 0f; 
     }
 
     
