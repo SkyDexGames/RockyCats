@@ -3321,6 +3321,7 @@ MonoBehaviour:
   gizmoLifeText: {fileID: 2048966958}
   chiliLifeText: {fileID: 2101978409}
   waveText: {fileID: 1498318200}
+  videoPlayer: {fileID: 6257336903186749114}
 --- !u!4 &1813179993
 Transform:
   m_ObjectHideFlags: 0
@@ -3815,6 +3816,11 @@ PrefabInstance:
 --- !u!224 &6257336903186749113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6937417918485453200, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+  m_PrefabInstance: {fileID: 6257336903186749112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!328 &6257336903186749114 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 825524732715370482, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
   m_PrefabInstance: {fileID: 6257336903186749112}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using UnityEngine.Video;
 
 public class LevelManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class LevelManager : MonoBehaviour
 
     private int gizmoLife = 100;
     private int chiliLife = 100;
+
+    public VideoPlayer videoPlayer;
 
 
     private void Awake()
@@ -152,7 +155,17 @@ public class LevelManager : MonoBehaviour
     [PunRPC]
     void PauseRPC()
     {
-        Time.timeScale = 0f; 
+        if (videoPlayer != null)
+        {
+            videoPlayer.enabled = true;
+            videoPlayer.Play();
+
+            if (HUDManager.Instance != null)
+            {
+                HUDManager.Instance.HideAllHUDs();
+                HUDManager.Instance.ShowHUD("VideoContainer");
+            }
+        }
     }
 
     
