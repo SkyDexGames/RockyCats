@@ -38,6 +38,7 @@ public class VideoManager : MonoBehaviourPun
                     StartCoroutine(apiRequests.UpdatePlayerLevels(username, 1,
                         onSuccess: () => {
                             Debug.Log("Niveles del jugador actualizados correctamente.");
+                            PlayerPrefs.SetInt("PlayerLevels", 1);
                         },
                         onError: (error) => {
                             Debug.LogError("Error al actualizar niveles del jugador: " + error);

@@ -136,6 +136,7 @@ public class Level2Manager : MonoBehaviourPun
                     onSuccess: () =>
                     {
                         Debug.Log("Niveles del jugador actualizados correctamente.");
+                        PlayerPrefs.SetInt("PlayerLevels", 2);
                     },
                     onError: (error) =>
                     {
