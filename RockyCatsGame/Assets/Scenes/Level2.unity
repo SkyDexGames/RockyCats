@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 51489223}
   - component: {fileID: 51489222}
   - component: {fileID: 51489221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,6 +448,10 @@ PrefabInstance:
     - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Name
       value: PuzzleButtonInput (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7151200973738954772, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Size.y
@@ -1362,6 +1366,10 @@ PrefabInstance:
     - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Name
       value: PuzzleButtonInput (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7151200973738954772, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Size.y
@@ -2541,7 +2549,7 @@ GameObject:
   - component: {fileID: 867396846}
   - component: {fileID: 867396845}
   - component: {fileID: 867396844}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3088,7 +3096,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -6010,6 +6018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleButtonInput
       objectReference: {fileID: 0}
+    - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7151200973738954772, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Size.y
       value: 1.5471792
@@ -6204,6 +6216,10 @@ PrefabInstance:
     - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Name
       value: PuzzleButtonInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464426111178725665, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7151200973738954772, guid: 6b37aac051f62f54e9b6d4b86b223340, type: 3}
       propertyPath: m_Size.y

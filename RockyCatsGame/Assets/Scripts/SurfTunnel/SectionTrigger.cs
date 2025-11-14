@@ -15,24 +15,19 @@ public class SectionTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PhotonView playerPhotonView = other.GetComponent<PhotonView>();
-            if (playerPhotonView != null && playerPhotonView.IsMine)
+            if (playerPhotonView.IsMine)
             {
                 hasTriggered = true;
                 
-                bool shouldStopSpawning = false;
-                if (Level1Manager.Instance != null)
-                {
-                    int gizmoTemp = Level1Manager.Instance.GetGizmoTemperature();
-                    int chiliTemp = Level1Manager.Instance.GetChiliTemperature();
+                int gizmoTemp = Level1Manager.Instance.GetGizmoTemperature();
+                int chiliTemp = Level1Manager.Instance.GetChiliTemperature();
                     
-                    shouldStopSpawning = (gizmoTemp >= 900 && chiliTemp >= 900);
-                    
-                    Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}, Stop Spawning: {shouldStopSpawning}");
-                }
+            
+                //Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}");
                 
-                if (shouldStopSpawning)
+                if ((gizmoTemp >= 900 && chiliTemp >= 900) || (gizmoTemp >= 900 && chiliTemp >= 0))
                 {
-                    Debug.Log("Both players reached 900! Stopping section spawning.");
+                    Debug.Log("End scores met, ending...");
                     return;
                 }
                 

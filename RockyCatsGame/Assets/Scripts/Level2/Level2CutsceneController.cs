@@ -73,6 +73,7 @@ public class Level2CutsceneController : MonoBehaviourPun
         {
             videoContainer.SetActive(false);
         }
+        videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     /// Inicia la cutscene de finalización (llamado por GasSequenceManager)
@@ -132,12 +133,10 @@ public class Level2CutsceneController : MonoBehaviourPun
         Debug.Log("[Level2CutsceneController] Cutscene completada, video iniciado");
     }
 
-    /// Oculta el HUD del puzzle (stats, rondas, barra de energía)
     private void HideHUD()
     {
         if (Level2Manager.Instance != null)
         {
-            // Ocultar todos los elementos del HUD del puzzle (Round, Status, Energy Bar)
             Level2Manager.Instance.HideAllPuzzleHUD();
             Debug.Log("[Level2CutsceneController] HUD del puzzle completamente ocultado");
         }
@@ -147,7 +146,6 @@ public class Level2CutsceneController : MonoBehaviourPun
         }
     }
 
-    /// Activa la cámara de cutscene
     private void ActivateCutsceneCamera()
     {
         if (cutsceneCamera == null)
@@ -156,12 +154,10 @@ public class Level2CutsceneController : MonoBehaviourPun
             return;
         }
 
-        // Cambiar a la cámara de cutscene
         cutsceneCamera.Priority = cutsceneCameraPriority;
         Debug.Log("[Level2CutsceneController] Cámara de cutscene activada");
     }
 
-    /// Hace shake de la cámara (temblor) - se mantiene activo hasta que se llame a StopShake()
     private IEnumerator ShakeCamera()
     {
         if (noiseComponent == null)
@@ -273,6 +269,17 @@ public class Level2CutsceneController : MonoBehaviourPun
         {
             Debug.LogWarning("[Level2CutsceneController] Solo se puede testear en Play Mode");
         }
+    }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        PhotonNetwork.LoadLevel(sceneIndex);
     }
 }
 
