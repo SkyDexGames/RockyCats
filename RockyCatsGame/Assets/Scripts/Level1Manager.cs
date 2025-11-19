@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class Level1Manager : MonoBehaviourPun
 {
@@ -10,9 +11,10 @@ public class Level1Manager : MonoBehaviourPun
     
     private int gizmoTemperature = 0;
     private int chiliTemperature = 0;
+
+    public Image gizmosTempBar;
+    public Image chilisTempBar;
     
-    public TextMeshProUGUI gizmoTempText;
-    public TextMeshProUGUI chiliTempText;
 
     [SerializeField] private HUDElement[] hudElements;
     private bool isPaused = false;
@@ -165,14 +167,15 @@ public class Level1Manager : MonoBehaviourPun
     
     void UpdateTemperatureDisplays()
     {
-        if (gizmoTempText != null)
+        if (gizmosTempBar != null)
         {
-            gizmoTempText.text = $"Gizmo's Temperature: {gizmoTemperature}°";
+            gizmosTempBar.fillAmount = gizmoTemperature / 900f;
+
         }
         
-        if (chiliTempText != null)
+        if (chilisTempBar != null)
         {
-            chiliTempText.text = $"Chili's Temperature: {chiliTemperature}°";
+            chilisTempBar.fillAmount = chiliTemperature / 900f;
         }
     }
     
