@@ -47,6 +47,7 @@ exports.updatePlayerLevels = async (req, res) => {
 
     res.json({ message: "Niveles del jugador actualizados", player });
   } catch (err) {
+    console.error("Error al actualizar niveles del jugador:", err.message);
     res.status(500).json({ message: "Error al actualizar niveles del jugador", error: err.message });
   }
 };

@@ -159,7 +159,7 @@ public class LevelManager : MonoBehaviour
     public void UpdateWaveDisplay(int currentWave)
     {
         // Update the wave display UI
-        waveText.text = $"Wave: {currentWave}";
+        waveText.text = $"wave: {currentWave}";
     }
 
     [PunRPC]

@@ -151,6 +151,7 @@ public class APIRequests
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
+            request.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString("auth_token"));
 
             yield return request.SendWebRequest();
 
