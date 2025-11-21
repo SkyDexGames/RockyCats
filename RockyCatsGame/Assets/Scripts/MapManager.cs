@@ -85,26 +85,12 @@ public class MapManager : MonoBehaviourPunCallbacks
         
         if (PhotonNetwork.InRoom)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                photonView.RPC("RPC_ForceLeaveRoom", RpcTarget.All);
-            }
-            else
-            {
-                //esto puede generar edge cases medio raros hay que checarlo
-                PhotonNetwork.LeaveRoom();
-            }
+            PhotonNetwork.LeaveRoom();
         }
         else
         {
             PhotonNetwork.Disconnect();
         }
-    }
-
-    [PunRPC]
-    void RPC_ForceLeaveRoom()
-    {
-        PhotonNetwork.LeaveRoom();
     }
 
     public override void OnLeftRoom()

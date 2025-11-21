@@ -24,8 +24,9 @@ public class SectionTrigger : MonoBehaviour
             
                 //Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}");
                 
-                if ((gizmoTemp >= 900 && chiliTemp >= 900) || (gizmoTemp >= 900 && chiliTemp >= 0))
+                if ((gizmoTemp >= 900 && chiliTemp >= 900) || (gizmoTemp >= 900 && chiliTemp == 0))
                 {
+                    //ambos scores mayores a 900 o uno en cero y otro en 900 pal singleplayer
                     Debug.Log("End scores met, ending...");
                     return;
                 }

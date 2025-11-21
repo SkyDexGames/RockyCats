@@ -102,7 +102,7 @@ public class SurfTunnelManager : MonoBehaviour
         {
             transform.position += new Vector3(0, 0, -20) * Time.deltaTime;
         }
-        Debug.Log($"Current Seed: {seed}");
+        //Debug.Log($"Current Seed: {seed}");
     }
 
     void OnTriggerEnter(Collider other)

@@ -60,6 +60,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             return;
         }
+        
         PhotonNetwork.CreateRoom(roomNameInputField.text);
         MenuManager.Instance.OpenMenu("Loading");
     }
