@@ -141,8 +141,9 @@ public class PhaseManager : MonoBehaviour
             SwitchToPhase(2);
         }
         
-        // Input para habilidad E
-        if (Input.GetKeyDown(KeyCode.E) && currentPhase != null)
+        bool abilityPressed = Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton2);
+        
+        if (abilityPressed && currentPhase != null)
         {
             currentPhase.HandleAbility();
         }
