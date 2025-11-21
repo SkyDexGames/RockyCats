@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class APIRequests
 {
-    private string serverUrl = "http://localhost:3000/api";
+    private string serverUrl = "https://rockycatsapi.onrender.com/api";
 
     public IEnumerator GetPlayerByUsername(string username)
     {
