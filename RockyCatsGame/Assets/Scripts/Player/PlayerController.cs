@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     //jump settings
     [SerializeField] private float jumpForce = 5f;
 
+    //some input settings
+    [SerializeField] private bool useController = true;
+    [SerializeField] private float controllerDeadzone = 0.2f;
+
     //input keys
     [SerializeField] private KeyCode moveLeft = KeyCode.A;
     [SerializeField] private KeyCode moveRight = KeyCode.D;
@@ -132,13 +136,32 @@ public class PlayerController : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
         
-        if (Input.GetKey(moveLeft)) horizontal -= 1f;
-        if (Input.GetKey(moveRight)) horizontal += 1f;
-
-        if(currentMovementMode != MovementMode.Surfing)
+        if (useController)
         {
-            if (Input.GetKey(moveBackward)) vertical -= 1f;
-            if (Input.GetKey(moveForward)) vertical += 1f;
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+
+            if (Mathf.Abs(horizontal) < controllerDeadzone) horizontal = 0f;
+            if (Mathf.Abs(vertical) < controllerDeadzone) vertical = 0f;
+        }
+
+        if (Mathf.Abs(horizontal) < 0.01f && Mathf.Abs(vertical) < 0.01f)
+        {
+            if (Input.GetKey(moveLeft)) horizontal -= 1f;
+            if (Input.GetKey(moveRight)) horizontal += 1f;
+
+            if (currentMovementMode != MovementMode.Surfing)
+            {
+                if (Input.GetKey(moveBackward)) vertical -= 1f;
+                if (Input.GetKey(moveForward)) vertical += 1f;
+            }
+        }
+        else
+        {
+            if (currentMovementMode == MovementMode.Surfing)
+            {
+                vertical = 0f;
+            }
         }
         Vector3 rawInput = new Vector3(horizontal, 0f, vertical);
         inputDirection = TransformInputRelativeToCamera(rawInput);
@@ -285,7 +308,10 @@ public class PlayerController : MonoBehaviour
 
         if (currentMovementMode == MovementMode.Halted) return;
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        bool jumpPressed = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Space) ||Input.GetKeyDown(KeyCode.JoystickButton0);
+
+
+        if(jumpPressed && isGrounded)
         {
             Jump();
         }

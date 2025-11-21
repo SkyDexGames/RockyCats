@@ -694,6 +694,8 @@ MonoBehaviour:
   groundDeceleration: 30
   airAcceleration: 20
   jumpForce: 5
+  useController: 1
+  controllerDeadzone: 0.2
   moveLeft: 97
   moveRight: 100
   moveForward: 119
