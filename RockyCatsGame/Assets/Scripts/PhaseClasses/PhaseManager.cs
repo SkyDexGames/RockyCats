@@ -39,8 +39,14 @@ public class PhaseManager : MonoBehaviour
             phase.gameObject.SetActive(false);
         }
         
-        //por lo pronto setteamos magma como default, luego cambiamos esto
-        SwitchToPhase(0);
+        int sceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        int phaseIndex = 0;
+        
+        if (sceneIndex == 2) phaseIndex = 2;
+        else if (sceneIndex == 3) phaseIndex = 1; 
+        else if (sceneIndex == 4) phaseIndex = 0;
+        
+        SwitchToPhase(phaseIndex);
     }
 
     public void SwitchToPhase(int phaseIndex)
