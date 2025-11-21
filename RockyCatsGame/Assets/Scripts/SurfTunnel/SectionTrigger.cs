@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class SectionTrigger : MonoBehaviour
 {
-    private static int sectionSeedCounter = 1000;
     private bool hasTriggered = false;
 
     void OnTriggerEnter(Collider other)
@@ -39,13 +38,14 @@ public class SectionTrigger : MonoBehaviour
                     GameObject newSection = Instantiate(roadSection, granny);
                     newSection.transform.localPosition = new Vector3(-80, 0.7f, 180);
 
-                    SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                    //SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                    /*
                     if (manager != null)
                     {
                         manager.SetSeed(sectionSeedCounter);
-                    }
+                    }*/
 
-                    sectionSeedCounter += 100;
+                   // sectionSeedCounter += 100;
                 }
                 else
                 {

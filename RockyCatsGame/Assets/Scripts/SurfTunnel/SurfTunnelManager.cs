@@ -24,9 +24,14 @@ public class SurfTunnelManager : MonoBehaviour
     private bool canMove = false;
     private int randomSeed;
 
+    private static int seedCounter = 1000;
+    private int mySeed;
 
     void Start()
     {
+        mySeed = seedCounter;
+        seedCounter++;
+
         if (spawnsObstacles)
         {
             SpawnObstacles();
@@ -39,10 +44,11 @@ public class SurfTunnelManager : MonoBehaviour
         
     }
 
+    /*
     public void SetSeed(int seed)
     {
         randomSeed = seed;
-    }
+    }*/
 
     void Update()
     {
