@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SurfTunnelManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class SurfTunnelManager : MonoBehaviour
     public int gridLength = 5;
     public float cellSize = 2f;
 
-    //offsets
     public float startXOffset = 0f;
     public float startYOffset = 0f;
     public float startZOffset = 0f;
@@ -22,11 +22,45 @@ public class SurfTunnelManager : MonoBehaviour
     [Range(0f, 1f)] public float spawnChance = 0.3f;
 
     private bool canMove = false;
-    private int randomSeed;
+    private int seed;
 
+    private static int baseSeed = -1;
+    private static int seedCounter = 0;
 
     void Start()
     {
+        if (isFirstPlatform && baseSeed == -1)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                baseSeed = Random.Range(0, 1000000);
+                
+                ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable
+                {
+                    { "BaseSeed", baseSeed }
+                };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+            }
+            else
+            {
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BaseSeed"))
+                {
+                    baseSeed = (int)PhotonNetwork.CurrentRoom.CustomProperties["BaseSeed"];
+                }
+                else
+                {
+                    Debug.LogWarning("BaseSeed not found in room properties! Waiting...");
+                    StartCoroutine(WaitForBaseSeed());
+                    return;
+                }
+            }
+            
+            seedCounter = 0;
+        }
+        
+        seed = baseSeed + seedCounter;
+        seedCounter++;
+
         if (spawnsObstacles)
         {
             SpawnObstacles();
@@ -36,12 +70,30 @@ public class SurfTunnelManager : MonoBehaviour
         {
             canMove = true;
         }
-        
     }
 
-    public void SetSeed(int seed)
+    IEnumerator WaitForBaseSeed()
     {
-        randomSeed = seed;
+        while (!PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BaseSeed"))
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        baseSeed = (int)PhotonNetwork.CurrentRoom.CustomProperties["BaseSeed"];
+        seedCounter = 0;
+        
+        seed = baseSeed + seedCounter;
+        seedCounter++;
+
+        if (spawnsObstacles)
+        {
+            SpawnObstacles();
+        }
+
+        if (!isFirstPlatform)
+        {
+            canMove = true;
+        }
     }
 
     void Update()
@@ -50,6 +102,7 @@ public class SurfTunnelManager : MonoBehaviour
         {
             transform.position += new Vector3(0, 0, -20) * Time.deltaTime;
         }
+        //Debug.Log($"Current Seed: {seed}");
     }
 
     void OnTriggerEnter(Collider other)
@@ -69,7 +122,7 @@ public class SurfTunnelManager : MonoBehaviour
     {
         if (!spawnsObstacles) return;
 
-        System.Random random = new System.Random(randomSeed);
+        System.Random random = new System.Random(seed);
 
         for (int row = 0; row < gridLength; row++)
         {
@@ -95,7 +148,6 @@ public class SurfTunnelManager : MonoBehaviour
         return transform.position + new Vector3(xPos, yPos, zPos);
     }
 
-
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
@@ -108,5 +160,4 @@ public class SurfTunnelManager : MonoBehaviour
             }
         }
     }
-    
 }

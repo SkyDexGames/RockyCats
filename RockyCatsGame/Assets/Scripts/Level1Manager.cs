@@ -136,6 +136,14 @@ public class Level1Manager : MonoBehaviourPun
         //Time.timeScale = 1f;
         //set player mode to normal
     }
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
 
     public void UpdateMyTemperature(int tempChange)
     {

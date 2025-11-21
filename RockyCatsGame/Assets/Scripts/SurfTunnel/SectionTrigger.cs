@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class SectionTrigger : MonoBehaviour
 {
-    private static int sectionSeedCounter = 1000;
     private bool hasTriggered = false;
 
     void OnTriggerEnter(Collider other)
@@ -25,8 +24,9 @@ public class SectionTrigger : MonoBehaviour
             
                 //Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}");
                 
-                if ((gizmoTemp >= 900 && chiliTemp >= 900) || (gizmoTemp >= 900 && chiliTemp >= 0))
+                if ((gizmoTemp >= 900 && chiliTemp >= 900) || (gizmoTemp >= 900 && chiliTemp == 0))
                 {
+                    //ambos scores mayores a 900 o uno en cero y otro en 900 pal singleplayer
                     Debug.Log("End scores met, ending...");
                     return;
                 }
@@ -39,13 +39,14 @@ public class SectionTrigger : MonoBehaviour
                     GameObject newSection = Instantiate(roadSection, granny);
                     newSection.transform.localPosition = new Vector3(-80, 0.7f, 180);
 
-                    SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                    //SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                    /*
                     if (manager != null)
                     {
                         manager.SetSeed(sectionSeedCounter);
-                    }
+                    }*/
 
-                    sectionSeedCounter += 100;
+                   // sectionSeedCounter += 100;
                 }
                 else
                 {

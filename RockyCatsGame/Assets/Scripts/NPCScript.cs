@@ -10,7 +10,6 @@ using Unity.VisualScripting;
 public class NPCScript : MonoBehaviour
 {
     public enum NPCType { };
-
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public GameObject contButton;
@@ -19,6 +18,13 @@ public class NPCScript : MonoBehaviour
     public float wordSpeed;
     public bool playerIsClose;
     private PlayerController playerController;
+    private Collider currentPlayerCollider;
+    private Quaternion originalRotation;
+
+    void Start()
+    {
+        originalRotation = transform.rotation;
+    }
 
     void Update()
     {
@@ -26,6 +32,11 @@ public class NPCScript : MonoBehaviour
         {
             if (!dialoguePanel.activeInHierarchy)
             {
+                PlayerController currentPlayer = FindCurrentPlayer();
+                playerController = currentPlayer;
+
+                TurnTowardsPlayer();
+
                 playerController.SetToHalted();
                 index = 0;
                 dialogueText.text = "";
@@ -38,6 +49,41 @@ public class NPCScript : MonoBehaviour
         if (dialogueText.text == dialogue[index])
         {
             contButton.SetActive(true);
+        }
+    }
+
+    private PlayerController FindCurrentPlayer()
+    {
+        if (currentPlayerCollider != null)
+        {
+            PlayerController pc = currentPlayerCollider.GetComponent<PlayerController>();
+            if (pc != null)
+            {
+                PhotonView playerPhotonView = currentPlayerCollider.GetComponent<PhotonView>();
+                if (playerPhotonView != null && playerPhotonView.IsMine)
+                {
+                    return pc;
+                }
+            }
+        }
+        return null;
+    }
+
+    private void TurnTowardsPlayer()
+    {
+        if (playerController != null)
+        {
+            Transform playerTransform = playerController.transform;
+            
+            Vector3 directionToPlayer = playerTransform.position - transform.position;
+            directionToPlayer.y = 0;
+            
+            if (directionToPlayer != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                
+                transform.rotation = targetRotation;
+            }
         }
     }
 
@@ -90,6 +136,7 @@ public class NPCScript : MonoBehaviour
                 {
                     playerIsClose = true;
                     playerController = pc;
+                    currentPlayerCollider = other;
                 }
             }
         }
@@ -104,11 +151,14 @@ public class NPCScript : MonoBehaviour
             {
                 playerIsClose = false;
                 zeroText();
+
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 
                 if (playerController != null)
                 {
                     playerController.SetToNormal();
                     playerController = null;
+                    currentPlayerCollider = null;
                 }
             }
         }
