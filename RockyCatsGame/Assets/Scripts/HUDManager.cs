@@ -129,6 +129,10 @@ public class HUDManager : MonoBehaviour
         //Time.timeScale = 1f;
         //set player mode to normal
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
 
 }
