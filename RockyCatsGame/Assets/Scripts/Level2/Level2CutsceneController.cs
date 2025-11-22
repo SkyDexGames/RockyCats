@@ -40,6 +40,27 @@ public class Level2CutsceneController : MonoBehaviourPun
     [Tooltip("Prioridad de la cámara de cutscene cuando está inactiva")]
     [SerializeField] private int cutsceneCameraInactivePriority = 5;
 
+     [Header("Explosions")]
+    [Tooltip("Prefab del objeto 'explotion' que contiene los 4 Particle Systems")]
+    [SerializeField] private GameObject explosionPrefab;
+
+    [Tooltip("Puntos en el escenario donde quieres que haya explosiones")]
+    [SerializeField] private Transform[] explosionPoints;
+
+    [Tooltip("Tiempo entre una explosión y la siguiente")]
+    [SerializeField] private float delayBetweenExplosions = 0.3f;
+
+        [Header("Smoke")]
+    [Tooltip("Prefab del humo que quieres spawnear (SmokeParticls)")]
+    [SerializeField] private GameObject smokePrefab;
+
+    [Tooltip("Puntos en el escenario donde quieres que haya humo")]
+    [SerializeField] private Transform[] smokePoints;
+
+    [Tooltip("Tiempo entre un humo y el siguiente")]
+    [SerializeField] private float delayBetweenSmokes = 0.4f;
+
+
     private CinemachineBasicMultiChannelPerlin noiseComponent;
     private bool cutscenePlaying = false;
 
@@ -120,6 +141,12 @@ public class Level2CutsceneController : MonoBehaviourPun
 
         // 4. Iniciar el shake (no esperamos a que termine)
         StartCoroutine(ShakeCamera());
+
+        // 4.5. Empezar las explosiones del entorno en paralelo
+        StartCoroutine(SpawnExplosionsRoutine());
+
+        // 4.6. Empezar el humo en paralelo (en puntos diferentes)
+        StartCoroutine(SpawnSmokeRoutine());
 
         // 5. Mover la cámara hacia el cielo (mientras sigue temblando)
         yield return StartCoroutine(LookUpToSky());
@@ -281,5 +308,55 @@ public class Level2CutsceneController : MonoBehaviourPun
     {
         PhotonNetwork.LoadLevel(sceneIndex);
     }
+
+    /// Hace múltiples explosiones en el escenario durante la cutscene.
+    private IEnumerator SpawnExplosionsRoutine()
+    {
+        if (explosionPrefab == null || explosionPoints == null || explosionPoints.Length == 0)
+        {
+            Debug.LogWarning("[Level2CutsceneController] No hay explosionPrefab o explosionPoints configurados");
+            yield break;
+        }
+
+        Debug.Log("[Level2CutsceneController] Iniciando explosiones del entorno...");
+
+        foreach (var point in explosionPoints)
+        {
+            if (point == null) continue;
+
+            // Si quieres que se vea en todos los clientes exactamente igual:
+            // PhotonNetwork.Instantiate(explosionPrefab.name, point.position, point.rotation);
+            // (asegúrate que el prefab esté en Resources y registrado en Photon)
+
+            // Si solo es efecto visual local (más simple):
+            Instantiate(explosionPrefab, point.position, point.rotation);
+
+            yield return new WaitForSeconds(delayBetweenExplosions);
+        }
+    }
+
+    /// Hace aparecer humo en puntos distintos al de las explosiones.
+    private IEnumerator SpawnSmokeRoutine()
+    {
+        if (smokePrefab == null || smokePoints == null || smokePoints.Length == 0)
+        {
+            Debug.LogWarning("[Level2CutsceneController] No hay smokePrefab o smokePoints configurados");
+            yield break;
+        }
+
+        Debug.Log("[Level2CutsceneController] Iniciando humo del entorno...");
+
+        foreach (var point in smokePoints)
+        {
+            if (point == null) continue;
+
+            // Instancia local del humo
+            Instantiate(smokePrefab, point.position, point.rotation);
+
+            yield return new WaitForSeconds(delayBetweenSmokes);
+        }
+    }
+
+
 }
 
