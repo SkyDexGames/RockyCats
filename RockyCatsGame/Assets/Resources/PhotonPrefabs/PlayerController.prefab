@@ -440,7 +440,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 536338c149a3ea444b233a61dee08f95, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -888,13 +888,14 @@ GameObject:
   - component: {fileID: 8211752806013776316}
   - component: {fileID: 6939570847426044211}
   - component: {fileID: 8702857300062870560}
+  - component: {fileID: 2811276901152277948}
   m_Layer: 0
   m_Name: MetamorphicCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1234650067162905195
 Transform:
   m_ObjectHideFlags: 0
@@ -1006,6 +1007,34 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2811276901152277948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903205275445780689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452c0d4251ba8344a992bbc274da48ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyParts:
+  - {fileID: 321251923766366502}
+  - {fileID: 3051370561206475372}
+  - {fileID: 8943818833276461092}
+  - {fileID: 47020444880013984}
+  - {fileID: 4626053076506579161}
+  - {fileID: 8543768006402774372}
+  - {fileID: 8887738120217580981}
+  nonMasterMaterials:
+  - {fileID: 2100000, guid: 9493a9e515ae44d4faf6fd25c41f9b15, type: 2}
+  - {fileID: 2100000, guid: 57f301946687ce948930d2437d575a11, type: 2}
+  - {fileID: 2100000, guid: 98b69c29c67d7074880f9fbc95f2e271, type: 2}
+  - {fileID: 2100000, guid: 98b69c29c67d7074880f9fbc95f2e271, type: 2}
+  - {fileID: 2100000, guid: ea3ed08d56cc08e4ab02d23c6ebe3535, type: 2}
+  - {fileID: 2100000, guid: ea3ed08d56cc08e4ab02d23c6ebe3535, type: 2}
+  - {fileID: 2100000, guid: 30d166a46eae8964aad9f24f3f28dcd5, type: 2}
 --- !u!1 &2066665588659729238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,13 +3084,14 @@ GameObject:
   - component: {fileID: 1856919026966603375}
   - component: {fileID: 4969165341102454305}
   - component: {fileID: 8879972892379406362}
+  - component: {fileID: 1084408659476514409}
   m_Layer: 0
   m_Name: MagmaCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1148699772714982376
 Transform:
   m_ObjectHideFlags: 0
@@ -3158,6 +3188,34 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1084408659476514409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683200568437652065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452c0d4251ba8344a992bbc274da48ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyParts:
+  - {fileID: 8322575483809310521}
+  - {fileID: 907912933004829587}
+  - {fileID: 4891759112522366622}
+  - {fileID: 2165432782410231202}
+  - {fileID: 280490386599127300}
+  - {fileID: 2224971245051718674}
+  - {fileID: 4252142488034678813}
+  nonMasterMaterials:
+  - {fileID: 2100000, guid: 3aac10eb14c01e348bdf48c97c52fdb0, type: 2}
+  - {fileID: 2100000, guid: bc3602ff7a7b5b740a99aa209cef097a, type: 2}
+  - {fileID: 2100000, guid: a7cbf0515607e4548b2c8e3d115b5948, type: 2}
+  - {fileID: 2100000, guid: a7cbf0515607e4548b2c8e3d115b5948, type: 2}
+  - {fileID: 2100000, guid: 07b9493fea604624e86d70c047520792, type: 2}
+  - {fileID: 2100000, guid: 07b9493fea604624e86d70c047520792, type: 2}
+  - {fileID: 2100000, guid: 11184e57a955df74bb4e327e734a0a1d, type: 2}
 --- !u!1 &7864422391234621627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3469,6 +3527,7 @@ GameObject:
   - component: {fileID: 3925289365112661984}
   - component: {fileID: 8560923871969838664}
   - component: {fileID: 933590463055413028}
+  - component: {fileID: 1399602780559883590}
   m_Layer: 0
   m_Name: IgneousCat
   m_TagString: Untagged
@@ -3572,6 +3631,34 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1399602780559883590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8440079191597515044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452c0d4251ba8344a992bbc274da48ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyParts:
+  - {fileID: 1678782312887320353}
+  - {fileID: 3996383262393678816}
+  - {fileID: 1705952944464589314}
+  - {fileID: 5896079957328524803}
+  - {fileID: 5828536540210634625}
+  - {fileID: 5111818498607052013}
+  - {fileID: 3410484583934654619}
+  nonMasterMaterials:
+  - {fileID: 2100000, guid: 7a38b2cd38cee48419fbf39025b287c9, type: 2}
+  - {fileID: 2100000, guid: 640186c21552f134c984f261cc3e9313, type: 2}
+  - {fileID: 2100000, guid: 325388032b97928478add0bf92c7308e, type: 2}
+  - {fileID: 2100000, guid: 325388032b97928478add0bf92c7308e, type: 2}
+  - {fileID: 2100000, guid: 188ac7ff4e850f543bdeaadd613dbe6c, type: 2}
+  - {fileID: 2100000, guid: 188ac7ff4e850f543bdeaadd613dbe6c, type: 2}
+  - {fileID: 2100000, guid: 32d85a0e80b6a0340956d7f53cc39937, type: 2}
 --- !u!1 &8565347011798217710
 GameObject:
   m_ObjectHideFlags: 0
