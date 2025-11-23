@@ -28,6 +28,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connecting to Master");
         PhotonNetwork.ConnectUsingSettings();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
     }
 
     public override void OnConnectedToMaster()
@@ -48,7 +51,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("Joined Lobby");
         Debug.Log($"In Lobby: {PhotonNetwork.InLobby}");
 
-        PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
+        // PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
 
     }
     public void CreateRoom()
@@ -57,6 +60,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             return;
         }
+        
         PhotonNetwork.CreateRoom(roomNameInputField.text);
         MenuManager.Instance.OpenMenu("Loading");
     }
@@ -72,7 +76,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log($"Max Players: {PhotonNetwork.CurrentRoom.MaxPlayers}");
 
         //El nickname del jugador es el username guardado en PlayerPrefs
-        PhotonNetwork.NickName = PlayerPrefs.GetString("PlayerUsername", "Guest");
+        PhotonNetwork.NickName = PlayerPrefs.GetString("PlayerUsername", "Guest"+ Random.Range(0, 1000).ToString("0000"));
 
         MenuManager.Instance.OpenMenu("Room");
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;

@@ -54,8 +54,17 @@ public class CreateUser : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        usernameInput.text = "";
+        passwordInput.text = "";
+        emailInput.text = "";
+        if (feedbackText != null)
+            feedbackText.text = "";
     }
 }

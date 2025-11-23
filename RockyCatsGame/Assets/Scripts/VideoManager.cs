@@ -2,10 +2,13 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using Photon.Realtime;
 
 public class VideoManager : MonoBehaviourPun
 {
     public VideoPlayer videoPlayer;
+
+    private APIRequests apiRequests;
 
     void Start()
     {
@@ -24,6 +27,25 @@ public class VideoManager : MonoBehaviourPun
     {
         if (other.CompareTag("Player"))
         {
+            if (PhotonNetwork.IsMasterClient && PlayerPrefs.HasKey("PlayerUsername"))
+            {
+                if(PlayerPrefs.GetInt("PlayerLevels") < 1)
+                {
+                    
+                    Debug.Log("[Level2Manager] Actualizando niveles del jugador en el servidor...");
+                    apiRequests = new APIRequests();
+                    string username = PlayerPrefs.GetString("PlayerUsername");
+                    StartCoroutine(apiRequests.UpdatePlayerLevels(username, 1,
+                        onSuccess: () => {
+                            Debug.Log("Niveles del jugador actualizados correctamente.");
+                            PlayerPrefs.SetInt("PlayerLevels", 1);
+                        },
+                        onError: (error) => {
+                            Debug.LogError("Error al actualizar niveles del jugador: " + error);
+                        }
+                    ));
+                }
+            }
             PhotonView playerPhotonView = other.GetComponent<PhotonView>();
             if (playerPhotonView != null && playerPhotonView.IsMine)
             {

@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class SectionTrigger : MonoBehaviour
 {
-    private static int sectionSeedCounter = 1000;
     private bool hasTriggered = false;
 
     void OnTriggerEnter(Collider other)
@@ -15,24 +14,20 @@ public class SectionTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PhotonView playerPhotonView = other.GetComponent<PhotonView>();
-            if (playerPhotonView != null && playerPhotonView.IsMine)
+            if (playerPhotonView.IsMine)
             {
                 hasTriggered = true;
                 
-                bool shouldStopSpawning = false;
-                if (Level1Manager.Instance != null)
-                {
-                    int gizmoTemp = Level1Manager.Instance.GetGizmoTemperature();
-                    int chiliTemp = Level1Manager.Instance.GetChiliTemperature();
+                int gizmoTemp = Level1Manager.Instance.GetGizmoTemperature();
+                int chiliTemp = Level1Manager.Instance.GetChiliTemperature();
                     
-                    shouldStopSpawning = (gizmoTemp >= 900 && chiliTemp >= 900);
-                    
-                    Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}, Stop Spawning: {shouldStopSpawning}");
-                }
+            
+                //Debug.Log($"Checking temperatures - Gizmo: {gizmoTemp}, Chili: {chiliTemp}");
                 
-                if (shouldStopSpawning)
+                if ((gizmoTemp >= 900 && chiliTemp >= 900) || (gizmoTemp >= 900 && chiliTemp == 0))
                 {
-                    Debug.Log("Both players reached 900! Stopping section spawning.");
+                    //ambos scores mayores a 900 o uno en cero y otro en 900 pal singleplayer
+                    Debug.Log("End scores met, ending...");
                     return;
                 }
                 
@@ -44,13 +39,14 @@ public class SectionTrigger : MonoBehaviour
                     GameObject newSection = Instantiate(roadSection, granny);
                     newSection.transform.localPosition = new Vector3(-80, 0.7f, 180);
 
-                    SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                    //SurfTunnelManager manager = newSection.GetComponent<SurfTunnelManager>();
+                    /*
                     if (manager != null)
                     {
                         manager.SetSeed(sectionSeedCounter);
-                    }
+                    }*/
 
-                    sectionSeedCounter += 100;
+                   // sectionSeedCounter += 100;
                 }
                 else
                 {

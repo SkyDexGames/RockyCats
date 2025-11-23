@@ -30,3 +30,24 @@ exports.getPlayerByUsername = async (req, res) => {
     res.status(500).json({ message: "Error al obtener jugador", error: err.message });
   }
 };
+
+
+exports.updatePlayerLevels = async (req, res) => {
+  try {
+    const { username } = req.params;
+    const { levels } = req.body;
+
+    const player = await Player.findOne({ username });
+    if (!player) {
+      return res.status(404).json({ message: "Jugador no encontrado" });
+    }
+
+    player.levels = levels;
+    await player.save();
+
+    res.json({ message: "Niveles del jugador actualizados", player });
+  } catch (err) {
+    console.error("Error al actualizar niveles del jugador:", err.message);
+    res.status(500).json({ message: "Error al actualizar niveles del jugador", error: err.message });
+  }
+};

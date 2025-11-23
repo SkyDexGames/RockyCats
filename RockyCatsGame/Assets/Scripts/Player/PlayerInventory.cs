@@ -17,21 +17,21 @@ public class PlayerInventory : MonoBehaviour
 
     public Button ButtonOpen; // Asignar en el Inspector el botón del Canvas que abre el inventario
 
-    private void Awake()
-    {
-        photonView = GetComponent<PhotonView>();
+    // private void Awake()
+    // {
+    //     photonView = GetComponent<PhotonView>();
 
-        if (photonView.IsMine)
-        {
-            ui = FindObjectOfType<InventoryUI>();
-            ButtonOpen = ui.GetComponentInChildren<Button>();
-            if (ButtonOpen != null)
-            {
-                ButtonOpen.onClick.AddListener(OpenInventory);
-            }
+    //     if (photonView.IsMine)
+    //     {
+    //         ui = FindObjectOfType<InventoryUI>();
+    //         ButtonOpen = ui.GetComponentInChildren<Button>();
+    //         if (ButtonOpen != null)
+    //         {
+    //             ButtonOpen.onClick.AddListener(OpenInventory);
+    //         }
             
-        }
-    }
+    //     }
+    // }
 
     public void AddResource(Pickup.PickupType type, int amount)
     {

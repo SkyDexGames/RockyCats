@@ -31,7 +31,8 @@ public class MapManager : MonoBehaviourPunCallbacks
         
         for (int i=0; i<levelButtons.Length; i++)
         {
-            if (i <= PlayerPrefs.GetInt("PlayerLevels", 1))
+            //CAMBIAR EL TRES DESPUES
+            if (i <= PlayerPrefs.GetInt("PlayerLevels", 3))
             {
                 levelButtons[i].interactable = true;
             }
@@ -84,26 +85,12 @@ public class MapManager : MonoBehaviourPunCallbacks
         
         if (PhotonNetwork.InRoom)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                photonView.RPC("RPC_ForceLeaveRoom", RpcTarget.All);
-            }
-            else
-            {
-                //esto puede generar edge cases medio raros hay que checarlo
-                PhotonNetwork.LeaveRoom();
-            }
+            PhotonNetwork.LeaveRoom();
         }
         else
         {
             PhotonNetwork.Disconnect();
         }
-    }
-
-    [PunRPC]
-    void RPC_ForceLeaveRoom()
-    {
-        PhotonNetwork.LeaveRoom();
     }
 
     public override void OnLeftRoom()

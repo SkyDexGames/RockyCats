@@ -60,6 +60,31 @@ MonoBehaviour:
   - RPC_UpdateTemperature
   - RPC_LoadScene
   - RPC_PlayVideoForAll
+  - RPC_ExecuteContainerPattern
+  - RPC_ResetTriggerState
+  - RPC_BeginInput
+  - RPC_BeginPuzzle
+  - RPC_BeginRound
+  - RPC_EmitCrater
+  - RPC_InputFeedback
+  - RPC_PlayerEntered
+  - RPC_PuzzleCompleted
+  - RPC_RequestStartPuzzle
+  - RPC_RoundFail
+  - RPC_RoundSuccess
+  - RPC_SetSeed
+  - RPC_SubmitInput
+  - RPC_StartCutscene
+  - RPC_PlayVideo
+  - RPC_OnDeath
+  - RPC_OnRespawn
+  - EndLevelRPC
+  - PauseRPC
+  - RPC_ActiveScores
+  - UpdateWave
+  - RPC_StartSurfingWithDelay
+  - RPC_ForceLeave
+  - RPC_RetextureLimbs
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

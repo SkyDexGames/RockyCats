@@ -20,6 +20,10 @@ public class PhaseManager : MonoBehaviour
     private PlayerController playerController;
     private int currentPhaseIndex = 0;
 
+    [SerializeField] private GameObject[] characterModels;
+    [SerializeField] private Animator[] characterAnimators;
+    private Animator currentAnimator;
+
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -35,8 +39,14 @@ public class PhaseManager : MonoBehaviour
             phase.gameObject.SetActive(false);
         }
         
-        //por lo pronto setteamos magma como default, luego cambiamos esto
-        SwitchToPhase(0);
+        int sceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        int phaseIndex = 0;
+        
+        if (sceneIndex == 2) phaseIndex = 2;
+        else if (sceneIndex == 3) phaseIndex = 0; 
+        else if (sceneIndex == 4) phaseIndex = 1;
+        
+        SwitchToPhase(phaseIndex);
     }
 
     public void SwitchToPhase(int phaseIndex)
@@ -69,9 +79,27 @@ public class PhaseManager : MonoBehaviour
         }
 
         UpdatePlayerMaterial();
+        UpdateCharacterModel();
+    }
+
+    void UpdateCharacterModel()
+    {
+        foreach (var model in characterModels)
+            model.SetActive(false);
+        
+        if (characterModels.Length > currentPhaseIndex)
+            characterModels[currentPhaseIndex].SetActive(true);
+
+            if (characterAnimators.Length > currentPhaseIndex)
+            {
+                currentAnimator = characterAnimators[currentPhaseIndex];
+                
+                playerController.SetCurrentAnimator(currentAnimator);
+            }
 
     }
 
+    //this func will get nuked later
     void UpdatePlayerMaterial()
     {
         if (playerMeshRenderer == null) return;
@@ -99,7 +127,7 @@ public class PhaseManager : MonoBehaviour
     void Update()
     {
         if (!photonView.IsMine) return;
-        // Input para cambiar fases (ejemplo)
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             SwitchToPhase(0);
@@ -111,10 +139,11 @@ public class PhaseManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchToPhase(2);
-        }
+        }*/
         
-        // Input para habilidad E
-        if (Input.GetKeyDown(KeyCode.E) && currentPhase != null)
+        bool abilityPressed = Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton2);
+        
+        if (abilityPressed && currentPhase != null)
         {
             currentPhase.HandleAbility();
         }
