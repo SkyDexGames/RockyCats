@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac87e84982470744b78d153ac505829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10.45
+  moveSpeed: 10
   rotationSpeed: 1000
   groundAcceleration: 50
   groundDeceleration: 30
@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ba932573b6dea4cacb464901dd25b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedOverride: 5
+  moveSpeedOverride: 10
   jumpForceOverride: 5
   rotationSpeedOverride: 1000
   wallSlideMaxFallSpeed: -0.5
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604a603e2b6b23547919948c655bfe2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedOverride: 7
+  moveSpeedOverride: 10
   jumpForceOverride: 5
   rotationSpeedOverride: 1000
   dashForce: 15

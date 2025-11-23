@@ -43,8 +43,8 @@ public class PhaseManager : MonoBehaviour
         int phaseIndex = 0;
         
         if (sceneIndex == 2) phaseIndex = 2;
-        else if (sceneIndex == 3) phaseIndex = 1; 
-        else if (sceneIndex == 4) phaseIndex = 0;
+        else if (sceneIndex == 3) phaseIndex = 0; 
+        else if (sceneIndex == 4) phaseIndex = 1;
         
         SwitchToPhase(phaseIndex);
     }
@@ -127,7 +127,7 @@ public class PhaseManager : MonoBehaviour
     void Update()
     {
         if (!photonView.IsMine) return;
-        // Input para cambiar fases (ejemplo)
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             SwitchToPhase(0);
@@ -139,7 +139,7 @@ public class PhaseManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchToPhase(2);
-        }
+        }*/
         
         bool abilityPressed = Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton2);
         
