@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class APIRequests
 {
-    private string serverUrl = "http://localhost:3000/api";
+    private string serverUrl = "https://rockycatsapi.onrender.com/api";
 
     public IEnumerator GetPlayerByUsername(string username)
     {
@@ -151,6 +151,7 @@ public class APIRequests
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
+            request.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString("auth_token"));
 
             yield return request.SendWebRequest();
 

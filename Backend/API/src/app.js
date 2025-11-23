@@ -3,6 +3,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const playerRoutes = require("./routes/playerRoutes");
 const authRoutes = require("./routes/authRoutes");
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -10,6 +11,8 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+connectDB();
 
 // Rutas principales
 app.use("/api/players", playerRoutes);

@@ -52,5 +52,18 @@ public class LoginHandler : MonoBehaviour
         ));
     }
 
+    private void OnEnable()
+    {
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        usernameInput.text = "";
+        passwordInput.text = "";
+        if (feedbackText != null)
+            feedbackText.text = "";
+    }
+
 
 }

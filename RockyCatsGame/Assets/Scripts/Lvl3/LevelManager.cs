@@ -5,6 +5,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class LevelManager : MonoBehaviour
 
     public TextMeshProUGUI gizmoLifeText;
     public TextMeshProUGUI chiliLifeText;
+
+    public Image chiliLifeImage;
+    public Image gizmoLifeImage;
+   
+    public Gradient playerLifeGradient;
 
     public TextMeshProUGUI waveText;
 
@@ -119,6 +125,7 @@ public class LevelManager : MonoBehaviour
         if (isMasterClient)
         {
             gizmoLife = currentLife;
+            
         }
         else
         {
@@ -132,21 +139,27 @@ public class LevelManager : MonoBehaviour
 
     void UpdateTemperatureDisplays()
     {
-        if (gizmoLifeText != null)
+        if (gizmoLifeImage != null)
         {
-            gizmoLifeText.text = $"Gizmo's Life: {gizmoLife}";
+            float t = gizmoLife / 100f;
+
+            gizmoLifeImage.color = playerLifeGradient.Evaluate(t);
+            gizmoLifeImage.fillAmount = t;
         }
 
-        if (chiliLifeText != null)
+        if (chiliLifeImage != null)
         {
-            chiliLifeText.text = $"Chili's Life: {chiliLife}";
+            float t = chiliLife / 100f;
+
+            chiliLifeImage.color = playerLifeGradient.Evaluate(t);
+            chiliLifeImage.fillAmount = t;
         }
     }
 
     public void UpdateWaveDisplay(int currentWave)
     {
         // Update the wave display UI
-        waveText.text = $"Wave: {currentWave}";
+        waveText.text = $"wave: {currentWave}";
     }
 
     [PunRPC]
