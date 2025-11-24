@@ -279,6 +279,8 @@ public class Level2CutsceneController : MonoBehaviourPun
         // Reproducir el video
         // El Render Texture ya está asignado en el Inspector, así que solo reproducimos
         videoPlayer.enabled = true;
+        string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+        videoPlayer.url = videoPath;
         videoPlayer.Play();
 
         Debug.Log("[Level2CutsceneController] Video reproduciendo");
