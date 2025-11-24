@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class NPCScript : MonoBehaviour
@@ -20,10 +21,12 @@ public class NPCScript : MonoBehaviour
     private PlayerController playerController;
     private Collider currentPlayerCollider;
     private Quaternion originalRotation;
+    int currentSceneIndex;
 
     void Start()
     {
         originalRotation = transform.rotation;
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -41,14 +44,28 @@ public class NPCScript : MonoBehaviour
                 index = 0;
                 dialogueText.text = "";
                 contButton.SetActive(false);
-                Level1Manager.Instance.ShowHUD("DialoguePanel");
+
+                //no hagan esto en su vida, nunca, lo hago porque estamos desesperados rn
+                
+                if (currentSceneIndex == 2)
+                {
+                    Level1Manager.Instance.ShowHUD("DialoguePanel");
+                }
+                else if (currentSceneIndex == 3)
+                {
+                    Level2Manager.Instance.ShowHUD("DialoguePanel");
+                }
+                
                 StartCoroutine(Typing());
             }
         }
 
-        if (dialogueText.text == dialogue[index])
+        if (dialoguePanel.activeInHierarchy && dialogue != null && dialogue.Length > 0 && index < dialogue.Length)
         {
-            contButton.SetActive(true);
+            if (dialogueText.text == dialogue[index])
+            {
+                contButton.SetActive(true);
+            }
         }
     }
 
@@ -91,7 +108,15 @@ public class NPCScript : MonoBehaviour
     {
         dialogueText.text = "";
         index = 0;
-        Level1Manager.Instance.HideHUD("DialoguePanel");
+
+        if (currentSceneIndex == 2)
+        {
+            Level1Manager.Instance.HideHUD("DialoguePanel");
+        }
+        else if (currentSceneIndex == 3)
+        {
+            Level2Manager.Instance.HideHUD("DialoguePanel");
+        }
     }
 
     IEnumerator Typing()
