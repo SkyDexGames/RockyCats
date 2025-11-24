@@ -694,6 +694,8 @@ MonoBehaviour:
   groundDeceleration: 30
   airAcceleration: 20
   jumpForce: 5
+  surfJumpForce: 6
+  normalJumpForce: 5
   useController: 1
   controllerDeadzone: 0.2
   moveLeft: 97
@@ -711,17 +713,11 @@ MonoBehaviour:
   cameraTriggerMask:
     serializedVersion: 2
     m_Bits: 0
-  wallJumpUpForce: 5
-  wallJumpSideForce: 7
-  wallJumpDuration: 0.3
-  wallJumpControlReduction: 0.2
   phaseAnimators:
   - {fileID: 1856919026966603375}
   - {fileID: 3925289365112661984}
   - {fileID: 8950441447726653819}
   normalGravity: -10
-  surfingGravity: -20
-  haltedGravity: -10
   isDead: 0
   currentMovementMode: 0
 --- !u!143 &3369546892682586659
@@ -779,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availablePhases:
-  - {fileID: 8410858075748684073}
+  - {fileID: 2192902233016760903}
   - {fileID: 2192902233016760903}
   - {fileID: -8568759940291855160}
   magmaMaterial: {fileID: 2100000, guid: 07d5b857beaa69f40a7440aa750b35cc, type: 2}

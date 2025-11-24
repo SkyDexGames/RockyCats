@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using System.Collections;
 using Photon.Realtime;
 
-public class Level2Manager : MonoBehaviourPun
+public class Level2Manager : MonoBehaviourPunCallbacks
 {
     public static Level2Manager Instance;
+    
+    [SerializeField] private HUDElement[] hudElements;
 
     [Header("HUD Elements")]
     [SerializeField] private GameObject roundTextContainer; // Contenedor del texto de rondas (para ocultar/mostrar)
@@ -182,6 +184,31 @@ public class Level2Manager : MonoBehaviourPun
             energyBarContainer.SetActive(false);
         }
     }
+    
+    //funciones mas generales para hacer handling de todo lo del hud, deberiamos hacer UN solo manager.
+
+    public void ShowHUD(string hudName)
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            if (hudElements[i].hudName == hudName)
+            {
+                hudElements[i].Show();
+                return;
+            }
+        }
+    }
+    public void HideHUD(string hudName)
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            if (hudElements[i].hudName == hudName)
+            {
+                hudElements[i].Hide();
+                return;
+            }
+        }
+    }
 
     /// Resetea la barra de energía a 0
     private void ResetEnergyBar()
@@ -239,5 +266,40 @@ public class Level2Manager : MonoBehaviourPun
 
         fillCoroutine = null;
     }
+    public void LeaveMatch()
+    {
+        Debug.Log("Leaving match...");
+        
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            PhotonNetwork.Disconnect();
+        }
+    }
+
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
+
+    public override void OnLeftRoom()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+    
+
+    
 }
 
