@@ -167,14 +167,19 @@ public class LevelManager : MonoBehaviourPunCallbacks
     {
         if (videoPlayer != null)
         {
-            videoPlayer.enabled = true;
-            videoPlayer.Play();
+            
 
             if (HUDManager.Instance != null)
             {
                 HUDManager.Instance.HideAllHUDs();
                 HUDManager.Instance.ShowHUD("VideoContainer");
+                Time.timeScale = 0f;
             }
+            videoPlayer.enabled = true;
+            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+            videoPlayer.url = videoPath;
+            videoPlayer.Play();
+
         }
     }
     public void LeaveMatch()

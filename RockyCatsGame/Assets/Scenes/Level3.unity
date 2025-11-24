@@ -4121,9 +4121,25 @@ PrefabInstance:
       propertyPath: hudName
       value: BHScores
       objectReference: {fileID: 0}
+    - target: {fileID: 825524732715370482, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 825524732715370482, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 825524732715370482, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_DirectAudioMutes.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1596929163694582993, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
       propertyPath: m_text
       value: 'Gizmo''s life: 100'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635843708811229674, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794279416561431463, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
       propertyPath: m_text
@@ -4315,6 +4331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5686985872648327128, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+    - {fileID: 8346351136015484836, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6274564371871534022, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
     - {fileID: 6922093172809059116, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}

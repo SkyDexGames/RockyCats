@@ -555,6 +555,9 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
         controller.enabled = true;
         isDead = false;
+        ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+        hash["isDead"] = false;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
         currentMovementMode = MovementMode.Normal;
 
     }

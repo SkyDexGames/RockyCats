@@ -11398,6 +11398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1859235121}
+  videoName: Cutscene Storyboard
 --- !u!114 &1165780064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12817,6 +12818,18 @@ PrefabInstance:
     - target: {fileID: 5298566931672062123, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_DataSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_WaitForFirstFrame
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_DirectAudioVolumes.Array.data[0]
