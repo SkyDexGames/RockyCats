@@ -61,15 +61,15 @@ public class VideoManager : MonoBehaviourPun
     {
         if (videoPlayer != null)
         {
-            videoPlayer.enabled = true;
-            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
-            videoPlayer.url = videoPath;
-            videoPlayer.Play();
 
             if (Level1Manager.Instance != null)
             {
                 Level1Manager.Instance.ShowHUD("VideoContainer");
             }
+            videoPlayer.enabled = true;
+            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+            videoPlayer.url = videoPath;
+            videoPlayer.Play();
         }
     }
 
