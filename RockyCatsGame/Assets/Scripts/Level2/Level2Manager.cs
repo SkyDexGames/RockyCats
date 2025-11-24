@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Collections;
 using Photon.Realtime;
 
-public class Level2Manager : MonoBehaviourPun
+public class Level2Manager : MonoBehaviourPunCallbacks
 {
     public static Level2Manager Instance;
     
@@ -266,6 +266,19 @@ public class Level2Manager : MonoBehaviourPun
 
         fillCoroutine = null;
     }
+    public void LeaveMatch()
+    {
+        Debug.Log("Leaving match...");
+        
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            PhotonNetwork.Disconnect();
+        }
+    }
 
     public void QuitGame()
     {
@@ -275,6 +288,17 @@ public class Level2Manager : MonoBehaviourPun
         Application.Quit();
         #endif
     }
+
+    public override void OnLeftRoom()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+    
 
     
 }

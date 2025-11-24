@@ -5,7 +5,7 @@ using TMPro;
 using Photon.Pun;
 using UnityEngine.UI;
 
-public class Level1Manager : MonoBehaviourPun
+public class Level1Manager : MonoBehaviourPunCallbacks
 {
     public static Level1Manager Instance;
     
@@ -138,6 +138,21 @@ public class Level1Manager : MonoBehaviourPun
         //Time.timeScale = 1f;
         //set player mode to normal
     }
+
+    public void LeaveMatch()
+    {
+        Debug.Log("Leaving match...");
+
+        
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            PhotonNetwork.Disconnect();
+        }
+    }
     public void QuitGame()
     {
         #if UNITY_EDITOR
@@ -145,6 +160,16 @@ public class Level1Manager : MonoBehaviourPun
         #else
         Application.Quit();
         #endif
+    }
+
+    public override void OnLeftRoom()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void UpdateMyTemperature(int tempChange)
