@@ -29,6 +29,9 @@ public class LevelManager : MonoBehaviourPunCallbacks
 
     public Image chiliLifeImage;
     public Image gizmoLifeImage;
+
+    public Image gizmosLifeContainer;
+    public Image chilisLifeContainer;
    
     public Gradient playerLifeGradient;
 
@@ -125,11 +128,19 @@ public class LevelManager : MonoBehaviourPunCallbacks
         if (isMasterClient)
         {
             gizmoLife = currentLife;
+            if (currentLife < 100)
+            {
+                gizmosLifeContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
             
         }
         else
         {
             chiliLife = currentLife;
+            if (currentLife < 100)
+            {
+                chilisLifeContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
         }
         
         UpdateTemperatureDisplays();
@@ -145,6 +156,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
 
             gizmoLifeImage.color = playerLifeGradient.Evaluate(t);
             gizmoLifeImage.fillAmount = t;
+            
         }
 
         if (chiliLifeImage != null)
