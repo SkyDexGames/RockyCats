@@ -14,6 +14,9 @@ public class Level1Manager : MonoBehaviourPunCallbacks
 
     public Image gizmosTempBar;
     public Image chilisTempBar;
+
+    public Image gizmosTempContainer;
+    public Image chilisTempContainer;
     
 
     [SerializeField] private HUDElement[] hudElements;
@@ -187,10 +190,18 @@ public class Level1Manager : MonoBehaviourPunCallbacks
         if (isMasterClient)
         {
             gizmoTemperature = Mathf.Max(0, gizmoTemperature + tempChange);
+            if (tempChange < 0)
+            {
+                gizmosTempContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
         }
         else
         {
             chiliTemperature = Mathf.Max(0, chiliTemperature + tempChange);
+            if (tempChange < 0)
+            {
+                chilisTempContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
         }
         
         UpdateTemperatureDisplays();

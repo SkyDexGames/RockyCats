@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 166799256}
   - component: {fileID: 166799258}
   - component: {fileID: 166799257}
+  - component: {fileID: 166799259}
   m_Layer: 5
   m_Name: HSGizmo
   m_TagString: Untagged
@@ -273,6 +274,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166799255}
   m_CullTransparentMesh: 1
+--- !u!114 &166799259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166799255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d080981c2d0de54d9d86bc3b3be7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barTransform: {fileID: 0}
+  shakeDuration: 0.2
+  shakeMagnitude: 10
 --- !u!1001 &190048409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3687,6 +3703,8 @@ MonoBehaviour:
   chiliLifeText: {fileID: 0}
   chiliLifeImage: {fileID: 918385500}
   gizmoLifeImage: {fileID: 51631441}
+  gizmosLifeContainer: {fileID: 166799257}
+  chilisLifeContainer: {fileID: 1832033486}
   playerLifeGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -3767,6 +3785,7 @@ GameObject:
   - component: {fileID: 1832033485}
   - component: {fileID: 1832033487}
   - component: {fileID: 1832033486}
+  - component: {fileID: 1832033488}
   m_Layer: 5
   m_Name: HSChilli
   m_TagString: Untagged
@@ -3832,6 +3851,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832033484}
   m_CullTransparentMesh: 1
+--- !u!114 &1832033488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832033484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d080981c2d0de54d9d86bc3b3be7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barTransform: {fileID: 0}
+  shakeDuration: 0.2
+  shakeMagnitude: 10
 --- !u!1 &2046438720
 GameObject:
   m_ObjectHideFlags: 0

@@ -11138,6 +11138,8 @@ GameObject:
   - component: {fileID: 825538422}
   - component: {fileID: 825538424}
   - component: {fileID: 825538423}
+  - component: {fileID: 825538425}
+  - component: {fileID: 825538426}
   m_Layer: 5
   m_Name: HSGizmo
   m_TagString: Untagged
@@ -11162,7 +11164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120.22373, y: -356}
+  m_AnchoredPosition: {x: 120, y: -356}
   m_SizeDelta: {x: 281.7841, y: 122.4533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &825538423
@@ -11203,6 +11205,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825538421}
   m_CullTransparentMesh: 1
+--- !u!95 &825538425
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825538421}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8379d6a4fef42a047b4e5b2e895bf819, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &825538426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825538421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d080981c2d0de54d9d86bc3b3be7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barTransform: {fileID: 0}
+  shakeDuration: 0.2
+  shakeMagnitude: 10
 --- !u!114 &896142688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6636416819917428852, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
@@ -11737,6 +11775,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gizmosTempBar: {fileID: 554411260}
   chilisTempBar: {fileID: 347323155}
+  gizmosTempContainer: {fileID: 825538423}
+  chilisTempContainer: {fileID: 2140822244}
   hudElements:
   - {fileID: 721376804}
   - {fileID: 896142688}
@@ -12567,6 +12607,7 @@ GameObject:
   - component: {fileID: 2140822243}
   - component: {fileID: 2140822245}
   - component: {fileID: 2140822244}
+  - component: {fileID: 180777273174106743}
   m_Layer: 5
   m_Name: HSChilli
   m_TagString: Untagged
@@ -12574,6 +12615,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &180777273174106743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180777273174106742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d080981c2d0de54d9d86bc3b3be7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barTransform: {fileID: 0}
+  shakeDuration: 0.2
+  shakeMagnitude: 10
 --- !u!1001 &188607585833777461
 PrefabInstance:
   m_ObjectHideFlags: 0
