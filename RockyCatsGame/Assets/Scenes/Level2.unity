@@ -5895,8 +5895,8 @@ RectTransform:
   m_GameObject: {fileID: 380476221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.34, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1577095068}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5925,7 +5925,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '>'
+  m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6130,7 +6130,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -156.54965, y: -25.632263, z: -158.94702, w: -32.61911}
+  m_margin: {x: -150.14326, y: -21.791016, z: -94.28633, w: -20.453758}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9072,7 +9072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.970062, y: -146.75}
+  m_AnchoredPosition: {x: -15.970093, y: -146.75}
   m_SizeDelta: {x: -258.90002, y: -320.15503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1284225601
@@ -9101,15 +9101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1222621338, guid: f2bd806e101024b4f83c722ced088c6b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9837,16 +9837,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1284225599}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[0]
       value: hii
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[1]
-      value: follow the color sequence
+      value: Congrats on turning into magma!
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[2]
-      value: also (explanation)
+      value: You must help the volcano accumulate gases so it can erupt
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: Once it erupts, we will come out to the surface and start crystallizing
+        thanks to the colder environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[4]
+      value: We will turn into beautiful igneous rocks!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9959,8 +9972,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -913822219, guid: f2bd806e101024b4f83c722ced088c6b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9994,8 +10007,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 244.87, y: -41.76}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 218.5, y: -36.7}
+  m_SizeDelta: {x: 177.11, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1604769669
 GameObject:
