@@ -1339,6 +1339,36 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
+  - m_Index: 84
+    m_Metrics:
+      m_Width: 97.5625
+      m_Height: 111.78125
+      m_HorizontalBearingX: 1.796875
+      m_HorizontalBearingY: 94.59375
+      m_HorizontalAdvance: 101.15625
+    m_GlyphRect:
+      m_X: 568
+      m_Y: 679
+      m_Width: 99
+      m_Height: 113
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 17
+    m_Metrics:
+      m_Width: 27.09375
+      m_Height: 25.84375
+      m_HorizontalBearingX: 1.796875
+      m_HorizontalBearingY: 25.296875
+      m_HorizontalAdvance: 30.6875
+    m_GlyphRect:
+      m_X: 496
+      m_Y: 523
+      m_Width: 28
+      m_Height: 27
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 32
@@ -1644,6 +1674,14 @@ MonoBehaviour:
     m_Unicode: 64
     m_GlyphIndex: 35
     m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 113
+    m_GlyphIndex: 84
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 46
+    m_GlyphIndex: 17
+    m_Scale: 1
   m_AtlasTextures:
   - {fileID: -8888256160397670017}
   m_AtlasTextureIndex: 0
@@ -1894,6 +1932,10 @@ MonoBehaviour:
     m_Y: 638
     m_Width: 98
     m_Height: 110
+  - m_X: 558
+    m_Y: 669
+    m_Width: 118
+    m_Height: 132
   - m_X: 486
     m_Y: 513
     m_Width: 47
@@ -2075,6 +2117,10 @@ MonoBehaviour:
     m_Y: 552
     m_Width: 17
     m_Height: 110
+  - m_X: 0
+    m_Y: 698
+    m_Width: 185
+    m_Height: 325
   - m_X: 185
     m_Y: 589
     m_Width: 12
@@ -2107,10 +2153,42 @@ MonoBehaviour:
     m_Y: 580
     m_Width: 83
     m_Height: 58
+  - m_X: 834
+    m_Y: 638
+    m_Width: 81
+    m_Height: 385
   - m_X: 545
     m_Y: 448
     m_Width: 9
     m_Height: 575
+  - m_X: 558
+    m_Y: 560
+    m_Width: 90
+    m_Height: 109
+  - m_X: 0
+    m_Y: 801
+    m_Width: 1023
+    m_Height: 222
+  - m_X: 0
+    m_Y: 772
+    m_Width: 558
+    m_Height: 251
+  - m_X: 676
+    m_Y: 772
+    m_Width: 347
+    m_Height: 251
+  - m_X: 676
+    m_Y: 669
+    m_Width: 60
+    m_Height: 354
+  - m_X: 185
+    m_Y: 662
+    m_Width: 463
+    m_Height: 7
+  - m_X: 185
+    m_Y: 662
+    m_Width: 373
+    m_Height: 361
   - m_X: 532
     m_Y: 448
     m_Width: 22

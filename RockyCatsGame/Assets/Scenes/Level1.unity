@@ -13274,6 +13274,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 66092357840759071, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 186.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 66092357840759071, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 216.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 66092357840759071, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_text
+      value: ' Next'
+      objectReference: {fileID: 0}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_fontSize
+      value: 17.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_margin.x
+      value: -187.18759
+      objectReference: {fileID: 0}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_margin.z
+      value: -127.0522
+      objectReference: {fileID: 0}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 17.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1349947750451752295, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -13306,6 +13338,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1583157243238847843, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702708706496181116, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1702708706496181116, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -913822219, guid: f2bd806e101024b4f83c722ced088c6b, type: 3}
+    - target: {fileID: 1710987128993553566, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 442.69998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710987128993553566, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -100.250015
+      objectReference: {fileID: 0}
     - target: {fileID: 2086078307024219864, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13314,10 +13366,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2114427779}
-    - target: {fileID: 3291901899508364755, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1559830373}
     - target: {fileID: 4457148010240338065, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -13345,6 +13393,22 @@ PrefabInstance:
     - target: {fileID: 7732319033110446565, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7377016359886875236, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_margin.w
+      value: -20.453163
+      objectReference: {fileID: 0}
+    - target: {fileID: 7377016359886875236, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_margin.x
+      value: -151.42549
+      objectReference: {fileID: 0}
+    - target: {fileID: 7377016359886875236, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_margin.y
+      value: -22.430824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7377016359886875236, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_margin.z
+      value: -89.16205
       objectReference: {fileID: 0}
     - target: {fileID: 8314338930644100922, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13458,6 +13522,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 9133135111622062289, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133135111622062289, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1222621338, guid: f2bd806e101024b4f83c722ced088c6b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1992127083600504814, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
@@ -13936,6 +14008,32 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 1064270520}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: Greetings!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Only the bravest metamorphic rocks dare to cross this path...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: In order to turn into magma, you must increase your temperature
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: You will see small pools of lava ahead, be sure to walk past them to
+        gain heat
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[4]
+      value: 'Watch out for the crystal obstacles, they might look shiny, but their
+        spikes will make you lose progress '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
