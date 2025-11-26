@@ -401,6 +401,9 @@ public class PlayerController : MonoBehaviour
     //getters
     public bool IsGrounded => isGrounded;
     public bool IsTouchingWall => isTouchingWall;
+    public bool IsJumping => !isGrounded && verticalVelocity > 0;
+    public bool IsWalking => isGrounded && horizontalVelocity.magnitude > 0.1f;
+    public bool IsDead => isDead;
     public Vector3 GetInputDirection => inputDirection;
     public Vector3 GetHorizontalVelocity => horizontalVelocity;
     public float GetMoveSpeed => moveSpeed;
