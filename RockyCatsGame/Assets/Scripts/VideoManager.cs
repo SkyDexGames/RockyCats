@@ -64,6 +64,7 @@ public class VideoManager : MonoBehaviourPun
 
             if (Level1Manager.Instance != null)
             {
+                Level1Manager.Instance.HideAllHUDs();
                 Level1Manager.Instance.ShowHUD("VideoContainer");
             }
             videoPlayer.enabled = true;
