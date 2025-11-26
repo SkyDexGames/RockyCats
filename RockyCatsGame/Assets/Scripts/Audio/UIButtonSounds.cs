@@ -26,10 +26,13 @@ public class UIButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerClick
         if (!playHoverSound) return;
         if (AudioManager.Instance == null) return;
 
-        AudioClip clip = customHoverSound != null ? customHoverSound : uiSounds?.buttonHover;
-        if (clip != null)
+        if (customHoverSound != null)
         {
-            AudioManager.Instance.PlayUI(clip);
+            AudioManager.Instance.PlayUI(customHoverSound);
+        }
+        else
+        {
+            AudioManager.Instance.PlayButtonHover();
         }
     }
 
@@ -38,10 +41,13 @@ public class UIButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerClick
         if (!playClickSound) return;
         if (AudioManager.Instance == null) return;
 
-        AudioClip clip = customClickSound != null ? customClickSound : uiSounds?.buttonClick;
-        if (clip != null)
+        if (customClickSound != null)
         {
-            AudioManager.Instance.PlayUI(clip);
+            AudioManager.Instance.PlayUI(customClickSound);
+        }
+        else
+        {
+            AudioManager.Instance.PlayButtonClick();
         }
     }
 }

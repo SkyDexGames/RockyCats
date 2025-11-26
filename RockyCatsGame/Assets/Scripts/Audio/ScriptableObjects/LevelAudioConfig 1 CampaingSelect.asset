@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 1
   sceneName: CampaignSelect
-  bgmClip: {fileID: 8300000, guid: 5a0a4df405a16e54e9776e544a5e04c3, type: 3}
+  bgmClip: {fileID: 8300000, guid: 8acae23daf888cc46978c57f06dabc0e, type: 3}
   bgmVolume: 1
   ambientClips: []
   ambientVolume: 0.5

@@ -30,6 +30,17 @@ public class LevelAudioConfig : ScriptableObject
         return null;
     }
 
+    // Get SFX entry by key (includes volume)
+    public LevelSFXEntry GetSFXEntry(string key)
+    {
+        foreach (var entry in levelSFX)
+        {
+            if (entry.key == key)
+                return entry;
+        }
+        return null;
+    }
+
     // Get random SFX from a key (if you have multiple variations)
     public AudioClip GetRandomSFX(string key)
     {
@@ -45,6 +56,6 @@ public class LevelSFXEntry
     [Tooltip("Nombre identificador del SFX (ej: lava_bubble, door_open, explosion)")]
     public string key;
     public AudioClip clip;
-    [Range(0f, 1f)] public float volume = 1f;
+    [Range(0f, 3f)] public float volume = 1f;
 }
 

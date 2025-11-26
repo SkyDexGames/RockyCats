@@ -163,17 +163,23 @@ public class AudioManager : MonoBehaviour
             uiSource.PlayOneShot(clip, uiVolume * masterVolume);
     }
 
+    public void PlayUI(AudioClip clip, float volumeMultiplier)
+    {
+        if (clip != null)
+            uiSource.PlayOneShot(clip, uiVolume * masterVolume * volumeMultiplier);
+    }
+
     // UI Sound shortcuts
     public void PlayButtonClick()
     {
         if (uiSounds != null)
-            PlayUI(uiSounds.buttonClick);
+            PlayUI(uiSounds.buttonClick, uiSounds.buttonClickVolume);
     }
 
     public void PlayButtonHover()
     {
         if (uiSounds != null)
-            PlayUI(uiSounds.buttonHover);
+            PlayUI(uiSounds.buttonHover, uiSounds.buttonHoverVolume);
     }
 
     // Volume control
@@ -225,23 +231,23 @@ public class AudioManager : MonoBehaviour
         uiVolume = PlayerPrefs.GetFloat("UIVolume", 1f);
     }
 
-    // Play level-specific SFX by key
+    // Play level-specific SFX by key (uses volume from config)
     public void PlayLevelSFX(string key)
     {
         if (currentLevelConfig == null) return;
 
-        AudioClip clip = currentLevelConfig.GetSFX(key);
-        if (clip != null)
-            PlaySFX(clip);
+        LevelSFXEntry entry = currentLevelConfig.GetSFXEntry(key);
+        if (entry != null && entry.clip != null)
+            PlaySFX(entry.clip, entry.volume);
     }
 
     public void PlayLevelSFX(string key, float volumeMultiplier)
     {
         if (currentLevelConfig == null) return;
 
-        AudioClip clip = currentLevelConfig.GetSFX(key);
-        if (clip != null)
-            PlaySFX(clip, volumeMultiplier);
+        LevelSFXEntry entry = currentLevelConfig.GetSFXEntry(key);
+        if (entry != null && entry.clip != null)
+            PlaySFX(entry.clip, entry.volume * volumeMultiplier);
     }
 
     // Getters

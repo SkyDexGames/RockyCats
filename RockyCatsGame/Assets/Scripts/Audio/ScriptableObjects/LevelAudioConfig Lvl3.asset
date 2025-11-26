@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 4
   sceneName: 
-  bgmClip: {fileID: 8300000, guid: ae5d6e870d33bee479d508f35d220400, type: 3}
+  bgmClip: {fileID: 8300000, guid: 6ca84247193e4f545a8fb96db67694dd, type: 3}
   bgmVolume: 1
   ambientClips: []
   ambientVolume: 0.5

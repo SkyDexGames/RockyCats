@@ -9602,6 +9602,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: fadeTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: uiSounds
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fcc2f94090dec04d99d013280fd036a, type: 2}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: levelConfigs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: levelConfigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ddfc09ce064a5a9468b967a1e0142dd8, type: 2}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: levelConfigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b6268471e711f443ac82c5d27a68fc5, type: 2}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: levelConfigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 44a22729e6510a347a1b1e9b452ac888, type: 2}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: levelConfigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: f69c75f9e276f244c8c89949aa3a9c43, type: 2}
+    - target: {fileID: 9217284136073198474, guid: 37380a6f5d3c56342bc24c34d14681c9, type: 3}
+      propertyPath: levelConfigs.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 578dc27ebaefb7a4a8963eaf04e3f108, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

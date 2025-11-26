@@ -142,6 +142,10 @@ public class Level2CutsceneController : MonoBehaviourPun
         // 4. Iniciar el shake (no esperamos a que termine)
         StartCoroutine(ShakeCamera());
 
+        // Iniciar sonido de explosión/erupción
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayLevelSFX("Explosion");
+
         // 4.5. Empezar las explosiones del entorno en paralelo
         StartCoroutine(SpawnExplosionsRoutine());
 
