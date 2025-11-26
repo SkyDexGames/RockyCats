@@ -5,14 +5,19 @@ public class CharacterSFX : ScriptableObject
 {
     [Header("Movement")]
     public AudioClip[] walkClips;
+    [Range(0f, 2f)] public float walkVolume = 1f;
     public AudioClip jumpClip;
+    [Range(0f, 2f)] public float jumpVolume = 1f;
 
     [Header("Abilities")]
     public AudioClip dashClip;
+    [Range(0f, 2f)] public float dashVolume = 1f;
 
     [Header("Status")]
     public AudioClip hurtClip;
+    [Range(0f, 2f)] public float hurtVolume = 1f;
     public AudioClip deathClip;
+    [Range(0f, 2f)] public float deathVolume = 1f;
 
     [Header("Settings")]
     [Range(0.1f, 0.5f)] public float footstepInterval = 0.3f;

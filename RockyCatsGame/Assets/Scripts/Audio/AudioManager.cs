@@ -101,7 +101,12 @@ public class AudioManager : MonoBehaviour
 
     void PlayLevelBGM(LevelAudioConfig config)
     {
-        if (currentLevelConfig == config && bgmSource.isPlaying) return;
+        // Si el clip es el mismo que ya está sonando, no reiniciar
+        if (config.bgmClip != null && bgmSource.clip == config.bgmClip && bgmSource.isPlaying)
+        {
+            currentLevelConfig = config;
+            return;
+        }
 
         currentLevelConfig = config;
 

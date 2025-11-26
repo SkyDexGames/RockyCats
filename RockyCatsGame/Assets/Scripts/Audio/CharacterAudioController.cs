@@ -49,7 +49,7 @@ public class CharacterAudioController : MonoBehaviour
         // Detect jump start (wasn't jumping, now is jumping)
         if (isJumping && !wasJumping)
         {
-            AudioManager.Instance.PlaySFX(characterSFX.jumpClip);
+            AudioManager.Instance.PlaySFX(characterSFX.jumpClip, characterSFX.jumpVolume);
         }
     }
 
@@ -64,7 +64,7 @@ public class CharacterAudioController : MonoBehaviour
 
             if (footstepTimer <= 0f)
             {
-                AudioManager.Instance.PlaySFX(characterSFX.GetRandomWalkClip());
+                AudioManager.Instance.PlaySFX(characterSFX.GetRandomWalkClip(), characterSFX.walkVolume);
                 footstepTimer = characterSFX.footstepInterval;
             }
         }
@@ -81,7 +81,7 @@ public class CharacterAudioController : MonoBehaviour
         // Detect dash start
         if (isDashing && !wasDashing)
         {
-            AudioManager.Instance.PlaySFX(characterSFX.dashClip);
+            AudioManager.Instance.PlaySFX(characterSFX.dashClip, characterSFX.dashVolume);
         }
     }
 
@@ -92,7 +92,7 @@ public class CharacterAudioController : MonoBehaviour
         // Detect death
         if (isDead && !wasDead)
         {
-            AudioManager.Instance.PlaySFX(characterSFX.deathClip);
+            AudioManager.Instance.PlaySFX(characterSFX.deathClip, characterSFX.deathVolume);
         }
     }
 
