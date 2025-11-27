@@ -42,6 +42,9 @@ public class LevelManager : MonoBehaviourPunCallbacks
 
     public VideoPlayer videoPlayer;
 
+    [Header("Cutscene Audio")]
+    [SerializeField] private AudioClip cutsceneBGM;
+
 
     private void Awake()
     {
@@ -194,7 +197,13 @@ public class LevelManager : MonoBehaviourPunCallbacks
     {
         if (videoPlayer != null)
         {
-            
+            // Cambiar BGM para la cutscene
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopBGM();
+                if (cutsceneBGM != null)
+                    AudioManager.Instance.PlayBGM(cutsceneBGM);
+            }
 
             if (HUDManager.Instance != null)
             {

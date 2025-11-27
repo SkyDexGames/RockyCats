@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class RadialShotWeapon : MonoBehaviour
 {
-    
+
     [SerializeField] private RadialShotPattern _shotPattern;
 
+    [Header("Water SFX")]
+    [SerializeField] private float waterSoundInterval = 0.2f;
+
     private bool _onShotPattern = false;
+    private float waterSoundTimer = 0f;
 
     // private void Update()
     // {
@@ -35,6 +39,7 @@ public class RadialShotWeapon : MonoBehaviour
             for (int i = 0; i < pattern.PatternSettings.Length; i++)
             {
                 ShotAttack.RadialShot(center, aimDirection, pattern.PatternSettings[i]);
+                PlayWaterSound();
                 yield return new WaitForSeconds(pattern.PatternSettings[i].CoolDownAfterShot);
             }
             lap++;
@@ -43,5 +48,14 @@ public class RadialShotWeapon : MonoBehaviour
         yield return new WaitForSeconds(pattern.EndWait);
         _onShotPattern = false;
     }
-    
+
+    private void PlayWaterSound()
+    {
+        if (Time.time >= waterSoundTimer)
+        {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayLevelSFX("Water");
+            waterSoundTimer = Time.time + waterSoundInterval;
+        }
+    }
 }

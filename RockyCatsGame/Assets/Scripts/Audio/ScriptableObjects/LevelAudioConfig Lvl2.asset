@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565d8a346233aa24186283031f55ecda, type: 3}
+  m_Name: LevelAudioConfig Lvl2
+  m_EditorClassIdentifier: 
+  sceneIndex: 3
+  sceneName: 
+  bgmClip: {fileID: 8300000, guid: 3a67ab36a7a89d440a4d9386b53ca42d, type: 3}
+  bgmVolume: 1
+  ambientClips: []
+  ambientVolume: 0.5
+  levelSFX:
+  - key: Patron1
+    clip: {fileID: 8300000, guid: a52ac8696d60fb3499c09a8546689954, type: 3}
+    volume: 3
+  - key: Patron2
+    clip: {fileID: 8300000, guid: 0787a6005a264f344bf3f4120d3684a5, type: 3}
+    volume: 3
+  - key: Patron3
+    clip: {fileID: 8300000, guid: b6df1eaa065d9864f842c8262587cce8, type: 3}
+    volume: 3
+  - key: Patron4
+    clip: {fileID: 8300000, guid: db82950869a0d044488867d425b6d30b, type: 3}
+    volume: 3
+  - key: PatronCorrect
+    clip: {fileID: 8300000, guid: 4773340907b54874291ce3b59d890c5f, type: 3}
+    volume: 0.5
+  - key: PatronIncorrect
+    clip: {fileID: 8300000, guid: f6db3cdaaa1985f4baaeb6d00bfc8ded, type: 3}
+    volume: 2
+  - key: Explosion
+    clip: {fileID: 8300000, guid: 8e37ac2a42406514d8716cce646a8775, type: 3}
+    volume: 1

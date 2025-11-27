@@ -12,6 +12,9 @@ public class VideoManager : MonoBehaviourPun
 
     [SerializeField] string videoName;
 
+    [Header("Cutscene Audio")]
+    [SerializeField] private AudioClip cutsceneBGM;
+
     void Start()
     {
         if (videoPlayer != null)
@@ -61,6 +64,13 @@ public class VideoManager : MonoBehaviourPun
     {
         if (videoPlayer != null)
         {
+            // Cambiar BGM para la cutscene
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopBGM();
+                if (cutsceneBGM != null)
+                    AudioManager.Instance.PlayBGM(cutsceneBGM);
+            }
 
             if (Level1Manager.Instance != null)
             {
