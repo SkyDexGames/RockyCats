@@ -29,7 +29,13 @@ public class SurfTrigger : MonoBehaviour
 
                     Animator currentAnimator = playerController.GetCurrentAnimator();
                     currentAnimator.SetBool("pullBoard", true);
-                    
+
+                    // Play pullBoard animation sound
+                    if (AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlayLevelSFX("PullBoard");
+                    }
+
                     if (pv != null)
                     {
                         pv.RPC("RPC_AddPlayerToTrigger", RpcTarget.AllBuffered, playerPhotonView.ViewID);

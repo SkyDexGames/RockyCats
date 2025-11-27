@@ -14,11 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneIndex: 2
   sceneName: 
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: 6ca84247193e4f545a8fb96db67694dd, type: 3}
   bgmVolume: 1
   ambientClips: []
   ambientVolume: 0.5
   levelSFX:
-  - key: 
-    clip: {fileID: 0}
-    volume: 0
+  - key: Hurt
+    clip: {fileID: 8300000, guid: 03fa338713af82549b13a524000d8336, type: 3}
+    volume: 0.59
+  - key: TempUp
+    clip: {fileID: 8300000, guid: bc9c83efbf63c4042ab036d9d36e0814, type: 3}
+    volume: 1
+  - key: SurfingLoop
+    clip: {fileID: 8300000, guid: 0634b1f47972ee14496dde97f244cd44, type: 3}
+    volume: 1.79
+  - key: PullBoard
+    clip: {fileID: 8300000, guid: c3fccddd502e0c648b3135f340c54655, type: 3}
+    volume: 3

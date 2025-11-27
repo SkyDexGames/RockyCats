@@ -21,6 +21,10 @@ public class CharacterAudioController : MonoBehaviour
     // Footstep timing
     private float footstepTimer = 0f;
 
+    // Surfing loop audio
+    private AudioSource surfingAudioSource;
+    private bool wasSurfingGrounded = false;
+
     void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -40,6 +44,7 @@ public class CharacterAudioController : MonoBehaviour
         CheckDash();
         CheckHurt();
         CheckDeath();
+        CheckSurfingLoop();
 
         UpdatePreviousStates();
     }
@@ -107,6 +112,61 @@ public class CharacterAudioController : MonoBehaviour
         if (isDead && !wasDead)
         {
             AudioManager.Instance.PlaySFX(characterSFX.deathClip, characterSFX.deathVolume);
+        }
+    }
+
+    void CheckSurfingLoop()
+    {
+        bool isSurfing = playerController.IsSurfing;
+        bool isGrounded = playerController.IsGrounded;
+        bool shouldPlaySurfSound = isSurfing && isGrounded && !playerController.isDead;
+
+        // Setup audio source if needed
+        if (surfingAudioSource == null)
+        {
+            SetupSurfingAudioSource();
+        }
+
+        if (shouldPlaySurfSound && !wasSurfingGrounded)
+        {
+            // Start surfing loop
+            StartSurfingLoop();
+        }
+        else if (!shouldPlaySurfSound && wasSurfingGrounded)
+        {
+            // Stop surfing loop
+            StopSurfingLoop();
+        }
+
+        wasSurfingGrounded = shouldPlaySurfSound;
+    }
+
+    void SetupSurfingAudioSource()
+    {
+        surfingAudioSource = gameObject.AddComponent<AudioSource>();
+        surfingAudioSource.loop = true;
+        surfingAudioSource.playOnAwake = false;
+        surfingAudioSource.spatialBlend = 0f; // 2D sound
+    }
+
+    void StartSurfingLoop()
+    {
+        if (surfingAudioSource == null || AudioManager.Instance == null) return;
+
+        var entry = AudioManager.Instance.GetLevelSFXEntry("SurfingLoop");
+        if (entry != null && entry.clip != null)
+        {
+            surfingAudioSource.clip = entry.clip;
+            surfingAudioSource.volume = entry.volume * AudioManager.Instance.GetSFXVolume();
+            surfingAudioSource.Play();
+        }
+    }
+
+    void StopSurfingLoop()
+    {
+        if (surfingAudioSource != null && surfingAudioSource.isPlaying)
+        {
+            surfingAudioSource.Stop();
         }
     }
 
