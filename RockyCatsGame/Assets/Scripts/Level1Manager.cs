@@ -131,8 +131,9 @@ public class Level1Manager : MonoBehaviourPunCallbacks
     public void PauseGame()
     {
         ShowHUD("PauseMenu");
-        //Time.timeScale = 0f;
-        //set player mode to halted
+
+        if(PhotonNetwork.IsMasterClient)
+            ShowHUD("QuitToMap");
     }
     
     public void ResumeGame()
@@ -163,6 +164,20 @@ public class Level1Manager : MonoBehaviourPunCallbacks
         #else
         Application.Quit();
         #endif
+    }
+
+    public void QuitToMap()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        }
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
 
     public override void OnLeftRoom()

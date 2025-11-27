@@ -32,7 +32,7 @@ public class MapManager : MonoBehaviourPunCallbacks
         for (int i=0; i<levelButtons.Length; i++)
         {
             //CAMBIAR EL TRES DESPUES
-            if (i <= PlayerPrefs.GetInt("PlayerLevels", 3))
+            if (i <= PlayerPrefs.GetInt("PlayerLevels", 2))
             {
                 levelButtons[i].interactable = true;
             }
