@@ -9,6 +9,8 @@ public class MapManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Button[] levelButtons;
 
+    [SerializeField] private HUDElement[] hudElements;
+
     [SerializeField] private int[] levelSceneIndexes = { 2, 3, 4, 5, 6, 7, 8, 9 };
 
     private int selectedLevelIndex = -1; //start with invalid index in case we want to manage a default UI, then add more stuff when we select a lvl
@@ -46,10 +48,28 @@ public class MapManager : MonoBehaviourPunCallbacks
     void OnLevelButtonClicked(int buttonIndex)
     {
         if (!PhotonNetwork.IsMasterClient) return;
-        
+
         SelectLevel(buttonIndex);
+        Debug.Log("selected");
+        ShowHUD("StartLevelButton");
+
+        photonView.RPC("RPC_UpdateCatIcons", RpcTarget.All, buttonIndex);
     }
 
+    [PunRPC]
+    void RPC_UpdateCatIcons(int levelIndex)
+    {
+        UpdateCatIcons(levelIndex);
+    }
+
+    void UpdateCatIcons(int levelIndex)
+    {
+        HideHUD("CatIconsLvl1");
+        HideHUD("CatIconsLvl2");
+        HideHUD("CatIconsLvl3");
+        
+        ShowHUD($"CatIconsLvl{levelIndex + 1}");
+    }
     void SelectLevel(int levelIndex)
     {
         selectedLevelIndex = levelIndex;
@@ -102,4 +122,28 @@ public class MapManager : MonoBehaviourPunCallbacks
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
+
+    public void ShowHUD(string hudName)
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            if (hudElements[i].hudName == hudName)
+            {
+                hudElements[i].Show();
+                return;
+            }
+        }
+    }
+    public void HideHUD(string hudName)
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            if (hudElements[i].hudName == hudName)
+            {
+                hudElements[i].Hide();
+                return;
+            }
+        }
+    }
+
 }
