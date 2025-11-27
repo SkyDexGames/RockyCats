@@ -5697,9 +5697,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1181976648}
-  m_Father: {fileID: 1243093233}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5843,6 +5842,7 @@ GameObject:
   - component: {fileID: 253918862}
   - component: {fileID: 253918861}
   - component: {fileID: 253918860}
+  - component: {fileID: 253918863}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -5987,6 +5987,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253918858}
   m_CullTransparentMesh: 1
+--- !u!114 &253918863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253918858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f1ba096c9247d499bc62863b38bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customClickSound: {fileID: 0}
+  customHoverSound: {fileID: 0}
+  playHoverSound: 1
+  playClickSound: 1
 --- !u!1 &287801609
 GameObject:
   m_ObjectHideFlags: 0
@@ -6209,31 +6225,13 @@ MonoBehaviour:
   customHoverSound: {fileID: 0}
   playHoverSound: 1
   playClickSound: 1
---- !u!1 &370837059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 368822763}
-  - component: {fileID: 368822765}
-  - component: {fileID: 368822764}
-  m_Layer: 5
-  m_Name: NpcImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!224 &368822763
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368822762}
+  m_GameObject: {fileID: 370837059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.000030517578}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
@@ -6252,7 +6250,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368822762}
+  m_GameObject: {fileID: 370837059}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -6282,8 +6280,26 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368822762}
+  m_GameObject: {fileID: 370837059}
   m_CullTransparentMesh: 1
+--- !u!1 &370837059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368822763}
+  - component: {fileID: 368822765}
+  - component: {fileID: 368822764}
+  m_Layer: 5
+  m_Name: NpcImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &380476221
 GameObject:
   m_ObjectHideFlags: 0
@@ -7100,6 +7116,7 @@ GameObject:
   - component: {fileID: 560225277}
   - component: {fileID: 560225276}
   - component: {fileID: 560225275}
+  - component: {fileID: 560225278}
   m_Layer: 5
   m_Name: PrevButton
   m_TagString: Untagged
@@ -7220,6 +7237,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560225273}
   m_CullTransparentMesh: 1
+--- !u!114 &560225278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560225273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f1ba096c9247d499bc62863b38bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customClickSound: {fileID: 0}
+  customHoverSound: {fileID: 0}
+  playHoverSound: 1
+  playClickSound: 1
 --- !u!1 &626204044
 GameObject:
   m_ObjectHideFlags: 0
@@ -8544,6 +8577,7 @@ GameObject:
   - component: {fileID: 1158853989}
   - component: {fileID: 1158853988}
   - component: {fileID: 1158853991}
+  - component: {fileID: 1158853992}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -8677,6 +8711,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hudName: PauseButton
+--- !u!114 &1158853992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158853986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0f1ba096c9247d499bc62863b38bd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -8987,6 +9030,7 @@ GameObject:
   - component: {fileID: 1231146630}
   - component: {fileID: 1231146629}
   - component: {fileID: 1231146628}
+  - component: {fileID: 1231146632}
   m_Layer: 5
   m_Name: QuitToMap
   m_TagString: Untagged
@@ -9121,6 +9165,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231146626}
   m_CullTransparentMesh: 1
+--- !u!114 &1231146632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231146626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f1ba096c9247d499bc62863b38bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customClickSound: {fileID: 0}
+  customHoverSound: {fileID: 0}
+  playHoverSound: 1
+  playClickSound: 1
 --- !u!1 &1256662153
 GameObject:
   m_ObjectHideFlags: 0
@@ -10992,6 +11052,7 @@ GameObject:
   - component: {fileID: 1802052766}
   - component: {fileID: 1802052765}
   - component: {fileID: 1802052764}
+  - component: {fileID: 1802052767}
   m_Layer: 5
   m_Name: 'BookButton '
   m_TagString: Untagged
@@ -11136,6 +11197,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802052762}
   m_CullTransparentMesh: 1
+--- !u!114 &1802052767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802052762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f1ba096c9247d499bc62863b38bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customClickSound: {fileID: 0}
+  customHoverSound: {fileID: 0}
+  playHoverSound: 1
+  playClickSound: 1
 --- !u!1 &1808248543
 GameObject:
   m_ObjectHideFlags: 0
@@ -11718,6 +11795,7 @@ MonoBehaviour:
   - {fileID: 139106182}
   - {fileID: 1946512162}
   - {fileID: 1738357920}
+  cutsceneBGM: {fileID: 0}
   delayBetweenExplosions: 0.47
   smokePrefab: {fileID: 7556207639353831584, guid: b8129e45faa92484dbb6f550788e0ca4, type: 3}
   smokePoints:
@@ -12060,6 +12138,7 @@ GameObject:
   - component: {fileID: 2053357294}
   - component: {fileID: 2053357293}
   - component: {fileID: 2053357292}
+  - component: {fileID: 2053357296}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -12180,6 +12259,22 @@ RectTransform:
   m_AnchoredPosition: {x: 224.5, y: -177}
   m_SizeDelta: {x: 111.2419, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2053357296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053357291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f1ba096c9247d499bc62863b38bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customClickSound: {fileID: 0}
+  customHoverSound: {fileID: 0}
+  playHoverSound: 1
+  playClickSound: 1
 --- !u!1 &2054759112
 GameObject:
   m_ObjectHideFlags: 0
@@ -14535,3 +14630,4 @@ SceneRoots:
   - {fileID: 132637951}
   - {fileID: 660645050}
   - {fileID: 1559192645}
+  - {fileID: 145571486}

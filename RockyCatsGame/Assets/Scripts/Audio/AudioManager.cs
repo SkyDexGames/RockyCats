@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,6 +86,7 @@ public class AudioManager : MonoBehaviour
         LevelAudioConfig config = GetConfigForScene(scene.buildIndex);
         if (config != null)
         {
+            Debug.Log("Sonando" + scene.name);
             PlayLevelBGM(config);
         }
     }
@@ -99,49 +101,59 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
-    void PlayLevelBGM(LevelAudioConfig config)
+void PlayLevelBGM(LevelAudioConfig config)
     {
-        // Si el clip es el mismo que ya está sonando, no reiniciar
-        if (config.bgmClip != null && bgmSource.clip == config.bgmClip && bgmSource.isPlaying)
+        currentLevelConfig = config;
+
+        if (config.bgmClip == null)
         {
-            currentLevelConfig = config;
+            Debug.LogWarning($"[AudioManager] No hay BGM configurado para la escena {config.sceneName}");
             return;
         }
 
-        currentLevelConfig = config;
-
-        if (config.bgmClip != null)
+        // Si el clip es el mismo que ya está sonando correctamente, no reiniciar
+        if (bgmSource.clip == config.bgmClip && bgmSource.isPlaying && bgmSource.volume > 0)
         {
-            if (bgmFadeCoroutine != null)
-                StopCoroutine(bgmFadeCoroutine);
-
-            bgmFadeCoroutine = StartCoroutine(CrossFadeBGM(config.bgmClip));
+            Debug.Log($"[AudioManager] BGM ya está sonando para {config.sceneName}, no reiniciar");
+            return;
         }
+
+        Debug.Log($"[AudioManager] Reproduciendo BGM para {config.sceneName}");
+
+        if (bgmFadeCoroutine != null)
+            StopCoroutine(bgmFadeCoroutine);
+
+        bgmFadeCoroutine = StartCoroutine(CrossFadeBGM(config.bgmClip));
     }
 
     IEnumerator CrossFadeBGM(AudioClip newClip)
     {
         float startVolume = bgmSource.volume;
 
-        // Fade out
-        while (bgmSource.volume > 0)
+        // Fade out solo si hay algo sonando
+        if (bgmSource.isPlaying && startVolume > 0)
         {
-            bgmSource.volume -= startVolume * Time.deltaTime / fadeTime;
-            yield return null;
+            while (bgmSource.volume > 0)
+            {
+                bgmSource.volume -= startVolume * Time.deltaTime / fadeTime;
+                yield return null;
+            }
         }
 
         bgmSource.Stop();
         bgmSource.clip = newClip;
+        bgmSource.volume = 0; // Asegurar que empiece desde 0
         bgmSource.Play();
 
         // Fade in
-        while (bgmSource.volume < bgmVolume * masterVolume)
+        float targetVolume = bgmVolume * masterVolume;
+        while (bgmSource.volume < targetVolume)
         {
-            bgmSource.volume += bgmVolume * masterVolume * Time.deltaTime / fadeTime;
+            bgmSource.volume += targetVolume * Time.deltaTime / fadeTime;
             yield return null;
         }
 
-        bgmSource.volume = bgmVolume * masterVolume;
+        bgmSource.volume = targetVolume;
     }
 
     // Public methods for playing sounds
