@@ -59,6 +59,10 @@ public class NPCScript : MonoBehaviour
                 else if (currentSceneIndex == 3)
                 {
                     Level2Manager.Instance.ShowHUD("DialoguePanel");
+                    Level2Manager.Instance.HideHUD("BookButton");
+                    Level2Manager.Instance.HideHUD("Book");
+                    Level2Manager.Instance.HideHUD("PressFToTalk");
+                    Level2Manager.Instance.HideHUD("PauseButton");
                 }
                 
                 StartCoroutine(Typing());
@@ -158,7 +162,9 @@ public class NPCScript : MonoBehaviour
                 }
                 else if (currentSceneIndex == 3)
                 {
-                    //Level2Manager.Instance.HideHUD("DialoguePanel");
+                    Level2Manager.Instance.ShowHUD("BookButton");
+                    Level2Manager.Instance.ShowHUD("PauseButton");
+                    Level2Manager.Instance.HideHUD("PressFToTalk");
                 }
             }
         }
@@ -187,7 +193,9 @@ public class NPCScript : MonoBehaviour
                     }
                     else if (currentSceneIndex == 3)
                     {
-                        //Level2Manager.Instance.HideHUD("DialoguePanel");
+                        Level2Manager.Instance.HideHUD("BookButton");
+                        Level2Manager.Instance.HideHUD("PauseButton");
+                        Level2Manager.Instance.ShowHUD("PressFToTalk");
                     }
                 }
             }
@@ -220,7 +228,9 @@ public class NPCScript : MonoBehaviour
                     }
                     else if (currentSceneIndex == 3)
                     {
-                        //Level2Manager.Instance.HideHUD("DialoguePanel");
+                        Level2Manager.Instance.HideHUD("PressFToTalk");
+                        Level2Manager.Instance.ShowHUD("BookButton");
+                        Level2Manager.Instance.ShowHUD("PauseButton");
                     }
                     
                     

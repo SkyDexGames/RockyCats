@@ -122,10 +122,11 @@ public class Level2Manager : MonoBehaviourPunCallbacks
 
     public void OnPuzzleCompleted()
     {
+        HideAllHUDs();
         SetStatus("Puzzle Completed");
         //Debug.Log("[Level2Manager] Puzzle completado!");
         //Debug.Log($"[Level2Manager] {PlayerPrefs.GetString("PlayerUsername", "N/A")}");
-
+        
         // Asegurar que la barra esté completamente llena
         UpdateEnergyBar(totalRounds);
         if (PhotonNetwork.IsMasterClient && PlayerPrefs.HasKey("PlayerUsername"))
@@ -183,6 +184,14 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         if (energyBarContainer != null)
         {
             energyBarContainer.SetActive(false);
+        }
+    }
+
+    public void HideAllHUDs()
+    {
+        for (int i = 0; i < hudElements.Length; i++)
+        {
+            hudElements[i].Hide();
         }
     }
     
@@ -284,6 +293,7 @@ public class Level2Manager : MonoBehaviourPunCallbacks
     public void PauseGame()
     {
         ShowHUD("PauseMenu");
+        HideHUD("BookButton");
 
         if(PhotonNetwork.IsMasterClient)
             ShowHUD("QuitToMap");
@@ -322,6 +332,8 @@ public class Level2Manager : MonoBehaviourPunCallbacks
     public void ResumeGame()
     {
         HideHUD("PauseMenu");
+        ShowHUD("BookButton");
+        
     }
 
     [PunRPC]
