@@ -98,6 +98,21 @@ public class LevelManager : MonoBehaviourPunCallbacks
         }
     }
 
+    //la voy a meter aca porque incluye logica fuera del 'hud'
+    public void QuitToMap()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        }
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+    }
+
     private IEnumerator CheckPlayersDeadRoutine()
     {
         while (true)

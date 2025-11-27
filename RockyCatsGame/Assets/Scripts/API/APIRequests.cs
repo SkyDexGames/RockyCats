@@ -99,6 +99,8 @@ public class APIRequests
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
 
+            request.SetRequestHeader("x-game-auth", "RockyCatsUnityAuthKey456");
+
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.ConnectionError)

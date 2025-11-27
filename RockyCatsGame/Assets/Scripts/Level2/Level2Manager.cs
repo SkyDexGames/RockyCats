@@ -30,6 +30,7 @@ public class Level2Manager : MonoBehaviourPunCallbacks
     private Coroutine fillCoroutine;
 
     private APIRequests apiRequests;
+    private bool isPaused = false;
 
     void Awake()
     {
@@ -91,23 +92,23 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         }
 
         SetRoundLabel(roundIndex, length);
-        SetStatus("Observa la secuencia…");
+        SetStatus("watch the sequence...");
     }
 
     public void OnBeginInput(int roundIndex)
     {
-        SetStatus("Ingresa el patrón");
+        SetStatus("enter Pattern");
     }
 
     public void OnInputFeedback(bool correct, int roundIndex, int stepIndex, int buttonId)
     {
         // No mostrar feedback inmediato - solo actualizar el contador de progreso
-        SetStatus($"Ingresando patrón ({stepIndex + 1})");
+        SetStatus($"entering Pattern ({stepIndex + 1})");
     }
 
     public void OnRoundSuccess(int roundIndex)
     {
-        SetStatus($"Ronda {roundIndex + 1} completada");
+        SetStatus($"round {roundIndex + 1} complete!");
 
         // Actualizar la barra de energía
         UpdateEnergyBar(roundIndex + 1); // +1 porque roundIndex es 0-based
@@ -115,15 +116,15 @@ public class Level2Manager : MonoBehaviourPunCallbacks
 
     public void OnRoundFail(int roundIndex)
     {
-        SetStatus("Fallaste, se reinicia la ronda");
+        SetStatus("round failed, trying again");
         // No actualizar la barra cuando falla
     }
 
     public void OnPuzzleCompleted()
     {
-        SetStatus("Puzzle completado");
-        Debug.Log("[Level2Manager] Puzzle completado!");
-        Debug.Log($"[Level2Manager] {PlayerPrefs.GetString("PlayerUsername", "N/A")}");
+        SetStatus("Puzzle Completed");
+        //Debug.Log("[Level2Manager] Puzzle completado!");
+        //Debug.Log($"[Level2Manager] {PlayerPrefs.GetString("PlayerUsername", "N/A")}");
 
         // Asegurar que la barra esté completamente llena
         UpdateEnergyBar(totalRounds);
@@ -131,13 +132,13 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         {
             if (PlayerPrefs.GetInt("PlayerLevels") < 2)
             {
-                Debug.Log("[Level2Manager] Actualizando niveles del jugador en el servidor...");
+                //Debug.Log("[Level2Manager] Actualizando niveles del jugador en el servidor...");
                 apiRequests = new APIRequests();
                 string username = PlayerPrefs.GetString("PlayerUsername");
                 StartCoroutine(apiRequests.UpdatePlayerLevels(username, 2,
                     onSuccess: () =>
                     {
-                        Debug.Log("Niveles del jugador actualizados correctamente.");
+                        //Debug.Log("Niveles del jugador actualizados correctamente.");
                         PlayerPrefs.SetInt("PlayerLevels", 2);
                     },
                     onError: (error) =>
@@ -162,7 +163,7 @@ public class Level2Manager : MonoBehaviourPunCallbacks
     {
         if (roundText != null)
         {
-            roundText.text = $"Ronda {roundIndex + 1}/{totalRounds} ({length})";
+            roundText.text = $"Round {roundIndex + 1}/{totalRounds} ({length})";
         }
     }
 
@@ -280,6 +281,15 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void PauseGame()
+    {
+        ShowHUD("PauseMenu");
+
+        if(PhotonNetwork.IsMasterClient)
+            ShowHUD("QuitToMap");
+    }
+    
+
     public void QuitGame()
     {
         #if UNITY_EDITOR
@@ -287,6 +297,37 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         #else
         Application.Quit();
         #endif
+    }
+    public void QuitToMap()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        }
+    }
+    public void TogglePause()
+    {
+        isPaused = !isPaused; 
+        if (isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+        
+    }
+
+    public void ResumeGame()
+    {
+        HideHUD("PauseMenu");
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
 
     public override void OnLeftRoom()
