@@ -323,6 +323,24 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1 &113741161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6123873634815204089, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+  m_PrefabInstance: {fileID: 278117887279995529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &113741166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113741161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31630eff70bbc244aac33fd5835bbf2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudName: PauseButton
 --- !u!1 &115682966
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +964,154 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282313355}
   m_CullTransparentMesh: 1
+--- !u!1 &290541203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290541204}
+  - component: {fileID: 290541206}
+  - component: {fileID: 290541205}
+  - component: {fileID: 290541207}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &290541204
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290541203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 278117887279995530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -83.4, y: -104.17}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &290541205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290541203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Press F to talk to the wise cat
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 958f135948d30c1438d4377c123e748a, type: 2}
+  m_sharedMaterial: {fileID: 63484647952816073, guid: 958f135948d30c1438d4377c123e748a, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 26.31
+  m_fontSizeBase: 26.31
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &290541206
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290541203}
+  m_CullTransparentMesh: 1
+--- !u!114 &290541207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290541203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31630eff70bbc244aac33fd5835bbf2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudName: PressFToTalk
 --- !u!1 &310501433
 GameObject:
   m_ObjectHideFlags: 0
@@ -12241,6 +12407,8 @@ MonoBehaviour:
   - {fileID: 275325088}
   - {fileID: 1702725562}
   - {fileID: 158832900}
+  - {fileID: 290541207}
+  - {fileID: 113741166}
 --- !u!222 &1559830374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12815,7 +12983,7 @@ GameObject:
   - component: {fileID: 1864291431}
   - component: {fileID: 1864291430}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12894,6 +13062,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Book
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1559830373}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: ShowHUD
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BookButton
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1559830373}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: ShowHUD
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PauseButton
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1864291431
@@ -13381,6 +13573,30 @@ MonoBehaviour:
           m_StringArgument: Book
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1559830373}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: HideHUD
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BookButton
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1559830373}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
+        m_MethodName: HideHUD
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PauseButton
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2141287166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13618,7 +13834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_fontSize
-      value: 17.6
+      value: 26.63
       objectReference: {fileID: 0}
     - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_margin.x
@@ -13626,11 +13842,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_margin.z
-      value: -127.0522
+      value: -177.25795
       objectReference: {fileID: 0}
     - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 958f135948d30c1438d4377c123e748a, type: 2}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_fontSizeBase
-      value: 17.6
+      value: 26.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 63484647952816073, guid: 958f135948d30c1438d4377c123e748a, type: 2}
+    - target: {fileID: 971541662529799143, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1123048476194985980, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_fontAsset
@@ -13643,6 +13871,22 @@ PrefabInstance:
     - target: {fileID: 1123048476194985980, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337737996279160325, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337737996279160325, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337737996279160325, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337737996279160325, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200.98
       objectReference: {fileID: 0}
     - target: {fileID: 1349947750451752295, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -13787,6 +14031,22 @@ PrefabInstance:
     - target: {fileID: 4134625531205312184, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215197188975201231, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215197188975201231, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6833702
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215197188975201231, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.939394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215197188975201231, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4457148010240338065, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_Name
@@ -13952,6 +14212,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1559830373}
+    - target: {fileID: 8434051529986485558, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 63a7240cc56ea9b4bb5aa6a0ebe7e5fc, type: 3}
     - target: {fileID: 8510749393692940515, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14095,10 +14359,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3542201800184623772, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       insertIndex: 5
       addedObject: {fileID: 275325086}
+    - targetCorrespondingSourceObject: {fileID: 3542201800184623772, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 290541204}
     - targetCorrespondingSourceObject: {fileID: 7344520403469264286, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1702725558}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6123873634815204089, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 113741166}
   m_SourcePrefab: {fileID: 100100000, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
 --- !u!224 &278117887279995530 stripped
 RectTransform:
@@ -14514,6 +14784,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 227204176196290788, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e19022725705eb49b0056200e988628, type: 2}
+    - target: {fileID: 339223329423601532, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e19022725705eb49b0056200e988628, type: 2}
+    - target: {fileID: 1659180468590528068, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc569fd900ca6844283556b3bbf11e7d, type: 2}
+    - target: {fileID: 2250005158998826730, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fe121934875cee240b9e5b9ea91c3a72, type: 2}
+    - target: {fileID: 3034855492666328045, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 269357f1ac4de70468b1caa2b1aa60f3, type: 2}
+    - target: {fileID: 3670769874282309317, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 164c9abf00cd8154686017e97c1fd2db, type: 2}
     - target: {fileID: 4018725282632625478, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.03
@@ -14572,30 +14866,34 @@ PrefabInstance:
       objectReference: {fileID: 1064270520}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[0]
-      value: Greetings!
+      value: Greetings, brave rock! Your path to becoming magma lies ahead.
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[1]
-      value: Only the bravest metamorphic rocks dare to cross this path...
+      value: You must INCREASE your temperature to become magma
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[2]
-      value: In order to turn into magma, you must increase your temperature
+      value: To increase your heat, you must walk directly through the lava pools.
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[3]
-      value: You will see small pools of lava ahead, be sure to walk past them to
-        gain heat
+      value: But beware the crystal spikes! Touching them will drain a chunk of your
+        temperature bar. Avoid them at all costs!
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[4]
-      value: 'Watch out for the crystal obstacles, they might look shiny, but their
-        spikes will make you lose progress '
+      value: But beware the crystalline spikes! A single touch will drain your heat
+        and cool you down. Stay focused!
       objectReference: {fileID: 0}
+    - target: {fileID: 8217224210363494456, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc569fd900ca6844283556b3bbf11e7d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

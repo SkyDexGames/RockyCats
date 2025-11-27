@@ -10406,28 +10406,34 @@ PrefabInstance:
       objectReference: {fileID: 1284225599}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[0]
-      value: hii
+      value: Welcome, young one!  You have become magma, an important stage of the
+        rock cycle!
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[1]
-      value: Congrats on turning into magma!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
-      propertyPath: dialogue.Array.data[2]
       value: You must help the volcano accumulate gases so it can erupt
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: Only then will we be expelled to the surface... where the cold air will
+        crystallize our essence into magnificent igneous rock!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[3]
-      value: Once it erupts, we will come out to the surface and start crystallizing
-        thanks to the colder environment
+      value: 'Remember your power: press [E] to dash in the direction you''re facing.
+        Use it to reach places quickly!'
       objectReference: {fileID: 0}
     - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
       propertyPath: dialogue.Array.data[4]
-      value: We will turn into beautiful igneous rocks!
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536260893093643993, guid: 71729373d13790e438587201727d64f1, type: 3}
+      propertyPath: dialogue.Array.data[5]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

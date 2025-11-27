@@ -50,6 +50,11 @@ public class NPCScript : MonoBehaviour
                 if (currentSceneIndex == 2)
                 {
                     Level1Manager.Instance.ShowHUD("DialoguePanel");
+                    Level1Manager.Instance.HideHUD("BookButton");
+                    Level1Manager.Instance.HideHUD("Book");
+                    Level1Manager.Instance.HideHUD("PressFToTalk");
+                    Level1Manager.Instance.HideHUD("PauseButton");
+
                 }
                 else if (currentSceneIndex == 3)
                 {
@@ -144,6 +149,17 @@ public class NPCScript : MonoBehaviour
             if (playerController != null)
             {
                 playerController.SetToNormal();
+                //ik this is trash code im sorry pero no da tiempo para el refactor lo juro
+                if (currentSceneIndex == 2)
+                {
+                    Level1Manager.Instance.ShowHUD("BookButton");
+                    Level1Manager.Instance.ShowHUD("PauseButton");
+                    Level1Manager.Instance.HideHUD("PressFToTalk");
+                }
+                else if (currentSceneIndex == 3)
+                {
+                    //Level2Manager.Instance.HideHUD("DialoguePanel");
+                }
             }
         }
 
@@ -162,6 +178,17 @@ public class NPCScript : MonoBehaviour
                     playerIsClose = true;
                     playerController = pc;
                     currentPlayerCollider = other;
+
+                    if (currentSceneIndex == 2)
+                    {
+                        Level1Manager.Instance.HideHUD("BookButton");
+                        Level1Manager.Instance.HideHUD("PauseButton");
+                        Level1Manager.Instance.ShowHUD("PressFToTalk");
+                    }
+                    else if (currentSceneIndex == 3)
+                    {
+                        //Level2Manager.Instance.HideHUD("DialoguePanel");
+                    }
                 }
             }
         }
@@ -184,6 +211,20 @@ public class NPCScript : MonoBehaviour
                     playerController.SetToNormal();
                     playerController = null;
                     currentPlayerCollider = null;
+
+                    if (currentSceneIndex == 2)
+                    {
+                        Level1Manager.Instance.HideHUD("PressFToTalk");
+                        Level1Manager.Instance.ShowHUD("BookButton");
+                        Level1Manager.Instance.ShowHUD("PauseButton");
+                    }
+                    else if (currentSceneIndex == 3)
+                    {
+                        //Level2Manager.Instance.HideHUD("DialoguePanel");
+                    }
+                    
+                    
+                    
                 }
             }
         }

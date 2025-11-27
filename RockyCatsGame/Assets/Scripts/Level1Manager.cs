@@ -131,6 +131,7 @@ public class Level1Manager : MonoBehaviourPunCallbacks
     public void PauseGame()
     {
         ShowHUD("PauseMenu");
+        HideHUD("BookButton");
 
         if(PhotonNetwork.IsMasterClient)
             ShowHUD("QuitToMap");
@@ -139,8 +140,8 @@ public class Level1Manager : MonoBehaviourPunCallbacks
     public void ResumeGame()
     {
         HideHUD("PauseMenu");
-        //Time.timeScale = 1f;
-        //set player mode to normal
+        ShowHUD("BookButton");
+        
     }
 
     public void LeaveMatch()

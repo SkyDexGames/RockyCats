@@ -27,6 +27,9 @@ public class SurfTrigger : MonoBehaviour
                 if (playerController != null)
                 {
                     playerController.SetToHalted();
+                    
+                    Level1Manager.Instance.HideAllHUDs();
+                    Level1Manager.Instance.ShowHUD("PauseButton");
 
                     Animator currentAnimator = playerController.GetCurrentAnimator();
                     currentAnimator.SetBool("pullBoard", true);
