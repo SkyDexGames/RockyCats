@@ -45,7 +45,7 @@ public class NPCScript : MonoBehaviour
                 dialogueText.text = "";
                 contButton.SetActive(false);
 
-                //no hagan esto en su vida, nunca, lo hago porque estamos desesperados rn
+                //no hagan esto en su vida, nunca, lo hago porque estamos desesperados rn y no hay tiempo de hacer bien el singleton del hud manager
                 
                 if (currentSceneIndex == 2)
                 {
@@ -63,6 +63,14 @@ public class NPCScript : MonoBehaviour
                     Level2Manager.Instance.HideHUD("Book");
                     Level2Manager.Instance.HideHUD("PressFToTalk");
                     Level2Manager.Instance.HideHUD("PauseButton");
+                }
+                else if (currentSceneIndex == 4)
+                {
+                    HUDManager.Instance.ShowHUD("DialoguePanel");
+                    HUDManager.Instance.HideHUD("BookButton");
+                    HUDManager.Instance.HideHUD("Book");
+                    HUDManager.Instance.HideHUD("PressFToTalk");
+                    HUDManager.Instance.HideHUD("PauseButton");
                 }
                 
                 StartCoroutine(Typing());
@@ -126,6 +134,10 @@ public class NPCScript : MonoBehaviour
         {
             Level2Manager.Instance.HideHUD("DialoguePanel");
         }
+        else if (currentSceneIndex == 4)
+        {
+            HUDManager.Instance.HideHUD("DialoguePanel");
+        }
     }
 
     IEnumerator Typing()
@@ -166,6 +178,12 @@ public class NPCScript : MonoBehaviour
                     Level2Manager.Instance.ShowHUD("PauseButton");
                     Level2Manager.Instance.HideHUD("PressFToTalk");
                 }
+                else if (currentSceneIndex == 4)
+                {
+                    HUDManager.Instance.ShowHUD("BookButton");
+                    HUDManager.Instance.ShowHUD("PauseButton");
+                    HUDManager.Instance.HideHUD("PressFToTalk");
+                }
             }
         }
 
@@ -196,6 +214,12 @@ public class NPCScript : MonoBehaviour
                         Level2Manager.Instance.HideHUD("BookButton");
                         Level2Manager.Instance.HideHUD("PauseButton");
                         Level2Manager.Instance.ShowHUD("PressFToTalk");
+                    }
+                    else if (currentSceneIndex == 4)
+                    {
+                        HUDManager.Instance.HideHUD("BookButton");
+                        HUDManager.Instance.HideHUD("PauseButton");
+                        HUDManager.Instance.ShowHUD("PressFToTalk");
                     }
                 }
             }
@@ -231,6 +255,12 @@ public class NPCScript : MonoBehaviour
                         Level2Manager.Instance.HideHUD("PressFToTalk");
                         Level2Manager.Instance.ShowHUD("BookButton");
                         Level2Manager.Instance.ShowHUD("PauseButton");
+                    }
+                    else if(currentSceneIndex == 4)
+                    {
+                        HUDManager.Instance.HideHUD("PressFToTalk");
+                        HUDManager.Instance.ShowHUD("BookButton");
+                        HUDManager.Instance.ShowHUD("PauseButton");
                     }
                     
                     

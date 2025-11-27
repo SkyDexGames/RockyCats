@@ -109,6 +109,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
             photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
         }
     }
+    
 
     [PunRPC]
     void RPC_LoadScene(int sceneIndex)
