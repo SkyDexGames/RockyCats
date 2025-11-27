@@ -3,6 +3,7 @@ using Photon.Pun;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Video;
+using Photon.Realtime;
 
 public class MapManager : MonoBehaviourPunCallbacks
 {
@@ -55,6 +56,16 @@ public class MapManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void RPC_PlayIntro()
     {
+        if (PlayerPrefs.HasKey("PlayIntroCutscene"))
+        {
+            VideoPlayer.Stop();
+            HUDManager.Instance.HideHUD("VideoContainer");
+
+            MenuManager.Instance.OpenMenu("Map");
+
+            HUDManager.Instance.HideHUD("Background");
+        }
+        else{
         HUDManager.Instance.ShowHUD("VideoContainer");
 
         VideoPlayer.loopPointReached -= OnVideoFinished;
@@ -64,6 +75,8 @@ public class MapManager : MonoBehaviourPunCallbacks
         string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.MP4";
         VideoPlayer.url = videoPath;
         VideoPlayer.Play();
+        PlayerPrefs.SetInt("PlayIntroCutscene", 1);
+        }
     }
 
     private void OnVideoFinished(VideoPlayer vp)
