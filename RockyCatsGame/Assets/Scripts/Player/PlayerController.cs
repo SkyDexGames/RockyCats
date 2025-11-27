@@ -459,6 +459,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public MovementMode GetCurrentMovementMode()
+    {
+        return currentMovementMode;
+    }
+
     public void SetToNormal() => SetMovementMode(MovementMode.Normal);
     public void SetToSurfing() => SetMovementMode(MovementMode.Surfing);  
     public void SetToHalted() => SetMovementMode(MovementMode.Halted);

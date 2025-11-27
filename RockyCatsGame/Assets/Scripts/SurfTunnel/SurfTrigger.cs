@@ -6,6 +6,7 @@ using Photon.Pun;
 public class SurfTrigger : MonoBehaviour
 {
     [SerializeField] private SurfTunnelManager firstPlatform;
+    [SerializeField] private GameObject backWall;
     private List<int> playersInTrigger = new List<int>();
     private bool triggered = false;
     private PhotonView pv;
@@ -26,6 +27,9 @@ public class SurfTrigger : MonoBehaviour
                 if (playerController != null)
                 {
                     playerController.SetToHalted();
+                    
+                    Level1Manager.Instance.HideAllHUDs();
+                    Level1Manager.Instance.ShowHUD("PauseButton");
 
                     Animator currentAnimator = playerController.GetCurrentAnimator();
                     currentAnimator.SetBool("pullBoard", true);
@@ -85,6 +89,11 @@ public class SurfTrigger : MonoBehaviour
     void StartSurfingMode()
     {
         Level1Manager.Instance.ShowHUD("SurfScores");
+
+        if (backWall != null)
+        {
+            backWall.SetActive(false);
+        }
 
         PlayerController[] allPlayers = FindObjectsOfType<PlayerController>();
         foreach (PlayerController player in allPlayers)

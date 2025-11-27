@@ -692,7 +692,7 @@ MonoBehaviour:
   moveSpeed: 10
   rotationSpeed: 1000
   groundAcceleration: 50
-  groundDeceleration: 30
+  groundDeceleration: 60
   airAcceleration: 20
   jumpForce: 5
   surfJumpForce: 6
