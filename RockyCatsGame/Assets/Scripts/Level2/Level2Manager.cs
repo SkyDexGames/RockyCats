@@ -30,6 +30,7 @@ public class Level2Manager : MonoBehaviourPunCallbacks
     private Coroutine fillCoroutine;
 
     private APIRequests apiRequests;
+    private bool isPaused = false;
 
     void Awake()
     {
@@ -280,6 +281,15 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         }
     }
 
+    public void PauseGame()
+    {
+        ShowHUD("PauseMenu");
+
+        if(PhotonNetwork.IsMasterClient)
+            ShowHUD("QuitToMap");
+    }
+    
+
     public void QuitGame()
     {
         #if UNITY_EDITOR
@@ -287,6 +297,37 @@ public class Level2Manager : MonoBehaviourPunCallbacks
         #else
         Application.Quit();
         #endif
+    }
+    public void QuitToMap()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        }
+    }
+    public void TogglePause()
+    {
+        isPaused = !isPaused; 
+        if (isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+        
+    }
+
+    public void ResumeGame()
+    {
+        HideHUD("PauseMenu");
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
 
     public override void OnLeftRoom()
