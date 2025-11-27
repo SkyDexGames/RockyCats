@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Video;
 
 public class MapManager : MonoBehaviourPunCallbacks
 {
@@ -15,6 +16,7 @@ public class MapManager : MonoBehaviourPunCallbacks
 
     private int selectedLevelIndex = -1; //start with invalid index in case we want to manage a default UI, then add more stuff when we select a lvl
 
+    public VideoPlayer VideoPlayer;
     void Awake()
     {
         Instance = this;
@@ -24,6 +26,10 @@ public class MapManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
         //setup click listeners
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_PlayIntro", RpcTarget.All);
+        }
         for (int i = 0; i < levelButtons.Length; i++)
         {
             int levelIndex = i;
@@ -43,6 +49,34 @@ public class MapManager : MonoBehaviourPunCallbacks
                 levelButtons[i].interactable = false;
             }
         }
+
+    }
+
+    [PunRPC]
+    void RPC_PlayIntro()
+    {
+        HUDManager.Instance.ShowHUD("VideoContainer");
+
+        VideoPlayer.loopPointReached -= OnVideoFinished;
+        VideoPlayer.loopPointReached += OnVideoFinished;
+
+        VideoPlayer.enabled = true;
+        string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.MP4";
+        VideoPlayer.url = videoPath;
+        VideoPlayer.Play();
+    }
+
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        Debug.Log("El video terminó");
+
+        VideoPlayer.Stop();
+        HUDManager.Instance.HideHUD("VideoContainer");
+
+        MenuManager.Instance.OpenMenu("Map");
+
+        HUDManager.Instance.HideHUD("Background");
+
     }
 
     void OnLevelButtonClicked(int buttonIndex)
