@@ -62,6 +62,13 @@ public class PuzzleButtonInput : MonoBehaviour
         // Activar el cráter correspondiente como feedback visual
         sequenceManager.ActivateCraterFeedback(buttonId, feedbackDuration);
 
+        // Reproducir sonido del botón presionado
+        if (AudioManager.Instance != null)
+        {
+            string key = $"Patron{buttonId + 1}"; // Patron1, Patron2, Patron3, Patron4
+            AudioManager.Instance.PlayLevelSFX(key);
+        }
+
         // Enviar el input al manager
         sequenceManager.SubmitInput(buttonId);
     }
