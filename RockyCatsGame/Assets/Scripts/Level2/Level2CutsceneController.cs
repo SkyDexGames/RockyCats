@@ -40,12 +40,15 @@ public class Level2CutsceneController : MonoBehaviourPun
     [Tooltip("Prioridad de la cámara de cutscene cuando está inactiva")]
     [SerializeField] private int cutsceneCameraInactivePriority = 5;
 
-     [Header("Explosions")]
+    [Header("Explosions")]
     [Tooltip("Prefab del objeto 'explotion' que contiene los 4 Particle Systems")]
     [SerializeField] private GameObject explosionPrefab;
 
     [Tooltip("Puntos en el escenario donde quieres que haya explosiones")]
     [SerializeField] private Transform[] explosionPoints;
+
+    [Header("Cutscene Audio")]
+    [SerializeField] private AudioClip cutsceneBGM;
 
     [Tooltip("Tiempo entre una explosión y la siguiente")]
     [SerializeField] private float delayBetweenExplosions = 0.3f;
@@ -129,6 +132,14 @@ public class Level2CutsceneController : MonoBehaviourPun
     private IEnumerator CutsceneSequence()
     {
         Debug.Log("[Level2CutsceneController] Iniciando cutscene...");
+
+        // Cambiar BGM para la cutscene
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopBGM();
+            if (cutsceneBGM != null)
+                AudioManager.Instance.PlayBGM(cutsceneBGM);
+        }
 
         // 1. Esperar unos segundos después de completar el puzzle
         yield return new WaitForSeconds(delayBeforeCutscene);

@@ -182,6 +182,32 @@ public class AudioManager : MonoBehaviour
             PlayUI(uiSounds.buttonHover, uiSounds.buttonHoverVolume);
     }
 
+    // BGM control
+    public void PlayBGM(AudioClip clip)
+    {
+        if (clip == null) return;
+        StartCoroutine(CrossFadeBGM(clip));
+    }
+
+    public void StopBGM()
+    {
+        StartCoroutine(FadeOutBGM());
+    }
+
+    IEnumerator FadeOutBGM()
+    {
+        float startVolume = bgmSource.volume;
+
+        while (bgmSource.volume > 0)
+        {
+            bgmSource.volume -= startVolume * Time.deltaTime / fadeTime;
+            yield return null;
+        }
+
+        bgmSource.Stop();
+        bgmSource.clip = null;
+    }
+
     // Volume control
     public void SetMasterVolume(float volume)
     {
@@ -207,6 +233,17 @@ public class AudioManager : MonoBehaviour
     {
         uiVolume = Mathf.Clamp01(volume);
         SaveVolumeSettings();
+    }
+
+    public float GetSFXVolume()
+    {
+        return sfxVolume * masterVolume;
+    }
+
+    public LevelSFXEntry GetLevelSFXEntry(string key)
+    {
+        if (currentLevelConfig == null) return null;
+        return currentLevelConfig.GetSFXEntry(key);
     }
 
     void UpdateAllVolumes()
