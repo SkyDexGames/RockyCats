@@ -23,11 +23,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dff60ea149f028e47a19d0c26976cef5, type: 3}
   walkVolume: 1.5
   jumpClip: {fileID: 8300000, guid: 474e23cbd40194f44a7d29316ee483f1, type: 3}
-  jumpVolume: 1.5
+  jumpVolume: 1.85
   dashClip: {fileID: 8300000, guid: 65502442ed68c0a498ef86dcdafa0238, type: 3}
   dashVolume: 0.5
   hurtClip: {fileID: 8300000, guid: 03fa338713af82549b13a524000d8336, type: 3}
-  hurtVolume: 1
+  hurtVolume: 0.79
   deathClip: {fileID: 8300000, guid: 1d4dba8b22e2eb043bc1d5b9b53a91b2, type: 3}
   deathVolume: 1
   footstepInterval: 0.3

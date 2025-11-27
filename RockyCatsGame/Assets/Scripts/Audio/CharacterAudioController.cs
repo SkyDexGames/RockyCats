@@ -16,6 +16,7 @@ public class CharacterAudioController : MonoBehaviour
     private bool wasDashing = false;
     private bool wasWalking = false;
     private bool wasDead = false;
+    private int lastHP = 100;
 
     // Footstep timing
     private float footstepTimer = 0f;
@@ -37,6 +38,7 @@ public class CharacterAudioController : MonoBehaviour
         CheckJump();
         CheckWalking();
         CheckDash();
+        CheckHurt();
         CheckDeath();
 
         UpdatePreviousStates();
@@ -57,8 +59,9 @@ public class CharacterAudioController : MonoBehaviour
     {
         bool isWalking = playerController.IsWalking;
         bool isGrounded = playerController.IsGrounded;
+        bool isSurfing = playerController.IsSurfing;
 
-        if (isWalking && isGrounded && !playerController.isDead)
+        if (isWalking && isGrounded && !playerController.isDead && !isSurfing)
         {
             footstepTimer -= Time.deltaTime;
 
@@ -82,6 +85,17 @@ public class CharacterAudioController : MonoBehaviour
         if (isDashing && !wasDashing)
         {
             AudioManager.Instance.PlaySFX(characterSFX.dashClip, characterSFX.dashVolume);
+        }
+    }
+
+    void CheckHurt()
+    {
+        int currentHP = playerController.HP;
+
+        // Detect damage (HP decreased but not dead)
+        if (currentHP < lastHP && !playerController.isDead)
+        {
+            AudioManager.Instance.PlaySFX(characterSFX.hurtClip, characterSFX.hurtVolume);
         }
     }
 
@@ -115,6 +129,7 @@ public class CharacterAudioController : MonoBehaviour
         wasDashing = GetIsDashing();
         wasWalking = playerController.IsWalking;
         wasDead = playerController.isDead;
+        lastHP = playerController.HP;
     }
 }
 

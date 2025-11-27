@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: UISounds
   m_EditorClassIdentifier: 
   buttonClick: {fileID: 8300000, guid: ada8065bee969d14383cbc07b7b555b0, type: 3}
+  buttonClickVolume: 2
   buttonHover: {fileID: 8300000, guid: 8b8f26667049fe549bb71979e1e0a2b4, type: 3}
+  buttonHoverVolume: 0.3
