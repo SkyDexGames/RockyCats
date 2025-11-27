@@ -19,6 +19,9 @@ MonoBehaviour:
   ambientClips: []
   ambientVolume: 0.5
   levelSFX:
-  - key: 
-    clip: {fileID: 0}
-    volume: 1
+  - key: WindBlowing
+    clip: {fileID: 8300000, guid: d4400afca7e825c42aa10c6971ccaf0e, type: 3}
+    volume: 1.52
+  - key: Water
+    clip: {fileID: 8300000, guid: b5cad5f34c297f14fab8eff83d0a7a46, type: 3}
+    volume: 0.5
