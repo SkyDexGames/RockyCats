@@ -73,7 +73,7 @@ public class MapManager : MonoBehaviourPunCallbacks
         VideoPlayer.loopPointReached += OnVideoFinished;
 
         VideoPlayer.enabled = true;
-        string videoPath = Application.streamingAssetsPath + "/Introscene.MP4";
+        string videoPath = Application.streamingAssetsPath + "/Introscene1.MP4";
         VideoPlayer.url = videoPath;
         VideoPlayer.Play();
         PlayerPrefs.SetInt("PlayIntroCutscene", 1);
