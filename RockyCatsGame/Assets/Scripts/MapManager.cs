@@ -66,6 +66,7 @@ public class MapManager : MonoBehaviourPunCallbacks
             HUDManager.Instance.HideHUD("Background");
         }
         else{
+        AudioManager.Instance.StopBGM();
         HUDManager.Instance.ShowHUD("VideoContainer");
 
         VideoPlayer.loopPointReached -= OnVideoFinished;
@@ -84,6 +85,7 @@ public class MapManager : MonoBehaviourPunCallbacks
         Debug.Log("El video terminó");
 
         VideoPlayer.Stop();
+        AudioManager.Instance.ResumeLevelBGM();
         HUDManager.Instance.HideHUD("VideoContainer");
 
         MenuManager.Instance.OpenMenu("Map");

@@ -299,6 +299,14 @@ void PlayLevelBGM(LevelAudioConfig config)
             PlaySFX(entry.clip, entry.volume * volumeMultiplier);
     }
 
+    public void ResumeLevelBGM()
+    {
+        if (currentLevelConfig != null && currentLevelConfig.bgmClip != null)
+        {
+            StartCoroutine(CrossFadeBGM(currentLevelConfig.bgmClip));
+        }
+    }
+
     // Getters
     public UISounds GetUISounds() => uiSounds;
     public LevelAudioConfig GetCurrentLevelConfig() => currentLevelConfig;
