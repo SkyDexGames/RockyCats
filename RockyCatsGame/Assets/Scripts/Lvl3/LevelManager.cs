@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void RPC_LoadScene(int sceneIndex)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+        PhotonNetwork.LoadLevel(sceneIndex);
     }
 
     private IEnumerator CheckPlayersDeadRoutine()

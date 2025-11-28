@@ -15430,6 +15430,14 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -89.16205
       objectReference: {fileID: 0}
+    - target: {fileID: 7377016359886875236, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 958f135948d30c1438d4377c123e748a, type: 2}
+    - target: {fileID: 7377016359886875236, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7732319033110446565, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -15530,6 +15538,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2d062c18fc9e7cb478e2640f07636b65, type: 3}
+    - target: {fileID: 8641397229411421322, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641397229411421322, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8641397229411421322, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8937266263814894498, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

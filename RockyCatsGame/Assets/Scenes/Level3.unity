@@ -3427,7 +3427,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 958f135948d30c1438d4377c123e748a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3491,7 +3491,7 @@ MonoBehaviour:
   m_margin: {x: -150.14326, y: -21.791016, z: -94.28633, w: -20.453758}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1202717687
@@ -8904,6 +8904,18 @@ PrefabInstance:
     - target: {fileID: 2699609336873212873, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774971552374810502, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774971552374810502, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774971552374810502, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2830518403110410798, guid: dc4f8d986f16e5746b8bec5ce25ea41d, type: 3}
       propertyPath: m_Type
