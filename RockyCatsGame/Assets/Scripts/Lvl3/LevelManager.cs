@@ -228,6 +228,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
         Debug.Log("El video terminó");
 
         videoPlayer.Stop();
+        Time.timeScale = 1f;
         photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
         
 

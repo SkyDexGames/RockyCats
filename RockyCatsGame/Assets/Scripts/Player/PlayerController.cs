@@ -93,6 +93,9 @@ public class PlayerController : MonoBehaviour
         phaseManager = GetComponent<PhaseManager>();
         currentGravity = normalGravity;
         hp = maxHp;
+        ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+        hash["isDead"] = false;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
 
     void Update()
