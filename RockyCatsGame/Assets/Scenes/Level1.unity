@@ -14403,6 +14403,11 @@ Transform:
   - {fileID: 449419693}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2056342926 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2502584334928587944, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+  m_PrefabInstance: {fileID: 278117887279995529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086551445
 GameObject:
   m_ObjectHideFlags: 0
@@ -15197,6 +15202,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2502584334928587944, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2645225076419066320, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -15366,13 +15375,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_AudioOutputMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_WaitForFirstFrame
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
-      propertyPath: m_DirectAudioVolumes.Array.data[0]
+      propertyPath: m_DirectAudioMutes.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_DirectAudioVolumes.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492536226397891838, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
+      propertyPath: m_TargetAudioSources.Array.data[0]
+      value: 
+      objectReference: {fileID: 2056342926}
     - target: {fileID: 6546702755687285057, guid: aceb8d7ef70ac4241a7a88bfc3df0246, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

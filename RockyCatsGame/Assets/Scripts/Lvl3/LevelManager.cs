@@ -212,7 +212,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
                 Time.timeScale = 0f;
             }
             videoPlayer.enabled = true;
-            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+            string videoPath = Application.streamingAssetsPath + "/lvl3Post.mp4";
             videoPlayer.url = videoPath;
             videoPlayer.Play();
 
