@@ -60,8 +60,10 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             return;
         }
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
         
-        PhotonNetwork.CreateRoom(roomNameInputField.text);
+        PhotonNetwork.CreateRoom(roomNameInputField.text, roomOptions);
         MenuManager.Instance.OpenMenu("Loading");
     }
 
@@ -142,11 +144,24 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             Destroy(trans.gameObject);
         }
+        /*
         for (int i = 0; i < roomList.Count; i++)
         {
             if(roomList[i].RemovedFromList)
                 continue;
             Instantiate(roomListItemPrefab, roomListContent).GetComponent<RoomListItem>().SetUp(roomList[i]);
+        }*/
+
+        for (int i = 0; i < roomList.Count; i++)
+        {
+            if(roomList[i].RemovedFromList)
+                continue;
+                
+            // Only show rooms that are not full
+            if (roomList[i].PlayerCount < roomList[i].MaxPlayers)
+            {
+                Instantiate(roomListItemPrefab, roomListContent).GetComponent<RoomListItem>().SetUp(roomList[i]);
+            }
         }
     }
 
