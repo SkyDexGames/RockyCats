@@ -216,7 +216,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
             videoPlayer.loopPointReached += OnVideoFinished;
 
             videoPlayer.enabled = true;
-            string videoPath = Application.streamingAssetsPath + "/lvl3Post.mp4";
+            string videoPath = Application.streamingAssetsPath + "/lvl3Post1.mp4";
             videoPlayer.url = videoPath;
             videoPlayer.Play();
 
