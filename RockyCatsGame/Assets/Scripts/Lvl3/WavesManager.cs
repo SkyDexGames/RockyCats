@@ -42,7 +42,7 @@ public class WaveManager : MonoBehaviourPun
 
     public IEnumerator StartNextWave()
     {
-        if (CurrentWave >= 10)
+        if (CurrentWave >= 100)
         {
             Debug.Log("All waves completed");
             yield break;

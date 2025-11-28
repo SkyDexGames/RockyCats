@@ -66,13 +66,14 @@ public class MapManager : MonoBehaviourPunCallbacks
             HUDManager.Instance.HideHUD("Background");
         }
         else{
+        AudioManager.Instance.StopBGM();
         HUDManager.Instance.ShowHUD("VideoContainer");
 
         VideoPlayer.loopPointReached -= OnVideoFinished;
         VideoPlayer.loopPointReached += OnVideoFinished;
 
         VideoPlayer.enabled = true;
-        string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.MP4";
+        string videoPath = Application.streamingAssetsPath + "/Introscene.MP4";
         VideoPlayer.url = videoPath;
         VideoPlayer.Play();
         PlayerPrefs.SetInt("PlayIntroCutscene", 1);
@@ -84,6 +85,7 @@ public class MapManager : MonoBehaviourPunCallbacks
         Debug.Log("El video terminó");
 
         VideoPlayer.Stop();
+        AudioManager.Instance.ResumeLevelBGM();
         HUDManager.Instance.HideHUD("VideoContainer");
 
         MenuManager.Instance.OpenMenu("Map");

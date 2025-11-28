@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void RPC_LoadScene(int sceneIndex)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+        PhotonNetwork.LoadLevel(sceneIndex);
     }
 
     private IEnumerator CheckPlayersDeadRoutine()
@@ -211,12 +211,26 @@ public class LevelManager : MonoBehaviourPunCallbacks
                 HUDManager.Instance.ShowHUD("VideoContainer");
                 Time.timeScale = 0f;
             }
+
+            videoPlayer.loopPointReached -= OnVideoFinished;
+            videoPlayer.loopPointReached += OnVideoFinished;
+
             videoPlayer.enabled = true;
-            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+            string videoPath = Application.streamingAssetsPath + "/lvl3Post1.mp4";
             videoPlayer.url = videoPath;
             videoPlayer.Play();
 
         }
+    }
+
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        Debug.Log("El video terminó");
+
+        videoPlayer.Stop();
+        photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        
+
     }
     public void LeaveMatch()
     {
