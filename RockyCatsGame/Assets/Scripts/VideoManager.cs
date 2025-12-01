@@ -12,6 +12,9 @@ public class VideoManager : MonoBehaviourPun
 
     [SerializeField] string videoName;
 
+    [Header("Cutscene Audio")]
+    [SerializeField] private AudioClip cutsceneBGM;
+
     void Start()
     {
         if (videoPlayer != null)
@@ -61,15 +64,23 @@ public class VideoManager : MonoBehaviourPun
     {
         if (videoPlayer != null)
         {
-            videoPlayer.enabled = true;
-            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
-            videoPlayer.url = videoPath;
-            videoPlayer.Play();
+            // Cambiar BGM para la cutscene
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopBGM();
+                if (cutsceneBGM != null)
+                    AudioManager.Instance.PlayBGM(cutsceneBGM);
+            }
 
             if (Level1Manager.Instance != null)
             {
+                Level1Manager.Instance.HideAllHUDs();
                 Level1Manager.Instance.ShowHUD("VideoContainer");
             }
+            videoPlayer.enabled = true;
+            string videoPath = Application.streamingAssetsPath + "/lvl1Post.mp4";
+            videoPlayer.url = videoPath;
+            videoPlayer.Play();
         }
     }
 

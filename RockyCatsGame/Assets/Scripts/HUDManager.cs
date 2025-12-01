@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class HUDManager : MonoBehaviour
 {
@@ -119,15 +120,16 @@ public class HUDManager : MonoBehaviour
     public void PauseGame()
     {
         ShowHUD("PauseMenu");
-        //Time.timeScale = 0f;
-        //set player mode to halted
+        HideHUD("BookButton");
+
+        if(PhotonNetwork.IsMasterClient)
+            ShowHUD("QuitToMap");
     }
     
     public void ResumeGame()
-    {
+    {   
         HideHUD("PauseMenu");
-        //Time.timeScale = 1f;
-        //set player mode to normal
+        ShowHUD("BookButton");
     }
     public void QuitGame()
     {

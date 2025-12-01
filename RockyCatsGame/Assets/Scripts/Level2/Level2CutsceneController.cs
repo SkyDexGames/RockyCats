@@ -40,12 +40,15 @@ public class Level2CutsceneController : MonoBehaviourPun
     [Tooltip("Prioridad de la cámara de cutscene cuando está inactiva")]
     [SerializeField] private int cutsceneCameraInactivePriority = 5;
 
-     [Header("Explosions")]
+    [Header("Explosions")]
     [Tooltip("Prefab del objeto 'explotion' que contiene los 4 Particle Systems")]
     [SerializeField] private GameObject explosionPrefab;
 
     [Tooltip("Puntos en el escenario donde quieres que haya explosiones")]
     [SerializeField] private Transform[] explosionPoints;
+
+    [Header("Cutscene Audio")]
+    [SerializeField] private AudioClip cutsceneBGM;
 
     [Tooltip("Tiempo entre una explosión y la siguiente")]
     [SerializeField] private float delayBetweenExplosions = 0.3f;
@@ -130,6 +133,14 @@ public class Level2CutsceneController : MonoBehaviourPun
     {
         Debug.Log("[Level2CutsceneController] Iniciando cutscene...");
 
+        // Cambiar BGM para la cutscene
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.StopBGM();
+            if (cutsceneBGM != null)
+                AudioManager.Instance.PlayBGM(cutsceneBGM);
+        }
+
         // 1. Esperar unos segundos después de completar el puzzle
         yield return new WaitForSeconds(delayBeforeCutscene);
 
@@ -141,6 +152,10 @@ public class Level2CutsceneController : MonoBehaviourPun
 
         // 4. Iniciar el shake (no esperamos a que termine)
         StartCoroutine(ShakeCamera());
+
+        // Iniciar sonido de explosión/erupción
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayLevelSFX("Explosion");
 
         // 4.5. Empezar las explosiones del entorno en paralelo
         StartCoroutine(SpawnExplosionsRoutine());
@@ -279,7 +294,7 @@ public class Level2CutsceneController : MonoBehaviourPun
         // Reproducir el video
         // El Render Texture ya está asignado en el Inspector, así que solo reproducimos
         videoPlayer.enabled = true;
-        string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+        string videoPath = Application.streamingAssetsPath + "/lvl2Post.mp4";
         videoPlayer.url = videoPath;
         videoPlayer.Play();
 

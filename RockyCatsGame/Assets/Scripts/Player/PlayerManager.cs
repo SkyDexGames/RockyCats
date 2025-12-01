@@ -40,11 +40,11 @@ public class PlayerManager : MonoBehaviour
         
         if (isHost)
         {
-            return new Vector3(-5, 0.5f, 0);
+            return new Vector3(-10, 0.5f, 0);
         }
         else
         {
-            return new Vector3(0, 0.5f, 0);
+            return new Vector3(-5, 0.5f, 0);
         }
     }
 }

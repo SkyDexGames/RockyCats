@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class NPCScript : MonoBehaviour
@@ -20,10 +21,12 @@ public class NPCScript : MonoBehaviour
     private PlayerController playerController;
     private Collider currentPlayerCollider;
     private Quaternion originalRotation;
+    int currentSceneIndex;
 
     void Start()
     {
         originalRotation = transform.rotation;
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -41,14 +44,45 @@ public class NPCScript : MonoBehaviour
                 index = 0;
                 dialogueText.text = "";
                 contButton.SetActive(false);
-                Level1Manager.Instance.ShowHUD("DialoguePanel");
+
+                //no hagan esto en su vida, nunca, lo hago porque estamos desesperados rn
+                
+                if (currentSceneIndex == 2)
+                {
+                    Level1Manager.Instance.ShowHUD("DialoguePanel");
+                    Level1Manager.Instance.HideHUD("BookButton");
+                    Level1Manager.Instance.HideHUD("Book");
+                    Level1Manager.Instance.HideHUD("PressFToTalk");
+                    Level1Manager.Instance.HideHUD("PauseButton");
+
+                }
+                else if (currentSceneIndex == 3)
+                {
+                    Level2Manager.Instance.ShowHUD("DialoguePanel");
+                    Level2Manager.Instance.HideHUD("BookButton");
+                    Level2Manager.Instance.HideHUD("Book");
+                    Level2Manager.Instance.HideHUD("PressFToTalk");
+                    Level2Manager.Instance.HideHUD("PauseButton");
+                }
+                else if (currentSceneIndex == 4)
+                {
+                    HUDManager.Instance.ShowHUD("DialoguePanel");
+                    HUDManager.Instance.HideHUD("BookButton");
+                    HUDManager.Instance.HideHUD("Book");
+                    HUDManager.Instance.HideHUD("PressFToTalk");
+                    HUDManager.Instance.HideHUD("PauseButton");
+                }
+                
                 StartCoroutine(Typing());
             }
         }
 
-        if (dialogueText.text == dialogue[index])
+        if (dialoguePanel.activeInHierarchy && dialogue != null && dialogue.Length > 0 && index < dialogue.Length)
         {
-            contButton.SetActive(true);
+            if (dialogueText.text == dialogue[index])
+            {
+                contButton.SetActive(true);
+            }
         }
     }
 
@@ -91,7 +125,19 @@ public class NPCScript : MonoBehaviour
     {
         dialogueText.text = "";
         index = 0;
-        Level1Manager.Instance.HideHUD("DialoguePanel");
+
+        if (currentSceneIndex == 2)
+        {
+            Level1Manager.Instance.HideHUD("DialoguePanel");
+        }
+        else if (currentSceneIndex == 3)
+        {
+            Level2Manager.Instance.HideHUD("DialoguePanel");
+        }
+        else if (currentSceneIndex == 4)
+        {
+            HUDManager.Instance.HideHUD("DialoguePanel");
+        }
     }
 
     IEnumerator Typing()
@@ -119,6 +165,25 @@ public class NPCScript : MonoBehaviour
             if (playerController != null)
             {
                 playerController.SetToNormal();
+                //ik this is trash code im sorry pero no da tiempo para el refactor lo juro
+                if (currentSceneIndex == 2)
+                {
+                    Level1Manager.Instance.ShowHUD("BookButton");
+                    Level1Manager.Instance.ShowHUD("PauseButton");
+                    Level1Manager.Instance.HideHUD("PressFToTalk");
+                }
+                else if (currentSceneIndex == 3)
+                {
+                    Level2Manager.Instance.ShowHUD("BookButton");
+                    Level2Manager.Instance.ShowHUD("PauseButton");
+                    Level2Manager.Instance.HideHUD("PressFToTalk");
+                }
+                else if (currentSceneIndex == 4)
+                {
+                    HUDManager.Instance.ShowHUD("BookButton");
+                    HUDManager.Instance.ShowHUD("PauseButton");
+                    HUDManager.Instance.HideHUD("PressFToTalk");
+                }
             }
         }
 
@@ -137,6 +202,25 @@ public class NPCScript : MonoBehaviour
                     playerIsClose = true;
                     playerController = pc;
                     currentPlayerCollider = other;
+
+                    if (currentSceneIndex == 2)
+                    {
+                        Level1Manager.Instance.HideHUD("BookButton");
+                        Level1Manager.Instance.HideHUD("PauseButton");
+                        Level1Manager.Instance.ShowHUD("PressFToTalk");
+                    }
+                    else if (currentSceneIndex == 3)
+                    {
+                        Level2Manager.Instance.HideHUD("BookButton");
+                        Level2Manager.Instance.HideHUD("PauseButton");
+                        Level2Manager.Instance.ShowHUD("PressFToTalk");
+                    }
+                    else if (currentSceneIndex == 4)
+                    {
+                        HUDManager.Instance.HideHUD("BookButton");
+                        HUDManager.Instance.HideHUD("PauseButton");
+                        HUDManager.Instance.ShowHUD("PressFToTalk");
+                    }
                 }
             }
         }
@@ -159,6 +243,25 @@ public class NPCScript : MonoBehaviour
                     playerController.SetToNormal();
                     playerController = null;
                     currentPlayerCollider = null;
+
+                    if (currentSceneIndex == 2)
+                    {
+                        Level1Manager.Instance.HideHUD("PressFToTalk");
+                        Level1Manager.Instance.ShowHUD("BookButton");
+                        Level1Manager.Instance.ShowHUD("PauseButton");
+                    }
+                    else if (currentSceneIndex == 3)
+                    {
+                        Level2Manager.Instance.HideHUD("PressFToTalk");
+                        Level2Manager.Instance.ShowHUD("BookButton");
+                        Level2Manager.Instance.ShowHUD("PauseButton");
+                    }
+                    else if (currentSceneIndex == 4)
+                    {
+                        HUDManager.Instance.HideHUD("PressFToTalk");
+                        HUDManager.Instance.ShowHUD("BookButton");
+                        HUDManager.Instance.ShowHUD("PauseButton");
+                    }
                 }
             }
         }

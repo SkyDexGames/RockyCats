@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565d8a346233aa24186283031f55ecda, type: 3}
+  m_Name: LevelAudioConfig Lvl1
+  m_EditorClassIdentifier: 
+  sceneIndex: 2
+  sceneName: 
+  bgmClip: {fileID: 8300000, guid: 6ca84247193e4f545a8fb96db67694dd, type: 3}
+  bgmVolume: 1
+  ambientClips: []
+  ambientVolume: 0.5
+  levelSFX:
+  - key: Hurt
+    clip: {fileID: 8300000, guid: 03fa338713af82549b13a524000d8336, type: 3}
+    volume: 0.59
+  - key: TempUp
+    clip: {fileID: 8300000, guid: bc9c83efbf63c4042ab036d9d36e0814, type: 3}
+    volume: 1
+  - key: SurfingLoop
+    clip: {fileID: 8300000, guid: 0634b1f47972ee14496dde97f244cd44, type: 3}
+    volume: 1.79
+  - key: PullBoard
+    clip: {fileID: 8300000, guid: c3fccddd502e0c648b3135f340c54655, type: 3}
+    volume: 3

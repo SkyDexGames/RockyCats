@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine.Video;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviourPunCallbacks
 {
 
     public static LevelManager Instance;
@@ -29,6 +29,9 @@ public class LevelManager : MonoBehaviour
 
     public Image chiliLifeImage;
     public Image gizmoLifeImage;
+
+    public Image gizmosLifeContainer;
+    public Image chilisLifeContainer;
    
     public Gradient playerLifeGradient;
 
@@ -38,6 +41,9 @@ public class LevelManager : MonoBehaviour
     private int chiliLife = 100;
 
     public VideoPlayer videoPlayer;
+
+    [Header("Cutscene Audio")]
+    [SerializeField] private AudioClip cutsceneBGM;
 
 
     private void Awake()
@@ -95,6 +101,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    //la voy a meter aca porque incluye logica fuera del 'hud'
+    public void QuitToMap()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        }
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        PhotonNetwork.LoadLevel(sceneIndex);
+    }
+
     private IEnumerator CheckPlayersDeadRoutine()
     {
         while (true)
@@ -125,11 +146,19 @@ public class LevelManager : MonoBehaviour
         if (isMasterClient)
         {
             gizmoLife = currentLife;
+            if (currentLife < 100)
+            {
+                gizmosLifeContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
             
         }
         else
         {
             chiliLife = currentLife;
+            if (currentLife < 100)
+            {
+                chilisLifeContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
         }
         
         UpdateTemperatureDisplays();
@@ -145,6 +174,7 @@ public class LevelManager : MonoBehaviour
 
             gizmoLifeImage.color = playerLifeGradient.Evaluate(t);
             gizmoLifeImage.fillAmount = t;
+            
         }
 
         if (chiliLifeImage != null)
@@ -167,7 +197,13 @@ public class LevelManager : MonoBehaviour
     {
         if (videoPlayer != null)
         {
-            
+            // Cambiar BGM para la cutscene
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopBGM();
+                if (cutsceneBGM != null)
+                    AudioManager.Instance.PlayBGM(cutsceneBGM);
+            }
 
             if (HUDManager.Instance != null)
             {
@@ -175,12 +211,59 @@ public class LevelManager : MonoBehaviour
                 HUDManager.Instance.ShowHUD("VideoContainer");
                 Time.timeScale = 0f;
             }
+
+            videoPlayer.loopPointReached -= OnVideoFinished;
+            videoPlayer.loopPointReached += OnVideoFinished;
+
             videoPlayer.enabled = true;
-            string videoPath = Application.streamingAssetsPath + "/Cutscene Storyboard.mp4";
+            string videoPath = Application.streamingAssetsPath + "/lvl3Post1.mp4";
             videoPlayer.url = videoPath;
             videoPlayer.Play();
 
         }
+    }
+
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        Debug.Log("El video terminó");
+
+        videoPlayer.Stop();
+        Time.timeScale = 1f;
+        photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        
+
+    }
+    public void LeaveMatch()
+    {
+        Debug.Log("Leaving match...");
+        
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            PhotonNetwork.Disconnect();
+        }
+    }
+
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
+
+    public override void OnLeftRoom()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     

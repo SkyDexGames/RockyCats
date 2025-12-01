@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 1000; //rotate almost instantly, we can tweak this in the future if we need it
     [SerializeField] private float groundAcceleration = 50f; //que tan rapido aceleras
-    [SerializeField] private float groundDeceleration = 30f; //que tan rapido desaceleras
+    [SerializeField] private float groundDeceleration = 60f; //que tan rapido desaceleras
     [SerializeField] private float airAcceleration = 20f; //control en el aire
 
     //jump settings
     [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float surfJumpForce = 6f;
+    [SerializeField] private float normalJumpForce = 5f;
+
 
     //some input settings
     [SerializeField] private bool useController = true;
@@ -34,10 +38,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask cameraTriggerMask;
 
     //wall jump
-    [SerializeField] private float wallJumpUpForce = 8f;
-    [SerializeField] private float wallJumpSideForce = 10f;
-    [SerializeField] private float wallJumpDuration = 0.3f;
-    [SerializeField] private float wallJumpControlReduction = 0.2f;
+    //[SerializeField] private float wallJumpUpForce = 8f;
+    //[SerializeField] private float wallJumpSideForce = 10f;
+    //[SerializeField] private float wallJumpDuration = 0.3f;
+    //[SerializeField] private float wallJumpControlReduction = 0.2f;
 
     //components
     private CharacterController controller;
@@ -55,8 +59,6 @@ public class PlayerController : MonoBehaviour
 
     //gravity settings
     [SerializeField] private float normalGravity = -10f;
-    [SerializeField] private float surfingGravity = -10f;
-    [SerializeField] private float haltedGravity = -10f;
     private float currentGravity;
 
     //weas externas que afectan el movimiento
@@ -91,6 +93,9 @@ public class PlayerController : MonoBehaviour
         phaseManager = GetComponent<PhaseManager>();
         currentGravity = normalGravity;
         hp = maxHp;
+        ExitGames.Client.Photon.Hashtable hash = new ExitGames.Client.Photon.Hashtable();
+        hash["isDead"] = false;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
 
     void Update()
@@ -174,10 +179,11 @@ public class PlayerController : MonoBehaviour
         
         //reducimos control durante el wall jump para que SI se apliquen bien las fuerzas
         //solo durante el wall jump, porque con el viento se sentia bien unresponsive
+        /*
         if(externalVelocityTimer > 0 && externalVelocity.magnitude > wallJumpSideForce * 0.5f)
         {
             controlMultiplier = wallJumpControlReduction;
-        }
+        }*/
 
         //target velocity basado en input
         Vector3 targetVelocity = inputDirection * moveSpeed * controlMultiplier;
@@ -270,6 +276,7 @@ public class PlayerController : MonoBehaviour
 
     void PerformWallJump(Vector3 wallNormal)
     {
+        /*
         verticalVelocity = wallJumpUpForce;
         
         //aqui le hacemos para que rebote en la dir contraria a la pared
@@ -280,6 +287,7 @@ public class PlayerController : MonoBehaviour
         //horizontalVelocity = Vector3.zero;
         
         //Debug.Log($"Wall Jump direction: {jumpDirection}, force: {wallJumpSideForce}");
+        */
     }
 
     void HandleRotation()
@@ -396,6 +404,11 @@ public class PlayerController : MonoBehaviour
     //getters
     public bool IsGrounded => isGrounded;
     public bool IsTouchingWall => isTouchingWall;
+    public bool IsJumping => !isGrounded && verticalVelocity > 0;
+    public bool IsWalking => isGrounded && horizontalVelocity.magnitude > 0.1f;
+    public bool IsDead => isDead;
+    public int HP => hp;
+    public bool IsSurfing => currentMovementMode == MovementMode.Surfing;
     public Vector3 GetInputDirection => inputDirection;
     public Vector3 GetHorizontalVelocity => horizontalVelocity;
     public float GetMoveSpeed => moveSpeed;
@@ -422,13 +435,12 @@ public class PlayerController : MonoBehaviour
         switch (mode)
         {
             case MovementMode.Normal:
-                currentGravity = normalGravity;
+                jumpForce = normalJumpForce;
                 break;
             case MovementMode.Surfing:
-                currentGravity = surfingGravity;
+                jumpForce = surfJumpForce;
                 break;
             case MovementMode.Halted:
-                currentGravity = haltedGravity;
                 break;
         }
         
@@ -448,6 +460,11 @@ public class PlayerController : MonoBehaviour
         {
             currentAnimator = phaseAnimators[phaseIndex];
         }
+    }
+
+    public MovementMode GetCurrentMovementMode()
+    {
+        return currentMovementMode;
     }
 
     public void SetToNormal() => SetMovementMode(MovementMode.Normal);

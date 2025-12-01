@@ -234,6 +234,16 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
     {
         if (craters == null || craterId < 0 || craterId >= craters.Length) return;
         craters[craterId].PlayGas(duration);
+
+        // Reproducir sonido del patrón correspondiente
+        PlayPatronSound(craterId);
+    }
+
+    private void PlayPatronSound(int craterId)
+    {
+        if (AudioManager.Instance == null) return;
+        string key = $"Patron{craterId + 1}"; // Patron1, Patron2, Patron3, Patron4
+        AudioManager.Instance.PlayLevelSFX(key);
     }
 
     [PunRPC]
@@ -276,6 +286,10 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         {
             l2.OnRoundSuccess(roundIndex);
         }
+
+        // Sonido de patrón correcto
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayLevelSFX("PatronCorrect");
     }
 
     [PunRPC]
@@ -287,6 +301,10 @@ public class GasSequenceManager : MonoBehaviourPunCallbacks
         {
             l2.OnRoundFail(roundIndex);
         }
+
+        // Sonido de patrón incorrecto
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayLevelSFX("PatronIncorrect");
     }
 
     [PunRPC]

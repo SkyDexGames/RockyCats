@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d2d7a02b4a20b44b758ed5ea349f28, type: 3}
+  m_Name: CharacterSFX
+  m_EditorClassIdentifier: 
+  walkClips:
+  - {fileID: 8300000, guid: 50d48833a4b79534b94d823394fc87b8, type: 3}
+  - {fileID: 8300000, guid: 32f1b1511b3e5a64aa45ac25cf648aec, type: 3}
+  - {fileID: 8300000, guid: d24cc1430d055ab48bec9b365d3d13f1, type: 3}
+  - {fileID: 8300000, guid: 5029cf47e84b051418019a214b5e5960, type: 3}
+  - {fileID: 8300000, guid: 32e6cdaaa71c32d44b2919c657d538e0, type: 3}
+  - {fileID: 8300000, guid: 200bfb75a7bbbc240a55e50d6c88f52a, type: 3}
+  - {fileID: 8300000, guid: 1e7ffc34730ddaf4280831bbdac23979, type: 3}
+  - {fileID: 8300000, guid: dff60ea149f028e47a19d0c26976cef5, type: 3}
+  walkVolume: 1.5
+  jumpClip: {fileID: 8300000, guid: 474e23cbd40194f44a7d29316ee483f1, type: 3}
+  jumpVolume: 1.85
+  dashClip: {fileID: 8300000, guid: 65502442ed68c0a498ef86dcdafa0238, type: 3}
+  dashVolume: 0.5
+  hurtClip: {fileID: 8300000, guid: 03fa338713af82549b13a524000d8336, type: 3}
+  hurtVolume: 0.79
+  deathClip: {fileID: 8300000, guid: 1d4dba8b22e2eb043bc1d5b9b53a91b2, type: 3}
+  deathVolume: 1
+  footstepInterval: 0.3

@@ -5,7 +5,7 @@ using TMPro;
 using Photon.Pun;
 using UnityEngine.UI;
 
-public class Level1Manager : MonoBehaviourPun
+public class Level1Manager : MonoBehaviourPunCallbacks
 {
     public static Level1Manager Instance;
     
@@ -14,6 +14,9 @@ public class Level1Manager : MonoBehaviourPun
 
     public Image gizmosTempBar;
     public Image chilisTempBar;
+
+    public Image gizmosTempContainer;
+    public Image chilisTempContainer;
     
 
     [SerializeField] private HUDElement[] hudElements;
@@ -128,15 +131,32 @@ public class Level1Manager : MonoBehaviourPun
     public void PauseGame()
     {
         ShowHUD("PauseMenu");
-        //Time.timeScale = 0f;
-        //set player mode to halted
+        HideHUD("BookButton");
+
+        if(PhotonNetwork.IsMasterClient)
+            ShowHUD("QuitToMap");
     }
     
     public void ResumeGame()
     {
         HideHUD("PauseMenu");
-        //Time.timeScale = 1f;
-        //set player mode to normal
+        ShowHUD("BookButton");
+        
+    }
+
+    public void LeaveMatch()
+    {
+        Debug.Log("Leaving match...");
+
+        
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            PhotonNetwork.Disconnect();
+        }
     }
     public void QuitGame()
     {
@@ -145,6 +165,30 @@ public class Level1Manager : MonoBehaviourPun
         #else
         Application.Quit();
         #endif
+    }
+
+    public void QuitToMap()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RPC_LoadScene", RpcTarget.All, 1);
+        }
+    }
+
+    [PunRPC]
+    void RPC_LoadScene(int sceneIndex)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
+    }
+
+    public override void OnLeftRoom()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public override void OnDisconnected(Photon.Realtime.DisconnectCause cause)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void UpdateMyTemperature(int tempChange)
@@ -162,10 +206,18 @@ public class Level1Manager : MonoBehaviourPun
         if (isMasterClient)
         {
             gizmoTemperature = Mathf.Max(0, gizmoTemperature + tempChange);
+            if (tempChange < 0)
+            {
+                gizmosTempContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
         }
         else
         {
             chiliTemperature = Mathf.Max(0, chiliTemperature + tempChange);
+            if (tempChange < 0)
+            {
+                chilisTempContainer.GetComponent<HealthBarShake>()?.Shake();
+            }
         }
         
         UpdateTemperatureDisplays();
